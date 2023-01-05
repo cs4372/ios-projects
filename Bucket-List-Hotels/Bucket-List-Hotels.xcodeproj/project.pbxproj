@@ -1,0 +1,425 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		47FB8A6629654D9F00B0FC04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A6529654D9F00B0FC04 /* AppDelegate.swift */; };
+		47FB8A6829654D9F00B0FC04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A6729654D9F00B0FC04 /* SceneDelegate.swift */; };
+		47FB8A6A29654D9F00B0FC04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A6929654D9F00B0FC04 /* ViewController.swift */; };
+		47FB8A6D29654D9F00B0FC04 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FB8A6B29654D9F00B0FC04 /* Main.storyboard */; };
+		47FB8A6F29654DA100B0FC04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47FB8A6E29654DA100B0FC04 /* Assets.xcassets */; };
+		47FB8A7229654DA100B0FC04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47FB8A7029654DA100B0FC04 /* LaunchScreen.storyboard */; };
+		47FB8A7A29663DAA00B0FC04 /* Hotel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A7929663DAA00B0FC04 /* Hotel.swift */; };
+		47FB8A7E296640EF00B0FC04 /* HotelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A7D296640EF00B0FC04 /* HotelTableViewController.swift */; };
+		47FB8A802966440B00B0FC04 /* HotelDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A7F2966440B00B0FC04 /* HotelDiffableDataSource.swift */; };
+		47FB8A83296645B200B0FC04 /* HotelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A82296645B200B0FC04 /* HotelTableViewCell.swift */; };
+		47FB8A8529665C5500B0FC04 /* HotelContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A8429665C5400B0FC04 /* HotelContentCell.swift */; };
+		47FB8A892966798200B0FC04 /* HotelContactInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A882966798200B0FC04 /* HotelContactInfoCell.swift */; };
+		47FB8A8B29667A1A00B0FC04 /* HotelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A8A29667A1A00B0FC04 /* HotelContentViewController.swift */; };
+		47FB8A8D29667C5700B0FC04 /* HotelDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A8C29667C5700B0FC04 /* HotelDescriptionCell.swift */; };
+		47FB8A8F29667C7600B0FC04 /* HotelMapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A8E29667C7600B0FC04 /* HotelMapCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		47FB8A6229654D9F00B0FC04 /* Bucket-List-Hotels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bucket-List-Hotels.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		47FB8A6529654D9F00B0FC04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		47FB8A6729654D9F00B0FC04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		47FB8A6929654D9F00B0FC04 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		47FB8A6C29654D9F00B0FC04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		47FB8A6E29654DA100B0FC04 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		47FB8A7129654DA100B0FC04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		47FB8A7329654DA100B0FC04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47FB8A7929663DAA00B0FC04 /* Hotel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hotel.swift; sourceTree = "<group>"; };
+		47FB8A7D296640EF00B0FC04 /* HotelTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelTableViewController.swift; sourceTree = "<group>"; };
+		47FB8A7F2966440B00B0FC04 /* HotelDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelDiffableDataSource.swift; sourceTree = "<group>"; };
+		47FB8A82296645B200B0FC04 /* HotelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelTableViewCell.swift; sourceTree = "<group>"; };
+		47FB8A8429665C5400B0FC04 /* HotelContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelContentCell.swift; sourceTree = "<group>"; };
+		47FB8A882966798200B0FC04 /* HotelContactInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelContactInfoCell.swift; sourceTree = "<group>"; };
+		47FB8A8A29667A1A00B0FC04 /* HotelContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelContentViewController.swift; sourceTree = "<group>"; };
+		47FB8A8C29667C5700B0FC04 /* HotelDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelDescriptionCell.swift; sourceTree = "<group>"; };
+		47FB8A8E29667C7600B0FC04 /* HotelMapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelMapCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		47FB8A5F29654D9F00B0FC04 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		47FB8A5929654D9F00B0FC04 = {
+			isa = PBXGroup;
+			children = (
+				47FB8A6429654D9F00B0FC04 /* Bucket-List-Hotels */,
+				47FB8A6329654D9F00B0FC04 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		47FB8A6329654D9F00B0FC04 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				47FB8A6229654D9F00B0FC04 /* Bucket-List-Hotels.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		47FB8A6429654D9F00B0FC04 /* Bucket-List-Hotels */ = {
+			isa = PBXGroup;
+			children = (
+				47FB8A7C296640DD00B0FC04 /* Controller */,
+				47FB8A6529654D9F00B0FC04 /* AppDelegate.swift */,
+				47FB8A6729654D9F00B0FC04 /* SceneDelegate.swift */,
+				47FB8A6929654D9F00B0FC04 /* ViewController.swift */,
+				47FB8A6B29654D9F00B0FC04 /* Main.storyboard */,
+				47FB8A812966458A00B0FC04 /* View */,
+				47FB8A6E29654DA100B0FC04 /* Assets.xcassets */,
+				47FB8A7029654DA100B0FC04 /* LaunchScreen.storyboard */,
+				47FB8A7329654DA100B0FC04 /* Info.plist */,
+				47FB8A7B29663E1E00B0FC04 /* Model */,
+			);
+			path = "Bucket-List-Hotels";
+			sourceTree = "<group>";
+		};
+		47FB8A7B29663E1E00B0FC04 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47FB8A7929663DAA00B0FC04 /* Hotel.swift */,
+				47FB8A7F2966440B00B0FC04 /* HotelDiffableDataSource.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47FB8A7C296640DD00B0FC04 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				47FB8A7D296640EF00B0FC04 /* HotelTableViewController.swift */,
+				47FB8A8A29667A1A00B0FC04 /* HotelContentViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		47FB8A812966458A00B0FC04 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47FB8A82296645B200B0FC04 /* HotelTableViewCell.swift */,
+				47FB8A8429665C5400B0FC04 /* HotelContentCell.swift */,
+				47FB8A882966798200B0FC04 /* HotelContactInfoCell.swift */,
+				47FB8A8C29667C5700B0FC04 /* HotelDescriptionCell.swift */,
+				47FB8A8E29667C7600B0FC04 /* HotelMapCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		47FB8A6129654D9F00B0FC04 /* Bucket-List-Hotels */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 47FB8A7629654DA100B0FC04 /* Build configuration list for PBXNativeTarget "Bucket-List-Hotels" */;
+			buildPhases = (
+				47FB8A5E29654D9F00B0FC04 /* Sources */,
+				47FB8A5F29654D9F00B0FC04 /* Frameworks */,
+				47FB8A6029654D9F00B0FC04 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Bucket-List-Hotels";
+			productName = "Bucket-List-Hotels";
+			productReference = 47FB8A6229654D9F00B0FC04 /* Bucket-List-Hotels.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		47FB8A5A29654D9F00B0FC04 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					47FB8A6129654D9F00B0FC04 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 47FB8A5D29654D9F00B0FC04 /* Build configuration list for PBXProject "Bucket-List-Hotels" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 47FB8A5929654D9F00B0FC04;
+			productRefGroup = 47FB8A6329654D9F00B0FC04 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				47FB8A6129654D9F00B0FC04 /* Bucket-List-Hotels */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		47FB8A6029654D9F00B0FC04 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47FB8A7229654DA100B0FC04 /* LaunchScreen.storyboard in Resources */,
+				47FB8A6F29654DA100B0FC04 /* Assets.xcassets in Resources */,
+				47FB8A6D29654D9F00B0FC04 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		47FB8A5E29654D9F00B0FC04 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				47FB8A6A29654D9F00B0FC04 /* ViewController.swift in Sources */,
+				47FB8A6629654D9F00B0FC04 /* AppDelegate.swift in Sources */,
+				47FB8A7A29663DAA00B0FC04 /* Hotel.swift in Sources */,
+				47FB8A83296645B200B0FC04 /* HotelTableViewCell.swift in Sources */,
+				47FB8A6829654D9F00B0FC04 /* SceneDelegate.swift in Sources */,
+				47FB8A8529665C5500B0FC04 /* HotelContentCell.swift in Sources */,
+				47FB8A8B29667A1A00B0FC04 /* HotelContentViewController.swift in Sources */,
+				47FB8A8F29667C7600B0FC04 /* HotelMapCell.swift in Sources */,
+				47FB8A8D29667C5700B0FC04 /* HotelDescriptionCell.swift in Sources */,
+				47FB8A802966440B00B0FC04 /* HotelDiffableDataSource.swift in Sources */,
+				47FB8A7E296640EF00B0FC04 /* HotelTableViewController.swift in Sources */,
+				47FB8A892966798200B0FC04 /* HotelContactInfoCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		47FB8A6B29654D9F00B0FC04 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47FB8A6C29654D9F00B0FC04 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		47FB8A7029654DA100B0FC04 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				47FB8A7129654DA100B0FC04 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		47FB8A7429654DA100B0FC04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		47FB8A7529654DA100B0FC04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		47FB8A7729654DA100B0FC04 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9DJ3NHWZB3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Bucket-List-Hotels/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cshing4372.Bucket-List-Hotels";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		47FB8A7829654DA100B0FC04 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9DJ3NHWZB3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Bucket-List-Hotels/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cshing4372.Bucket-List-Hotels";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		47FB8A5D29654D9F00B0FC04 /* Build configuration list for PBXProject "Bucket-List-Hotels" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47FB8A7429654DA100B0FC04 /* Debug */,
+				47FB8A7529654DA100B0FC04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		47FB8A7629654DA100B0FC04 /* Build configuration list for PBXNativeTarget "Bucket-List-Hotels" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				47FB8A7729654DA100B0FC04 /* Debug */,
+				47FB8A7829654DA100B0FC04 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 47FB8A5A29654D9F00B0FC04 /* Project object */;
+}

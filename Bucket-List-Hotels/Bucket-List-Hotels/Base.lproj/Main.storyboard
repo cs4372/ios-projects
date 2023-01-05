@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nZs-S9-SyB">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Hotels-->
+        <scene sceneID="ey8-Iy-Eqg">
+            <objects>
+                <tableViewController id="W9g-je-nBc" customClass="HotelTableViewController" customModule="Bucket_List_Hotels" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="isQ-BB-Pzl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="datacell" rowHeight="140" id="Grp-nV-PMU" customClass="HotelTableViewCell" customModule="Bucket_List_Hotels" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="140"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Grp-nV-PMU" id="L63-Ec-YB4">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="140"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WHe-fe-pG0">
+                                            <rect key="frame" x="20" y="11" width="353" height="118"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sN-2q-UWd">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="118"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="120" id="5dY-Qo-wnw"/>
+                                                        <constraint firstAttribute="width" constant="200" id="fJw-B7-mx8"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="MnR-AR-zHl">
+                                                    <rect key="frame" x="210" y="22" width="143" height="74"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onn-n2-NPk">
+                                                            <rect key="frame" x="0.0" y="0.0" width="143" height="24"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrT-Ye-dP5">
+                                                            <rect key="frame" x="0.0" y="32" width="143" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stars" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLu-L8-jyk">
+                                                            <rect key="frame" x="0.0" y="57" width="143" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="WHe-fe-pG0" secondAttribute="trailing" id="JKK-2q-yxW"/>
+                                        <constraint firstItem="WHe-fe-pG0" firstAttribute="leading" secondItem="L63-Ec-YB4" secondAttribute="leadingMargin" id="UlK-To-5gQ"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="WHe-fe-pG0" secondAttribute="bottom" id="ciy-UE-dYZ"/>
+                                        <constraint firstItem="WHe-fe-pG0" firstAttribute="top" secondItem="L63-Ec-YB4" secondAttribute="topMargin" id="tHS-w3-36Q"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="countryLabel" destination="NrT-Ye-dP5" id="PYA-B5-2Vb"/>
+                                    <outlet property="imageCellView" destination="8sN-2q-UWd" id="KIR-wB-uGE"/>
+                                    <outlet property="nameLabel" destination="Onn-n2-NPk" id="aS0-gW-pLO"/>
+                                    <outlet property="starsLabel" destination="fLu-L8-jyk" id="yPR-mL-ws6"/>
+                                    <segue destination="i5S-bG-Cab" kind="show" identifier="showHotelContent" id="gIq-j7-5rn"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="W9g-je-nBc" id="q7m-xb-pJ3"/>
+                            <outlet property="delegate" destination="W9g-je-nBc" id="aMb-tO-N24"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Hotels" id="e7H-lM-8yn"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ARZ-qy-o1y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1002.2900763358779" y="45.774647887323944"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Nas-Gy-36r">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nZs-S9-SyB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ikb-fR-g7a">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="W9g-je-nBc" kind="relationship" relationship="rootViewController" id="W45-WP-EM0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o4k-vT-J7W" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75.572519083969468" y="45.774647887323944"/>
+        </scene>
+        <!--Hotel Content-->
+        <scene sceneID="avT-vn-Wru">
+            <objects>
+                <viewController id="i5S-bG-Cab" userLabel="Hotel Content" customClass="HotelContentViewController" customModule="Bucket_List_Hotels" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FPs-M1-x5G" customClass="HotelContentCell" customModule="Bucket_List_Hotels" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="1000"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="j7s-kO-sp0">
+                                <rect key="frame" x="0.0" y="103" width="393" height="863"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="MaN-kJ-QkO" userLabel="Header View" customClass="HotelContentCell" customModule="Bucket_List_Hotels" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d7H-FQ-Yb6" userLabel="Header Image View">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="445"/>
+                                        </imageView>
+                                        <view alpha="0.20000000298023224" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsR-zU-fNq" userLabel="Dim View">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="331"/>
+                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </view>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GQn-bC-j7e">
+                                            <rect key="frame" x="20" y="331" width="353" height="64"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1f-hC-AwZ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="71.666666666666671" height="33.666666666666664"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P8L-iU-qJr">
+                                                    <rect key="frame" x="0.0" y="43.666666666666686" width="68.333333333333329" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="d7H-FQ-Yb6" firstAttribute="leading" secondItem="MaN-kJ-QkO" secondAttribute="leading" id="9vK-Nw-ZfW"/>
+                                        <constraint firstAttribute="bottom" secondItem="d7H-FQ-Yb6" secondAttribute="bottom" id="FfX-re-VTh"/>
+                                        <constraint firstAttribute="trailing" secondItem="GQn-bC-j7e" secondAttribute="trailing" constant="20" id="RcA-1x-8bQ"/>
+                                        <constraint firstItem="UsR-zU-fNq" firstAttribute="top" secondItem="MaN-kJ-QkO" secondAttribute="top" id="UMY-Li-mGk"/>
+                                        <constraint firstAttribute="trailing" secondItem="d7H-FQ-Yb6" secondAttribute="trailing" id="YFM-hr-g7F"/>
+                                        <constraint firstItem="GQn-bC-j7e" firstAttribute="top" secondItem="UsR-zU-fNq" secondAttribute="bottom" id="YNX-gG-bzb"/>
+                                        <constraint firstAttribute="trailing" secondItem="UsR-zU-fNq" secondAttribute="trailing" id="alf-7b-eto"/>
+                                        <constraint firstItem="UsR-zU-fNq" firstAttribute="leading" secondItem="MaN-kJ-QkO" secondAttribute="leading" id="bPp-fW-hAw"/>
+                                        <constraint firstItem="d7H-FQ-Yb6" firstAttribute="top" secondItem="MaN-kJ-QkO" secondAttribute="top" id="rwE-NG-xfl"/>
+                                        <constraint firstAttribute="bottom" secondItem="GQn-bC-j7e" secondAttribute="bottom" constant="50" id="tcc-I4-geG"/>
+                                        <constraint firstItem="GQn-bC-j7e" firstAttribute="leading" secondItem="MaN-kJ-QkO" secondAttribute="leading" constant="20" id="vI9-E1-ogC"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailTextCell" id="2hv-ZL-Xxl" userLabel="HotelDescriptionCell" customClass="HotelDescriptionCell" customModule="Bucket_List_Hotels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="495" width="393" height="42.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2hv-ZL-Xxl" id="fMm-gX-B0h">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="42.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-zM-rF6">
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="20.666666666666671"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="JOu-zM-rF6" secondAttribute="trailing" id="4h0-iV-Vot"/>
+                                                <constraint firstItem="JOu-zM-rF6" firstAttribute="top" secondItem="fMm-gX-B0h" secondAttribute="topMargin" id="eau-Q6-eb4"/>
+                                                <constraint firstItem="JOu-zM-rF6" firstAttribute="leading" secondItem="fMm-gX-B0h" secondAttribute="leadingMargin" id="jbn-g2-0Hd"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="JOu-zM-rF6" secondAttribute="bottom" id="neM-G2-JsJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="descriptionLabel" destination="JOu-zM-rF6" id="94t-lb-b7A"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailTwoColumnCell" rowHeight="70" id="WfI-xP-woo" userLabel="HotelContactInfoCell" customClass="HotelContactInfoCell" customModule="Bucket_List_Hotels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="537.66666793823242" width="393" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WfI-xP-woo" id="3cY-af-AJ4">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fG8-AD-XXB">
+                                                    <rect key="frame" x="20" y="11" width="353" height="48"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Dv-l7-LLy">
+                                                            <rect key="frame" x="0.0" y="0.0" width="171.66666666666666" height="48"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sc4-ux-Oif" userLabel="Address Label">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="66" height="20.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0h1-nL-eEf" userLabel="Address Text Label">
+                                                                    <rect key="frame" x="0.0" y="28.333333333333336" width="93.333333333333329" height="19.666666666666664"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="rb1-dR-8zQ">
+                                                            <rect key="frame" x="181.66666666666663" y="0.0" width="171.33333333333337" height="48"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FMd-eA-EFc" userLabel="Phone Label">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50.333333333333336" height="20.333333333333332"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-cD-RvH" userLabel="Phone Number Text Label">
+                                                                    <rect key="frame" x="0.0" y="28.333333333333336" width="114.33333333333333" height="19.666666666666664"/>
+                                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fG8-AD-XXB" secondAttribute="trailing" id="NVC-Sg-QLK"/>
+                                                <constraint firstItem="fG8-AD-XXB" firstAttribute="top" secondItem="3cY-af-AJ4" secondAttribute="topMargin" id="gel-Ty-Hjt"/>
+                                                <constraint firstItem="fG8-AD-XXB" firstAttribute="leading" secondItem="3cY-af-AJ4" secondAttribute="leadingMargin" id="iiE-tu-paX"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fG8-AD-XXB" secondAttribute="bottom" id="lRp-nb-cBk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressTextLabel" destination="0h1-nL-eEf" id="UNb-dH-dxK"/>
+                                            <outlet property="column1TextLabel" destination="0h1-nL-eEf" id="HBA-KG-HYD"/>
+                                            <outlet property="column1TitleLabel" destination="Sc4-ux-Oif" id="cIt-2J-NaR"/>
+                                            <outlet property="column2TextLabel" destination="iMa-cD-RvH" id="YIj-Qy-dT1"/>
+                                            <outlet property="column2TitleLabel" destination="FMd-eA-EFc" id="XcT-fR-JhN"/>
+                                            <outlet property="phoneNumberTextLabel" destination="iMa-cD-RvH" id="XBA-af-aLK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RestaurantDetailMapCell" rowHeight="200" id="IYF-9c-uBM" userLabel="HotelMapCell" customClass="HotelMapCell" customModule="Bucket_List_Hotels" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="607.66666793823242" width="393" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IYF-9c-uBM" id="Rds-Ix-Cpe">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nK-rS-h1m">
+                                                    <rect key="frame" x="20" y="11" width="353" height="178"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="QRt-NW-bCe"/>
+                                                    </constraints>
+                                                    <standardMapConfiguration key="preferredConfiguration"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </mapView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0nK-rS-h1m" firstAttribute="leading" secondItem="Rds-Ix-Cpe" secondAttribute="leadingMargin" id="0Nv-0I-nl2"/>
+                                                <constraint firstItem="0nK-rS-h1m" firstAttribute="top" secondItem="Rds-Ix-Cpe" secondAttribute="topMargin" id="1bY-64-vae"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0nK-rS-h1m" secondAttribute="bottom" id="2GN-lG-GSy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="0nK-rS-h1m" secondAttribute="trailing" id="5bU-kS-n1V"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ew8-YT-FDb"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="j7s-kO-sp0" firstAttribute="leading" secondItem="Ew8-YT-FDb" secondAttribute="leading" id="4yz-dY-xrE"/>
+                            <constraint firstItem="Ew8-YT-FDb" firstAttribute="trailing" secondItem="j7s-kO-sp0" secondAttribute="trailing" id="7yu-IK-CzS"/>
+                            <constraint firstItem="Ew8-YT-FDb" firstAttribute="bottom" secondItem="j7s-kO-sp0" secondAttribute="bottom" id="dZo-PM-wJB"/>
+                            <constraint firstItem="j7s-kO-sp0" firstAttribute="top" secondItem="Ew8-YT-FDb" secondAttribute="top" id="r4W-yS-jf9"/>
+                        </constraints>
+                        <connections>
+                            <outlet property="hotelView" destination="d7H-FQ-Yb6" id="XRa-KV-Fts"/>
+                            <outlet property="locationLabel" destination="P8L-iU-qJr" id="RGl-8P-FvK"/>
+                            <outlet property="nameLabel" destination="q1f-hC-AwZ" id="3wf-Ay-gsO"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="2g5-0O-fC0"/>
+                    <size key="freeformSize" width="393" height="1000"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fhp-qe-v2p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1893.8931297709923" y="45.774647887323944"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
