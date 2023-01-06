@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		47E03B39296799760023B3AB /* HotelContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E03B38296799760023B3AB /* HotelContentView.swift */; };
+		47E03B3D2967C84D0023B3AB /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47E03B3C2967C84D0023B3AB /* MockData.swift */; };
 		47FB8A6629654D9F00B0FC04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A6529654D9F00B0FC04 /* AppDelegate.swift */; };
 		47FB8A6829654D9F00B0FC04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A6729654D9F00B0FC04 /* SceneDelegate.swift */; };
 		47FB8A6A29654D9F00B0FC04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FB8A6929654D9F00B0FC04 /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		47E03B38296799760023B3AB /* HotelContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelContentView.swift; sourceTree = "<group>"; };
+		47E03B3C2967C84D0023B3AB /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		47FB8A6229654D9F00B0FC04 /* Bucket-List-Hotels.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bucket-List-Hotels.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47FB8A6529654D9F00B0FC04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47FB8A6729654D9F00B0FC04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				47FB8A7029654DA100B0FC04 /* LaunchScreen.storyboard */,
 				47FB8A7329654DA100B0FC04 /* Info.plist */,
 				47FB8A7B29663E1E00B0FC04 /* Model */,
+				47E03B3C2967C84D0023B3AB /* MockData.swift */,
 			);
 			path = "Bucket-List-Hotels";
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				47E03B39296799760023B3AB /* HotelContentView.swift in Sources */,
 				47FB8A6A29654D9F00B0FC04 /* ViewController.swift in Sources */,
 				47FB8A6629654D9F00B0FC04 /* AppDelegate.swift in Sources */,
+				47E03B3D2967C84D0023B3AB /* MockData.swift in Sources */,
 				47FB8A7A29663DAA00B0FC04 /* Hotel.swift in Sources */,
 				47FB8A83296645B200B0FC04 /* HotelTableViewCell.swift in Sources */,
 				47FB8A6829654D9F00B0FC04 /* SceneDelegate.swift in Sources */,
