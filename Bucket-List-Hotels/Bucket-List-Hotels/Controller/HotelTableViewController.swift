@@ -42,6 +42,7 @@ class HotelTableViewController: UITableViewController {
         )
         return dataSource
     }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showHotelContent" {

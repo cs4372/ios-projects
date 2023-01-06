@@ -16,6 +16,10 @@ class HotelTableViewCell: UITableViewCell {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.tintColor = .systemYellow
+    }
     
     @IBOutlet var countryLabel: UILabel!
     @IBOutlet var starsLabel: UILabel!

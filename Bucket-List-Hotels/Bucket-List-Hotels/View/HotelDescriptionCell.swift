@@ -9,6 +9,15 @@ import UIKit
 
 class HotelDescriptionCell: UITableViewCell {
     
-    @IBOutlet var descriptionLabel: UILabel!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.tintColor = .systemYellow
+    }
+    
+    @IBOutlet var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.numberOfLines = 0
+        }
+    }
 }
 

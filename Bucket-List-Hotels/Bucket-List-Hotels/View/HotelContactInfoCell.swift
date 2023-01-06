@@ -9,7 +9,15 @@ import UIKit
 
 class HotelContactInfoCell: UITableViewCell {
     
-    @IBOutlet var addressTextLabel: UILabel!
-    @IBOutlet var phoneNumberTextLabel: UILabel!
+    @IBOutlet var addressTextLabel: UILabel! {
+        didSet {
+            addressTextLabel.numberOfLines = 0
+        }
+    }
+    @IBOutlet var phoneNumberTextLabel: UILabel! {
+        didSet {
+            phoneNumberTextLabel.numberOfLines = 0
+        }
+    }
 }
 
