@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		47C9C0F7297DC5B50064E9F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9C0F6297DC5B50064E9F7 /* AppDelegate.swift */; };
 		47C9C0F9297DC5B50064E9F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9C0F8297DC5B50064E9F7 /* SceneDelegate.swift */; };
-		47C9C0FB297DC5B50064E9F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9C0FA297DC5B50064E9F7 /* ViewController.swift */; };
 		47C9C0FE297DC5B50064E9F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C9C0FC297DC5B50064E9F7 /* Main.storyboard */; };
 		47C9C100297DC5B70064E9F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 47C9C0FF297DC5B70064E9F7 /* Assets.xcassets */; };
 		47C9C103297DC5B70064E9F7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 47C9C101297DC5B70064E9F7 /* LaunchScreen.storyboard */; };
+		47C9C10B297E34670064E9F7 /* SwipingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9C10A297E34670064E9F7 /* SwipingController.swift */; };
+		47C9C10D297E4BB60064E9F7 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C9C10C297E4BB60064E9F7 /* PageCell.swift */; };
+		47D0C680297EF69700C43F33 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D0C67F297EF69700C43F33 /* Page.swift */; };
+		47D0C682297F5D7200C43F33 /* SwipingController+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D0C681297F5D7200C43F33 /* SwipingController+extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		47C9C0F3297DC5B50064E9F7 /* Auto-Layout-Programmatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Auto-Layout-Programmatically.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		47C9C0F6297DC5B50064E9F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		47C9C0F8297DC5B50064E9F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		47C9C0FA297DC5B50064E9F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		47C9C0FD297DC5B50064E9F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		47C9C0FF297DC5B70064E9F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		47C9C102297DC5B70064E9F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		47C9C104297DC5B70064E9F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		47C9C10A297E34670064E9F7 /* SwipingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingController.swift; sourceTree = "<group>"; };
+		47C9C10C297E4BB60064E9F7 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		47D0C67F297EF69700C43F33 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		47D0C681297F5D7200C43F33 /* SwipingController+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipingController+extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +46,7 @@
 		47C9C0EA297DC5B50064E9F7 = {
 			isa = PBXGroup;
 			children = (
+				47D0C681297F5D7200C43F33 /* SwipingController+extension.swift */,
 				47C9C0F5297DC5B50064E9F7 /* Auto-Layout-Programmatically */,
 				47C9C0F4297DC5B50064E9F7 /* Products */,
 			);
@@ -58,11 +65,13 @@
 			children = (
 				47C9C0F6297DC5B50064E9F7 /* AppDelegate.swift */,
 				47C9C0F8297DC5B50064E9F7 /* SceneDelegate.swift */,
-				47C9C0FA297DC5B50064E9F7 /* ViewController.swift */,
 				47C9C0FC297DC5B50064E9F7 /* Main.storyboard */,
 				47C9C0FF297DC5B70064E9F7 /* Assets.xcassets */,
 				47C9C101297DC5B70064E9F7 /* LaunchScreen.storyboard */,
 				47C9C104297DC5B70064E9F7 /* Info.plist */,
+				47C9C10A297E34670064E9F7 /* SwipingController.swift */,
+				47C9C10C297E4BB60064E9F7 /* PageCell.swift */,
+				47D0C67F297EF69700C43F33 /* Page.swift */,
 			);
 			path = "Auto-Layout-Programmatically";
 			sourceTree = "<group>";
@@ -138,9 +147,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				47C9C0FB297DC5B50064E9F7 /* ViewController.swift in Sources */,
+				47C9C10B297E34670064E9F7 /* SwipingController.swift in Sources */,
+				47C9C10D297E4BB60064E9F7 /* PageCell.swift in Sources */,
+				47D0C680297EF69700C43F33 /* Page.swift in Sources */,
 				47C9C0F7297DC5B50064E9F7 /* AppDelegate.swift in Sources */,
 				47C9C0F9297DC5B50064E9F7 /* SceneDelegate.swift in Sources */,
+				47D0C682297F5D7200C43F33 /* SwipingController+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
