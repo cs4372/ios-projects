@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Weather_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather App" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tun-pC-ryn">
+                                <rect key="frame" x="20" y="89" width="353" height="32.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your city:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIn-F7-weQ">
+                                <rect key="frame" x="139" y="164" width="115" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a city..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ohb-GE-H0w">
+                                <rect key="frame" x="30" y="225" width="333" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjD-Dr-uEN">
+                                <rect key="frame" x="164" y="282" width="65" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Enter"/>
+                                <connections>
+                                    <action selector="getWeather:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wv6-Vp-3PK"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACt-EM-UYG">
+                                <rect key="frame" x="30" y="337" width="333" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="4Oi-SF-ew5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ohb-GE-H0w" secondAttribute="trailing" constant="30" id="BRY-g1-NvQ"/>
+                            <constraint firstItem="mjD-Dr-uEN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FIU-ww-X0j"/>
+                            <constraint firstItem="tun-pC-ryn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KWz-gT-WPz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tun-pC-ryn" secondAttribute="trailing" constant="20" id="LUb-DU-mzU"/>
+                            <constraint firstItem="ACt-EM-UYG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="MQw-C3-I1n"/>
+                            <constraint firstItem="tun-pC-ryn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="VdU-8U-xhP"/>
+                            <constraint firstItem="mjD-Dr-uEN" firstAttribute="top" secondItem="Ohb-GE-H0w" secondAttribute="bottom" constant="23" id="YWN-n4-0g2"/>
+                            <constraint firstItem="ACt-EM-UYG" firstAttribute="top" secondItem="mjD-Dr-uEN" secondAttribute="bottom" constant="20" id="bAC-Qs-hnC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ACt-EM-UYG" secondAttribute="trailing" constant="30" id="ckk-tR-cvB"/>
+                            <constraint firstItem="tun-pC-ryn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="d32-4f-a8O"/>
+                            <constraint firstItem="Ohb-GE-H0w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="gTa-1D-nec"/>
+                            <constraint firstItem="Ohb-GE-H0w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lLg-Xp-kDa"/>
+                            <constraint firstItem="PIn-F7-weQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qb7-ky-Aw8"/>
+                            <constraint firstItem="PIn-F7-weQ" firstAttribute="top" secondItem="tun-pC-ryn" secondAttribute="bottom" constant="42.666666666666657" id="tNA-SO-pzM"/>
+                            <constraint firstItem="Ohb-GE-H0w" firstAttribute="top" secondItem="PIn-F7-weQ" secondAttribute="bottom" constant="40" id="tel-ij-gg7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textField" destination="Ohb-GE-H0w" id="ZdY-kW-gua"/>
+                        <outlet property="weatherSummary" destination="ACt-EM-UYG" id="Tgz-x1-iAf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93.89312977099236" y="4.9295774647887329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
