@@ -26,26 +26,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    let APIKey = "b9c0df8e630328a7feea13a0d2d110b0"
+    
     @IBAction func getWeather(_ sender: UIButton) {
-        if let url = URL(string: "https://www.weather-forecast.com/locations/" + textField.text!.replacingOccurrences(of: " ", with: "-") + "/forecasts/latest") {
+        if let url = URL(string: "https://api.openweathermap.org/data/2.5/forecast?q=" + textField.text!.replacingOccurrences(of: " ", with: "-") + "&appid=\(APIKey)") {
             print("url", url)
             URLSession.shared.dataTask(with: url) { data, response, error in
                 var message = ""
                 if let data = data {
-                    if let httpResponse = response as? HTTPURLResponse {
-                        if httpResponse.statusCode == 200 {
-                            let jsonString = String(data: data, encoding: .utf8)
-                            var stringSeparator = "<p class=\"location-summary__text\"><span class=\"phrase\">"
-                            if let contentArray = jsonString?.components(separatedBy: stringSeparator) {
-                                if contentArray.count > 1 {
-                                    stringSeparator = "</span>"
-                                    let newContentArray = contentArray[1].components(separatedBy: stringSeparator)
-                                    if newContentArray.count > 1 {
-                                        message = newContentArray[0].replacingOccurrences(of: "&deg", with: "'")
-                                    }
-                                }
-                            }
-                        }
+                    let decoder = JSONDecoder()
+                    do {
+                    let weatherData = try decoder.decode(WeatherData.self, from: data)
+                        let description = weatherData.list[0].weather[0].description
+                            message = description
+                        } catch {
+                            print(error)
                     }
                 } else {
                     message = "The weather couldn't be found. Please try again"
