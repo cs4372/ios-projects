@@ -18,23 +18,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var keys: NSDictionary?
 
-        guard Bundle.main.path(forResource: "ParseCreds", ofType: "plist") != nil else {
-              fatalError("Couldn't find file 'ParseCreds.plist'.")
-            }
+        if let path = Bundle.main.path(forResource: "ParseCreds", ofType: "plist") {
+               keys = NSDictionary(contentsOfFile: path)
+        }
+
         if let dict = keys {
             let applicationId = dict["parseAppId"] as? String
             let clientKey = dict["clientKey"] as? String
 
-            // Initialize Parse.
-            Parse.setApplicationId(applicationId!, clientKey: clientKey!)
-        }
-        
-        let configuration = ParseClientConfiguration {
-            $0.applicationId = "DZ65ZXZQ1hUdqH65COYuKOE3iapDBiCMY4rydRGf"
-            $0.clientKey = "YiEfdLFSXFRpW2z0enXmHkGA8NbqKzYm77u8jmOh"
-            $0.server = "https://parseapi.back4app.com"
-        }
-        Parse.initialize(with: configuration)
+            let parseConfig = ParseClientConfiguration {
+                $0.applicationId = applicationId
+                $0.clientKey = clientKey
+                $0.server = "https://parseapi.back4app.com"
+                }
+                Parse.initialize(with: parseConfig)
+            }
         return true
     }
 
