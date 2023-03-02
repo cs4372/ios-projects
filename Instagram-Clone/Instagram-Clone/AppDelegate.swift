@@ -16,6 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        var keys: NSDictionary?
+
+        guard Bundle.main.path(forResource: "ParseCreds", ofType: "plist") != nil else {
+              fatalError("Couldn't find file 'ParseCreds.plist'.")
+            }
+        if let dict = keys {
+            let applicationId = dict["parseAppId"] as? String
+            let clientKey = dict["clientKey"] as? String
+
+            // Initialize Parse.
+            Parse.setApplicationId(applicationId!, clientKey: clientKey!)
+        }
+        
         let configuration = ParseClientConfiguration {
             $0.applicationId = "DZ65ZXZQ1hUdqH65COYuKOE3iapDBiCMY4rydRGf"
             $0.clientKey = "YiEfdLFSXFRpW2z0enXmHkGA8NbqKzYm77u8jmOh"
