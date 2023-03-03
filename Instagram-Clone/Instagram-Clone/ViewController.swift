@@ -11,6 +11,7 @@ import Parse
 class ViewController: UIViewController {
     
     var signupModeActive = true
+    var currentUser = PFUser.current()
 
     @IBOutlet weak var signupOrLoginBtn: UIButton!
     @IBOutlet weak var switchLoginModeBtn: UIButton!
@@ -21,6 +22,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("currentUser", currentUser)
+        if PFUser.current() != nil {
+            performSegue(withIdentifier: "showUserTable", sender: self)
+        }
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     func displayAlert(title: String, message: String) {
@@ -45,7 +54,7 @@ class ViewController: UIViewController {
                       errorText = error.localizedDescription
                       self.displayAlert(title: "Try again", message: errorText)
                   } else {
-                      self.displayAlert(title: "Account created", message: "You are all set!")
+                      self.performSegue(withIdentifier: "showUserTable", sender: self)
                   }
                 }
             }
@@ -53,8 +62,9 @@ class ViewController: UIViewController {
             PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!) {
               (user: PFUser?, error: Error?) -> Void in
               if user != nil {
-                  self.displayAlert(title: "Login successful", message: "Enjoy!")
-              } else {
+                  self.performSegue(withIdentifier: "showUserTable", sender: self)
+              }
+                else {
                   var errorText = "Unknown error. Please try again!"
                   if let error = error {
                       errorText = error.localizedDescription
@@ -79,5 +89,14 @@ class ViewController: UIViewController {
             switchLoginModeBtn.setTitle("Login", for: .normal)
         }
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "showUserTable" {
+//            print("=====>")
+//            let vc = UserTableViewController()
+//            present(vc, animated: true, completion: nil)
+//
+//        }
+//    }
 }
 
