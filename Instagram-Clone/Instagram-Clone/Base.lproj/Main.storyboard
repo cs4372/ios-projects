@@ -97,7 +97,7 @@
             </objects>
             <point key="canvasLocation" x="3080.1526717557249" y="8.4507042253521139"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Users-->
         <scene sceneID="fd5-ww-mnL">
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="EJP-c7-BZR" customClass="UserTableViewController" customModule="Instagram_Clone" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,7 +120,7 @@
                             <outlet property="delegate" destination="EJP-c7-BZR" id="guu-Gf-2Il"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="EGp-Tr-cUg">
+                    <navigationItem key="navigationItem" title="Users" id="EGp-Tr-cUg">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="QqD-YU-wuU">
                             <connections>
                                 <action selector="logout:" destination="EJP-c7-BZR" id="TMn-Hm-WzT"/>
