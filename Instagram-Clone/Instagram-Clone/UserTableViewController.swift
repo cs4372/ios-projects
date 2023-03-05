@@ -14,15 +14,18 @@ class UserTableViewController: UITableViewController {
     var objectIds = [String]()
     var followings = [String:Bool]()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    var refresher = UIRefreshControl()
+    
+    @objc func refreshUserTable() {
         let query = PFUser.query()
         query?.whereKey("username", notEqualTo: PFUser.current()?.username)
         query?.findObjectsInBackground(block: {(users, error) in
             if error != nil {
                 
             } else if let users = users {
+                self.usernames.removeAll()
+                self.objectIds.removeAll()
+                self.followings.removeAll()
                 for obj in users {
                     print("user", obj)
                     if let user = obj as? PFUser {
@@ -41,7 +44,12 @@ class UserTableViewController: UITableViewController {
                                         } else {
                                             self.followings[objectId] = false
                                         }
-                                        self.tableView.reloadData()
+                                        print("self.usernames", self.usernames.count)
+                                        print("self.followings", self.followings.count)
+                                        if (self.usernames.count == self.followings.count) {
+                                            self.tableView.reloadData()
+                                            self.refresher.endRefreshing()
+                                        }
                                     }
                                 })
                             }
@@ -52,12 +60,27 @@ class UserTableViewController: UITableViewController {
         })
     }
     
-    @IBAction func logout(_ sender: Any) {
-        PFUser.logOut()
-        var currentUser = PFUser.current()
-        performSegue(withIdentifier: "logout", sender: self)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        refreshUserTable()
+        refresher.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refresher.addTarget(self, action: #selector(UserTableViewController.refreshUserTable), for: UIControl.Event.valueChanged)
+        tableView.addSubview(refresher)
     }
     
+    @IBAction func logout(_ sender: Any) {
+        PFUser.logOut()
+        performSegue(withIdentifier: "logoutSegue", sender: self)
+    }
+    
+    @IBAction func postImage(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "postImageSegue", sender: self)
+    }
+    
+    @IBAction func clickFeed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "feedSegue", sender: self)
+    }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -102,13 +125,13 @@ class UserTableViewController: UITableViewController {
             let following = PFObject(className:"Following")
             following["follower"] = PFUser.current()?.objectId
             following["following"] = objectIds[indexPath.row]
-             following.saveInBackground { (succeeded, error)  in
+            following.saveInBackground { (succeeded, error)  in
                  if (succeeded) {
                      print("following created!")
                  } else {
                      print("error selecting row")
                  }
-                }  
+                }
             }
         }
     }
