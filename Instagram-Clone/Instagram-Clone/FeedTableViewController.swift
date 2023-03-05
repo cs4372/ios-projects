@@ -29,7 +29,6 @@ class FeedTableViewController: UITableViewController {
                 // Do something with the found objects
                 //                let following = PFQuery(className:"Post")
                 
-                print("objects", objects)
                 for follower in followers {
                     if let followedUser = follower["following"] {
                         let query = PFQuery(className:"Post")
@@ -84,8 +83,6 @@ class FeedTableViewController: UITableViewController {
         }
         cell.userComment.text = comments[indexPath.row]
         cell.userInfo.text = followings[indexPath.row]
-        print("cell ==>", cell)
         return cell
     }
-    
 }

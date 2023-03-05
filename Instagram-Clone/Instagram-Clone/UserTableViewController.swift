@@ -23,11 +23,10 @@ class UserTableViewController: UITableViewController {
             if error != nil {
                 
             } else if let users = users {
-                self.usernames.removeAll()
-                self.objectIds.removeAll()
-                self.followings.removeAll()
+                self.usernames = [String]()
+                self.objectIds = [String]()
+                self.followings = [String:Bool]()
                 for obj in users {
-                    print("user", obj)
                     if let user = obj as? PFUser {
                         if let username = user.username {
                             if let objectId = user.objectId {
@@ -44,8 +43,6 @@ class UserTableViewController: UITableViewController {
                                         } else {
                                             self.followings[objectId] = false
                                         }
-                                        print("self.usernames", self.usernames.count)
-                                        print("self.followings", self.followings.count)
                                         if (self.usernames.count == self.followings.count) {
                                             self.tableView.reloadData()
                                             self.refresher.endRefreshing()
@@ -85,9 +82,11 @@ class UserTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usernames.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         cell?.textLabel?.text = usernames[indexPath.row]
@@ -103,7 +102,6 @@ class UserTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        print(followings[objectIds[indexPath.row]])
         if let followingsBool = followings[objectIds[indexPath.row]] {
             if followingsBool {
                 cell?.accessoryType = UITableViewCell.AccessoryType.none

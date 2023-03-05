@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    var current = PFUser.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,10 @@ class ViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if PFUser.current() != nil {
+        if currentUser != nil {
             performSegue(withIdentifier: "showUserTable", sender: self)
+        } else {
+            self.navigationController?.navigationBar.isHidden = true
         }
     }
     

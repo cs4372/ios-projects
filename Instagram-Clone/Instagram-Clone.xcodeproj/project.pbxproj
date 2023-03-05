@@ -15,6 +15,11 @@
 		470A4C2829B06258000E89AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 470A4C2629B06258000E89AB /* LaunchScreen.storyboard */; };
 		470A4C3229B0673B000E89AB /* ParseCreds.plist in Resources */ = {isa = PBXBuildFile; fileRef = 470A4C3129B0673B000E89AB /* ParseCreds.plist */; };
 		470A4C3429B18F29000E89AB /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A4C3329B18F29000E89AB /* UserTableViewController.swift */; };
+		47C737F329B2FC1D00DD16E2 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C737F229B2FC1D00DD16E2 /* PostViewController.swift */; };
+		47C737F529B3C04600DD16E2 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C737F429B3C04600DD16E2 /* FeedTableViewController.swift */; };
+		47C737F729B3C15200DD16E2 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C737F629B3C15200DD16E2 /* FeedTableViewCell.swift */; };
+		47C737F929B3C89400DD16E2 /* pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 47C737F829B3C89400DD16E2 /* pic.png */; };
+		47C737FB29B41E8A00DD16E2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47C737FA29B41E8A00DD16E2 /* SignUpViewController.swift */; };
 		8FCF8C0D1000130C629FA526 /* Pods_Instagram_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B9D9D4C10187B8663642863 /* Pods_Instagram_Clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +35,11 @@
 		470A4C2929B06258000E89AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		470A4C3129B0673B000E89AB /* ParseCreds.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ParseCreds.plist; sourceTree = "<group>"; };
 		470A4C3329B18F29000E89AB /* UserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
+		47C737F229B2FC1D00DD16E2 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		47C737F429B3C04600DD16E2 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		47C737F629B3C15200DD16E2 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		47C737F829B3C89400DD16E2 /* pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pic.png; sourceTree = "<group>"; };
+		47C737FA29B41E8A00DD16E2 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		8263ED83763AA1A494FD169A /* Pods-Instagram-Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram-Clone.debug.xcconfig"; path = "Target Support Files/Pods-Instagram-Clone/Pods-Instagram-Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		9B9D9D4C10187B8663642863 /* Pods_Instagram_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -77,13 +87,18 @@
 			children = (
 				470A4C1B29B06256000E89AB /* AppDelegate.swift */,
 				470A4C1D29B06256000E89AB /* SceneDelegate.swift */,
-				470A4C1F29B06256000E89AB /* ViewController.swift */,
 				470A4C2129B06256000E89AB /* Main.storyboard */,
 				470A4C2429B06258000E89AB /* Assets.xcassets */,
 				470A4C2629B06258000E89AB /* LaunchScreen.storyboard */,
 				470A4C2929B06258000E89AB /* Info.plist */,
 				470A4C3129B0673B000E89AB /* ParseCreds.plist */,
+				470A4C1F29B06256000E89AB /* ViewController.swift */,
 				470A4C3329B18F29000E89AB /* UserTableViewController.swift */,
+				47C737F229B2FC1D00DD16E2 /* PostViewController.swift */,
+				47C737F429B3C04600DD16E2 /* FeedTableViewController.swift */,
+				47C737F629B3C15200DD16E2 /* FeedTableViewCell.swift */,
+				47C737FA29B41E8A00DD16E2 /* SignUpViewController.swift */,
+				47C737F829B3C89400DD16E2 /* pic.png */,
 			);
 			path = "Instagram-Clone";
 			sourceTree = "<group>";
@@ -161,6 +176,7 @@
 				470A4C2529B06258000E89AB /* Assets.xcassets in Resources */,
 				470A4C3229B0673B000E89AB /* ParseCreds.plist in Resources */,
 				470A4C2329B06256000E89AB /* Main.storyboard in Resources */,
+				47C737F929B3C89400DD16E2 /* pic.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,9 +230,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				470A4C2029B06256000E89AB /* ViewController.swift in Sources */,
+				47C737F529B3C04600DD16E2 /* FeedTableViewController.swift in Sources */,
+				47C737FB29B41E8A00DD16E2 /* SignUpViewController.swift in Sources */,
+				47C737F729B3C15200DD16E2 /* FeedTableViewCell.swift in Sources */,
 				470A4C1C29B06256000E89AB /* AppDelegate.swift in Sources */,
 				470A4C3429B18F29000E89AB /* UserTableViewController.swift in Sources */,
 				470A4C1E29B06256000E89AB /* SceneDelegate.swift in Sources */,
+				47C737F329B2FC1D00DD16E2 /* PostViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +312,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -346,7 +366,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
