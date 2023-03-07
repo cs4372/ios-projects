@@ -12,6 +12,7 @@ class FeedTableViewController: UITableViewController {
     var users = [String: String]()
     var followings = [String]()
     var comments = [String]()
+    var postIds = [String]()
     var images = [PFFileObject]()
     
     override func viewDidLoad() {
@@ -26,9 +27,6 @@ class FeedTableViewController: UITableViewController {
             } else if let followers = objects {
                 // The find succeeded.
                 print("Successfully retrieved \(objects) scores.")
-                // Do something with the found objects
-                //                let following = PFQuery(className:"Post")
-                
                 for follower in followers {
                     if let followedUser = follower["following"] {
                         let query = PFQuery(className:"Post")
@@ -37,8 +35,8 @@ class FeedTableViewController: UITableViewController {
                             if let error = error {
                                 
                             } else if let posts = objects {
-                                print("post224", posts)
                                 for post in posts {
+                                    self.postIds.append(post.objectId as! String)
                                     if let userId = post["userId"] {
                                         self.followings.append(userId as! String)
                                     }
@@ -50,9 +48,6 @@ class FeedTableViewController: UITableViewController {
                                     }
                                     self.tableView.reloadData()
                                 }
-                                print("followings ==>", self.followings)
-                                print("comments ==>", self.comments)
-                                print("images ==>", self.images)
                             }
                         }
                     }
@@ -84,5 +79,69 @@ class FeedTableViewController: UITableViewController {
         cell.userComment.text = comments[indexPath.row]
         cell.userInfo.text = followings[indexPath.row]
         return cell
+    }
+    
+    @IBAction func likePost(_ sender: UIButton) {
+        var superview = sender.superview
+        while let view = superview, !(view is UITableViewCell) {
+            superview = view.superview
+        }
+        guard let cell = superview as? UITableViewCell else {
+            print("button is not contained in a table view cell")
+            return
+        }
+        guard let indexPath = tableView.indexPath(for: cell) else {
+            print("failed to get index path for cell containing button")
+            return
+        }
+        print("button is in row \(indexPath.row)")
+        
+        // check if user has already liked the current post
+        let query = PFQuery(className:"Like")
+        query.whereKey("user_id", equalTo: PFUser.current()?.objectId)
+        query.whereKey("post_id", equalTo: self.postIds[indexPath.row])
+        
+
+        query.findObjectsInBackground(block: {( objects, error) in
+            if let objects = objects {
+                if objects.count > 0 {
+                    // TODO: user  has already liked the post so unlike it
+//                        for obj in objects {
+//                            obj.deleteInBackground()
+//                        }
+                } else {
+                    // TODO: user hasn't liked the post yet, so like it and increase count
+                    let userLike = PFObject(className: "Like")
+                    userLike["user_id"] = PFUser.current()?.objectId
+                    userLike["post_id"] = self.postIds[indexPath.row]
+                    userLike.saveInBackground {(succeeded, error) in
+                        if (succeeded) {
+                            print("save like")
+                        } else {
+                            print("error saving like")
+                        }
+                    }
+                }
+            }
+            
+        })
+        
+         //get like object and query number of post_ids, then update
+        let likeQuery = PFQuery(className:"Like")
+        likeQuery.whereKey("post_id", equalTo: self.postIds[indexPath.row])
+        likeQuery.findObjectsInBackground(block: {( objects, error) in
+            if let objects = objects {
+                let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedTableViewCell
+                print("====>count", objects.count)
+                DispatchQueue.main.async {
+                    cell.likesCount.text = String(objects.count)
+                    self.tableView.reloadData()
+                }
+            }
+        })
+    }
+    
+    func getPostLikes() {
+        
     }
 }

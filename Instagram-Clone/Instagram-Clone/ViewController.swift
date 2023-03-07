@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    var current = PFUser.current()
     
     override func viewDidLoad() {
         super.viewDidLoad()

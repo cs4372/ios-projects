@@ -21,7 +21,7 @@ class UserTableViewController: UITableViewController {
         query?.whereKey("username", notEqualTo: PFUser.current()?.username)
         query?.findObjectsInBackground(block: {(users, error) in
             if error != nil {
-                
+                print("error finding users")
             } else if let users = users {
                 self.usernames = [String]()
                 self.objectIds = [String]()
