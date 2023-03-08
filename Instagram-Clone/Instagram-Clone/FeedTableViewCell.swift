@@ -13,4 +13,5 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet weak var userComment: UILabel!
     @IBOutlet weak var userInfo: UILabel!
     @IBOutlet weak var likesCount: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
 }

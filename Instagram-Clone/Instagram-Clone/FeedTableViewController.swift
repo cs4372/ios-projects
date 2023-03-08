@@ -14,6 +14,7 @@ class FeedTableViewController: UITableViewController {
     var comments = [String]()
     var postIds = [String]()
     var images = [PFFileObject]()
+    var likes = [Bool]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,10 +79,15 @@ class FeedTableViewController: UITableViewController {
         }
         cell.userComment.text = comments[indexPath.row]
         cell.userInfo.text = followings[indexPath.row]
+        cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         return cell
     }
     
-    @IBAction func likePost(_ sender: UIButton) {
+    func isPostLiked() {
+        
+    }
+    
+    @IBAction func likePost(sender: UIButton) {
         var superview = sender.superview
         while let view = superview, !(view is UITableViewCell) {
             superview = view.superview
@@ -94,26 +100,39 @@ class FeedTableViewController: UITableViewController {
             print("failed to get index path for cell containing button")
             return
         }
+        let feedTableViewCell = tableView.cellForRow(at: indexPath) as? FeedTableViewCell
+
         print("button is in row \(indexPath.row)")
         
-        // check if user has already liked the current post
+        //check if user has already liked the current post
         let query = PFQuery(className:"Like")
         query.whereKey("user_id", equalTo: PFUser.current()?.objectId)
         query.whereKey("post_id", equalTo: self.postIds[indexPath.row])
-        
 
         query.findObjectsInBackground(block: {( objects, error) in
             if let objects = objects {
                 if objects.count > 0 {
                     // TODO: user  has already liked the post so unlike it
-//                        for obj in objects {
-//                            obj.deleteInBackground()
-//                        }
+                        for obj in objects {
+                            if let isLiked = obj["isLiked"]! as? Bool {
+                                if (isLiked) {
+                                    obj["isLiked"] = false
+                                    feedTableViewCell?.likeButton.tintColor = .systemPink
+                                    feedTableViewCell?.likeButton.setImage(UIImage(named: "heart"), for: .normal)
+                                } else {
+                                    obj["isLiked"] = true
+                                    feedTableViewCell?.likeButton.tintColor = .systemBlue
+                                    feedTableViewCell?.likeButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+                                }
+                            }
+                            obj.saveInBackground()
+                        }
                 } else {
                     // TODO: user hasn't liked the post yet, so like it and increase count
                     let userLike = PFObject(className: "Like")
                     userLike["user_id"] = PFUser.current()?.objectId
                     userLike["post_id"] = self.postIds[indexPath.row]
+                    userLike["isLiked"] = false
                     userLike.saveInBackground {(succeeded, error) in
                         if (succeeded) {
                             print("save like")
@@ -123,25 +142,7 @@ class FeedTableViewController: UITableViewController {
                     }
                 }
             }
-            
+
         })
-        
-         //get like object and query number of post_ids, then update
-        let likeQuery = PFQuery(className:"Like")
-        likeQuery.whereKey("post_id", equalTo: self.postIds[indexPath.row])
-        likeQuery.findObjectsInBackground(block: {( objects, error) in
-            if let objects = objects {
-                let cell = self.tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FeedTableViewCell
-                print("====>count", objects.count)
-                DispatchQueue.main.async {
-                    cell.likesCount.text = String(objects.count)
-                    self.tableView.reloadData()
-                }
-            }
-        })
-    }
-    
-    func getPostLikes() {
-        
     }
 }

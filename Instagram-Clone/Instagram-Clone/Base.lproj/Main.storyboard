@@ -249,17 +249,18 @@
                                             <color key="textColor" red="0.51666427479999999" green="0.89416662020000004" blue="0.68447506010000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svc-lm-aKa">
-                                            <rect key="frame" x="79" y="226.66666666666666" width="51" height="34.999999999999972"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZe-wE-GlS">
+                                            <rect key="frame" x="332" y="5" width="51" height="35"/>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system"/>
                                             <connections>
-                                                <action selector="likePost:" destination="QeX-M6-ez6" eventType="touchUpInside" id="LAQ-ih-vdO"/>
+                                                <action selector="likePostWithSender:" destination="QeX-M6-ez6" eventType="touchUpInside" id="Ppo-UD-cec"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="pHf-ed-NLt" firstAttribute="leading" secondItem="sHZ-S5-Czc" secondAttribute="trailing" constant="10" id="1q4-LD-ckm"/>
+                                        <constraint firstItem="GZe-wE-GlS" firstAttribute="top" secondItem="tr2-yU-6iF" secondAttribute="top" constant="5" id="3lP-cy-2c4"/>
                                         <constraint firstItem="g4l-n9-Uoc" firstAttribute="centerY" secondItem="DtC-cM-8iu" secondAttribute="centerY" id="EGi-eg-srF"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="g4l-n9-Uoc" secondAttribute="trailing" constant="10" id="Efb-O6-VEK"/>
                                         <constraint firstItem="uAU-vt-cXw" firstAttribute="centerY" secondItem="tr2-yU-6iF" secondAttribute="centerY" id="Gv6-GD-JqX"/>
@@ -268,7 +269,6 @@
                                         <constraint firstItem="dmp-Yn-Sq4" firstAttribute="centerY" secondItem="DtC-cM-8iu" secondAttribute="centerY" id="T3b-7S-kWw"/>
                                         <constraint firstItem="uAU-vt-cXw" firstAttribute="top" secondItem="pHf-ed-NLt" secondAttribute="bottom" constant="5" id="UFb-Go-Soj"/>
                                         <constraint firstItem="uAU-vt-cXw" firstAttribute="centerX" secondItem="tr2-yU-6iF" secondAttribute="centerX" id="Wl2-7V-Jsp"/>
-                                        <constraint firstItem="svc-lm-aKa" firstAttribute="leading" secondItem="dmp-Yn-Sq4" secondAttribute="trailing" constant="3" id="ZiQ-ba-ehv"/>
                                         <constraint firstItem="uAU-vt-cXw" firstAttribute="top" secondItem="tr2-yU-6iF" secondAttribute="topMargin" constant="40" id="b3e-44-Un4"/>
                                         <constraint firstItem="dmp-Yn-Sq4" firstAttribute="leading" secondItem="DtC-cM-8iu" secondAttribute="trailing" constant="5" id="baA-FR-lfU"/>
                                         <constraint firstItem="pHf-ed-NLt" firstAttribute="top" secondItem="tr2-yU-6iF" secondAttribute="topMargin" constant="8" id="fYH-Jc-d6Q"/>
@@ -277,13 +277,14 @@
                                         <constraint firstItem="uAU-vt-cXw" firstAttribute="leading" secondItem="tr2-yU-6iF" secondAttribute="leadingMargin" constant="20" id="ock-YJ-3Is"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="uAU-vt-cXw" secondAttribute="trailing" constant="20" id="p9g-8V-yah"/>
                                         <constraint firstItem="g4l-n9-Uoc" firstAttribute="leading" secondItem="tr2-yU-6iF" secondAttribute="leadingMargin" constant="10" id="pDt-3d-Bvd"/>
-                                        <constraint firstItem="svc-lm-aKa" firstAttribute="centerY" secondItem="dmp-Yn-Sq4" secondAttribute="centerY" id="rVe-uE-Bkx"/>
                                         <constraint firstItem="DtC-cM-8iu" firstAttribute="leading" secondItem="tr2-yU-6iF" secondAttribute="leading" constant="20" id="sPT-Nz-75u"/>
                                         <constraint firstItem="sHZ-S5-Czc" firstAttribute="top" secondItem="tr2-yU-6iF" secondAttribute="topMargin" constant="8" id="shv-nN-aQ4"/>
+                                        <constraint firstAttribute="trailing" secondItem="GZe-wE-GlS" secondAttribute="trailing" constant="10" id="ybY-wp-73F"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.99991959330000002" green="0.96701478529999996" blue="0.89863606480000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
+                                    <outlet property="likeButton" destination="GZe-wE-GlS" id="M1I-yt-dA8"/>
                                     <outlet property="likesCount" destination="DtC-cM-8iu" id="2Rh-kO-Xd6"/>
                                     <outlet property="userComment" destination="g4l-n9-Uoc" id="wf5-MQ-8DN"/>
                                     <outlet property="userImage" destination="uAU-vt-cXw" id="bn9-QW-nqX"/>
