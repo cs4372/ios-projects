@@ -25,11 +25,11 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
     
     @IBAction func saveBudget(_ sender: UIButton) {
         guard let budgetTitleText = budgetTitleTextField.text, !budgetTitleText.isEmpty else {
-            print("invalid title")
+            AlertHelper.showAlert(title: "Invalid title", message: "Please try again", over: self)
             return
         }
-        guard let budgetAmountText = budgetAmountTextField.text, !budgetAmountText.isEmpty else {
-            print("invalid amount")
+        guard let budgetAmountText = budgetAmountTextField.text, !budgetAmountText.isEmpty, let amountNumber = Double(budgetAmountText) else {
+            AlertHelper.showAlert(title: "Invalid amount", message: "Please try again", over: self)
             return
         }
         let budgetAmount = NSDecimalNumber(string: budgetAmountText)

@@ -22,6 +22,7 @@
 		47B53AC929C2BC6E00251BFC /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AC529C2BC6E00251BFC /* ExpenseViewController.swift */; };
 		47B53ACF29C2BC7400251BFC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53ACC29C2BC7400251BFC /* DataManager.swift */; };
 		47B53AD029C2BC7400251BFC /* Budget_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47B53ACD29C2BC7400251BFC /* Budget_App.xcdatamodeld */; };
+		47B53AD529C2C91200251BFC /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AD429C2C91200251BFC /* AlertHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		47B53AC529C2BC6E00251BFC /* ExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
 		47B53ACC29C2BC7400251BFC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		47B53ACE29C2BC7400251BFC /* Budget_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Budget_App.xcdatamodel; sourceTree = "<group>"; };
+		47B53AD429C2C91200251BFC /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 		47B53ACA29C2BC7400251BFC /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				47B53AD329C2C90200251BFC /* Helper */,
 				47B53ACB29C2BC7400251BFC /* Core Data */,
 			);
 			path = Misc;
@@ -156,6 +159,14 @@
 				47B53ACD29C2BC7400251BFC /* Budget_App.xcdatamodeld */,
 			);
 			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		47B53AD329C2C90200251BFC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				47B53AD429C2C91200251BFC /* AlertHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47B53AD529C2C91200251BFC /* AlertHelper.swift in Sources */,
 				47B53ABC29C2BC6400251BFC /* Budget+CoreDataProperties.swift in Sources */,
 				477E603029AAFEC100CBBEF7 /* AppDelegate.swift in Sources */,
 				47B53AD029C2BC7400251BFC /* Budget_App.xcdatamodeld in Sources */,
