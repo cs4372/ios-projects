@@ -67,7 +67,7 @@ extension BudgetViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BudgetTableViewCell
         let budget = budgets[indexPath.row]
         cell.titleLabel?.text = budget.title!
-        cell.expenseLabel?.text = "Amount \(budget.amount!)"
+        cell.expenseLabel?.text = "$\(budget.amount!)"
         return cell
     }
     

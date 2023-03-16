@@ -11,5 +11,5 @@ class ExpenseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var expenseLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
-    
+    @IBOutlet weak var timestampLabel: UILabel!
 }

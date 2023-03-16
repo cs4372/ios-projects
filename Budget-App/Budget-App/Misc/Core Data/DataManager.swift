@@ -46,10 +46,11 @@ class DataManager {
         return budget
     }
     
-    func setExpense(name: String, amount: NSDecimalNumber, budget: Budget) -> Expense {
+    func setExpense(name: String, amount: NSDecimalNumber,  timestamp: Date, budget: Budget) -> Expense {
         let expense = Expense(context: persistentContainer.viewContext)
         expense.name = name
         expense.amount = amount
+        expense.timestamp = timestamp
         expense.budget = budget
         return expense
     }

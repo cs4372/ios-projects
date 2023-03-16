@@ -13,8 +13,8 @@ class ExpenseViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var budgetLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var spentLabel: UILabel!
+
     @IBOutlet weak var tableView: UITableView!
-    
     private var expenses: [Expense] = []
 
     @IBOutlet weak var expenseTextField: UITextField!
@@ -52,11 +52,12 @@ class ExpenseViewController: UIViewController, UITableViewDelegate {
             return
         }
         let budgetAmount = NSDecimalNumber(string: amountText)
+        let currDate = Date()
                 
         expenseTextField.text = ""
         amountTextField.text = ""
         
-        let expense = DataManager.shared.setExpense(name: expenseText, amount: budgetAmount, budget: budget)
+        let expense = DataManager.shared.setExpense(name: expenseText, amount: budgetAmount, timestamp: currDate, budget: budget)
         expenses.append(expense)
         DataManager.shared.saveContext()
         
@@ -87,7 +88,12 @@ extension ExpenseViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ExpenseTableViewCell
         let expense = expenses[indexPath.row]
         cell.expenseLabel?.text = expense.name!
-        cell.amountLabel?.text = "Amount \(expense.amount!)"
+        cell.amountLabel?.text = "$\(expense.amount!)"
+        let date = expense.timestamp!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let dateString = dateFormatter.string(from: date)
+        cell.timestampLabel?.text = dateString
         return cell
     }
     
