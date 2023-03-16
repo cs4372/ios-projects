@@ -7,33 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		470A454829AB217F000E89AB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A454729AB217F000E89AB /* DataManager.swift */; };
-		470A454A29AB3B28000E89AB /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A454929AB3B28000E89AB /* BudgetTableViewCell.swift */; };
-		470A454C29AC2D50000E89AB /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A454B29AC2D50000E89AB /* ExpenseTableViewCell.swift */; };
 		477E603029AAFEC100CBBEF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E602F29AAFEC100CBBEF7 /* AppDelegate.swift */; };
 		477E603229AAFEC100CBBEF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E603129AAFEC100CBBEF7 /* SceneDelegate.swift */; };
 		477E603729AAFEC100CBBEF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477E603529AAFEC100CBBEF7 /* Main.storyboard */; };
-		477E603A29AAFEC100CBBEF7 /* Budget_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 477E603829AAFEC100CBBEF7 /* Budget_App.xcdatamodeld */; };
 		477E603C29AAFEC300CBBEF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 477E603B29AAFEC300CBBEF7 /* Assets.xcassets */; };
 		477E603F29AAFEC300CBBEF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477E603D29AAFEC300CBBEF7 /* LaunchScreen.storyboard */; };
-		477E604729AB10E000CBBEF7 /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E604629AB10E000CBBEF7 /* BudgetViewController.swift */; };
-		477E604929AB19E500CBBEF7 /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 477E604829AB19E500CBBEF7 /* ExpenseViewController.swift */; };
+		47B53ABB29C2BC6400251BFC /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AB529C2BC6400251BFC /* BudgetViewController.swift */; };
+		47B53ABC29C2BC6400251BFC /* Budget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AB629C2BC6400251BFC /* Budget+CoreDataProperties.swift */; };
+		47B53ABD29C2BC6400251BFC /* Budget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AB829C2BC6400251BFC /* Budget+CoreDataClass.swift */; };
+		47B53ABE29C2BC6400251BFC /* BudgetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53ABA29C2BC6400251BFC /* BudgetTableViewCell.swift */; };
+		47B53AC629C2BC6E00251BFC /* Expense+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AC129C2BC6E00251BFC /* Expense+CoreDataProperties.swift */; };
+		47B53AC729C2BC6E00251BFC /* Expense+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AC229C2BC6E00251BFC /* Expense+CoreDataClass.swift */; };
+		47B53AC829C2BC6E00251BFC /* ExpenseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AC429C2BC6E00251BFC /* ExpenseTableViewCell.swift */; };
+		47B53AC929C2BC6E00251BFC /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AC529C2BC6E00251BFC /* ExpenseViewController.swift */; };
+		47B53ACF29C2BC7400251BFC /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53ACC29C2BC7400251BFC /* DataManager.swift */; };
+		47B53AD029C2BC7400251BFC /* Budget_App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 47B53ACD29C2BC7400251BFC /* Budget_App.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		470A454729AB217F000E89AB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		470A454929AB3B28000E89AB /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
-		470A454B29AC2D50000E89AB /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
 		477E602C29AAFEC100CBBEF7 /* Budget-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Budget-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		477E602F29AAFEC100CBBEF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		477E603129AAFEC100CBBEF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		477E603629AAFEC100CBBEF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		477E603929AAFEC100CBBEF7 /* Budget_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Budget_App.xcdatamodel; sourceTree = "<group>"; };
 		477E603B29AAFEC300CBBEF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		477E603E29AAFEC300CBBEF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		477E604029AAFEC300CBBEF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		477E604629AB10E000CBBEF7 /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
-		477E604829AB19E500CBBEF7 /* ExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
+		47B53AB529C2BC6400251BFC /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		47B53AB629C2BC6400251BFC /* Budget+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Budget+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		47B53AB829C2BC6400251BFC /* Budget+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Budget+CoreDataClass.swift"; sourceTree = "<group>"; };
+		47B53ABA29C2BC6400251BFC /* BudgetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetTableViewCell.swift; sourceTree = "<group>"; };
+		47B53AC129C2BC6E00251BFC /* Expense+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		47B53AC229C2BC6E00251BFC /* Expense+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Expense+CoreDataClass.swift"; sourceTree = "<group>"; };
+		47B53AC429C2BC6E00251BFC /* ExpenseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseTableViewCell.swift; sourceTree = "<group>"; };
+		47B53AC529C2BC6E00251BFC /* ExpenseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
+		47B53ACC29C2BC7400251BFC /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		47B53ACE29C2BC7400251BFC /* Budget_App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Budget_App.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,20 +74,88 @@
 		477E602E29AAFEC100CBBEF7 /* Budget-App */ = {
 			isa = PBXGroup;
 			children = (
+				47B53ACA29C2BC7400251BFC /* Misc */,
+				47B53ABF29C2BC6E00251BFC /* Expenses */,
+				47B53AB429C2BC6400251BFC /* Budget */,
 				477E602F29AAFEC100CBBEF7 /* AppDelegate.swift */,
 				477E603129AAFEC100CBBEF7 /* SceneDelegate.swift */,
 				477E603529AAFEC100CBBEF7 /* Main.storyboard */,
 				477E603B29AAFEC300CBBEF7 /* Assets.xcassets */,
 				477E603D29AAFEC300CBBEF7 /* LaunchScreen.storyboard */,
 				477E604029AAFEC300CBBEF7 /* Info.plist */,
-				477E603829AAFEC100CBBEF7 /* Budget_App.xcdatamodeld */,
-				477E604629AB10E000CBBEF7 /* BudgetViewController.swift */,
-				477E604829AB19E500CBBEF7 /* ExpenseViewController.swift */,
-				470A454729AB217F000E89AB /* DataManager.swift */,
-				470A454929AB3B28000E89AB /* BudgetTableViewCell.swift */,
-				470A454B29AC2D50000E89AB /* ExpenseTableViewCell.swift */,
 			);
 			path = "Budget-App";
+			sourceTree = "<group>";
+		};
+		47B53AB429C2BC6400251BFC /* Budget */ = {
+			isa = PBXGroup;
+			children = (
+				47B53AB529C2BC6400251BFC /* BudgetViewController.swift */,
+				47B53AB729C2BC6400251BFC /* Model */,
+				47B53AB929C2BC6400251BFC /* View */,
+			);
+			path = Budget;
+			sourceTree = "<group>";
+		};
+		47B53AB729C2BC6400251BFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47B53AB629C2BC6400251BFC /* Budget+CoreDataProperties.swift */,
+				47B53AB829C2BC6400251BFC /* Budget+CoreDataClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47B53AB929C2BC6400251BFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47B53ABA29C2BC6400251BFC /* BudgetTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		47B53ABF29C2BC6E00251BFC /* Expenses */ = {
+			isa = PBXGroup;
+			children = (
+				47B53AC029C2BC6E00251BFC /* Model */,
+				47B53AC329C2BC6E00251BFC /* View */,
+				47B53AC529C2BC6E00251BFC /* ExpenseViewController.swift */,
+			);
+			path = Expenses;
+			sourceTree = "<group>";
+		};
+		47B53AC029C2BC6E00251BFC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47B53AC129C2BC6E00251BFC /* Expense+CoreDataProperties.swift */,
+				47B53AC229C2BC6E00251BFC /* Expense+CoreDataClass.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		47B53AC329C2BC6E00251BFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				47B53AC429C2BC6E00251BFC /* ExpenseTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		47B53ACA29C2BC7400251BFC /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				47B53ACB29C2BC7400251BFC /* Core Data */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		47B53ACB29C2BC7400251BFC /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				47B53ACC29C2BC7400251BFC /* DataManager.swift */,
+				47B53ACD29C2BC7400251BFC /* Budget_App.xcdatamodeld */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,14 +229,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47B53ABC29C2BC6400251BFC /* Budget+CoreDataProperties.swift in Sources */,
 				477E603029AAFEC100CBBEF7 /* AppDelegate.swift in Sources */,
-				470A454A29AB3B28000E89AB /* BudgetTableViewCell.swift in Sources */,
-				470A454C29AC2D50000E89AB /* ExpenseTableViewCell.swift in Sources */,
-				477E604729AB10E000CBBEF7 /* BudgetViewController.swift in Sources */,
-				470A454829AB217F000E89AB /* DataManager.swift in Sources */,
-				477E603A29AAFEC100CBBEF7 /* Budget_App.xcdatamodeld in Sources */,
+				47B53AD029C2BC7400251BFC /* Budget_App.xcdatamodeld in Sources */,
+				47B53AC729C2BC6E00251BFC /* Expense+CoreDataClass.swift in Sources */,
+				47B53AC829C2BC6E00251BFC /* ExpenseTableViewCell.swift in Sources */,
+				47B53ABE29C2BC6400251BFC /* BudgetTableViewCell.swift in Sources */,
+				47B53ABB29C2BC6400251BFC /* BudgetViewController.swift in Sources */,
+				47B53ABD29C2BC6400251BFC /* Budget+CoreDataClass.swift in Sources */,
+				47B53AC929C2BC6E00251BFC /* ExpenseViewController.swift in Sources */,
+				47B53ACF29C2BC7400251BFC /* DataManager.swift in Sources */,
+				47B53AC629C2BC6E00251BFC /* Expense+CoreDataProperties.swift in Sources */,
 				477E603229AAFEC100CBBEF7 /* SceneDelegate.swift in Sources */,
-				477E604929AB19E500CBBEF7 /* ExpenseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -380,12 +460,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		477E603829AAFEC100CBBEF7 /* Budget_App.xcdatamodeld */ = {
+		47B53ACD29C2BC7400251BFC /* Budget_App.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				477E603929AAFEC100CBBEF7 /* Budget_App.xcdatamodel */,
+				47B53ACE29C2BC7400251BFC /* Budget_App.xcdatamodel */,
 			);
-			currentVersion = 477E603929AAFEC100CBBEF7 /* Budget_App.xcdatamodel */;
+			currentVersion = 47B53ACE29C2BC7400251BFC /* Budget_App.xcdatamodel */;
 			path = Budget_App.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
