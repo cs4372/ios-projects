@@ -66,7 +66,7 @@ class DataManager {
         }
         return fetched
     }
-    
+
     func deleteExpense(idx: Int, budget: Budget) {
         let request: NSFetchRequest<Expense> = Expense.fetchRequest()
         request.predicate = NSPredicate(format: "(amount > 0) AND (budget = %@)", budget)

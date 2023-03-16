@@ -26,11 +26,26 @@ class ExpenseViewController: UIViewController, UITableViewDelegate {
         tableView.dataSource = self
         if let budget = budget {
             budgetLabel.text = budget.title!
-            amountLabel.text = "Total \(budget.amount!)"
+            amountLabel.text = "$\(budget.amount!)"
             expenses = DataManager.shared.getExpenses(budget: budget)
+            spentLabel.text = "$\(calculateTotalExpenses(expenses: expenses))"
+
             tableView.reloadData()
-            }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        spentLabel.text = "$\(calculateTotalExpenses(expenses: expenses))"
+        tableView.reloadData()
+    }
+    
+    func calculateTotalExpenses(expenses: [Expense]) -> Decimal {
+        var totalAmount: Decimal = 0
+        for expense in expenses {
+            totalAmount += expense.amount as! Decimal
+        }
+        return totalAmount
+    }
         
     @IBAction func saveExpenses(_ sender: UIButton) {
         guard let budget = budget else {
@@ -45,13 +60,17 @@ class ExpenseViewController: UIViewController, UITableViewDelegate {
             return
         }
         let budgetAmount = NSDecimalNumber(string: amountText)
-        
+                
         expenseTextField.text = ""
         amountTextField.text = ""
         
         let expense = DataManager.shared.setExpense(name: expenseText, amount: budgetAmount, budget: budget)
         expenses.append(expense)
         DataManager.shared.saveContext()
+        
+        let totalExpenses = calculateTotalExpenses(expenses: expenses)
+        spentLabel.text = "$\(totalExpenses)"
+        
         tableView.reloadData()
     }
 }
