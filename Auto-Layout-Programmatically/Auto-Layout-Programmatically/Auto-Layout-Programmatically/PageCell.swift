@@ -46,14 +46,14 @@ class PageCell: UICollectionViewCell {
         fatalError("init has not been implemented")
     }
     
-    let foodImageView: UIImageView = {
+    private let foodImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleToFill
         return imageView
     }()
     
-    let imageContainerView: UIView = {
+    private let imageContainerView: UIView = {
         let imageContainer = UIView()
         imageContainer.translatesAutoresizingMaskIntoConstraints = false
         return imageContainer
@@ -68,25 +68,31 @@ class PageCell: UICollectionViewCell {
         return textView
     }()
     
-    func imageViewContraints() {
-        foodImageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor).isActive = true
-        foodImageView.centerYAnchor.constraint(equalTo: imageContainerView.centerYAnchor).isActive = true
-        foodImageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        foodImageView.heightAnchor.constraint(equalTo: imageContainerView.heightAnchor, multiplier: 0.5).isActive = true
-    }
-    
     private func descriptionViewContraints() {
-        descriptionTextView.topAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: 20).isActive = true
-        descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30).isActive = true
-        descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30).isActive = true
+        NSLayoutConstraint.activate([
+            descriptionTextView.topAnchor.constraint(equalTo: imageContainerView.bottomAnchor, constant: 20),
+            descriptionTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
+            descriptionTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -30)
+        ])
     }
     
     private func imageContainerViewContraints() {
-        imageContainerView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        imageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5).isActive = true
+        NSLayoutConstraint.activate([
+            imageContainerView.topAnchor.constraint(equalTo: self.topAnchor),
+            imageContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageContainerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageContainerView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.5)
+        ])
         imageContainerView.addSubview(foodImageView)
         imageViewContraints()
+    }
+    
+    private func imageViewContraints() {
+        NSLayoutConstraint.activate([
+            foodImageView.centerXAnchor.constraint(equalTo: imageContainerView.centerXAnchor),
+            foodImageView.centerYAnchor.constraint(equalTo: imageContainerView.centerYAnchor),
+            foodImageView.widthAnchor.constraint(equalToConstant: 250),
+            foodImageView.heightAnchor.constraint(equalTo: imageContainerView.heightAnchor, multiplier: 0.5)
+        ])
     }
 }
