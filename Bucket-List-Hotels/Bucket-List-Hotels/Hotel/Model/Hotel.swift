@@ -7,7 +7,8 @@
 
 import UIKit
 
-struct Hotel: Hashable {
+struct Hotel: Decodable, Hashable {
+    var id: Int32
     var name: String
     var address: String
     var country: String
@@ -17,7 +18,8 @@ struct Hotel: Hashable {
     var image: String
     
     
-    init(name: String, address: String, country: String, phone: String, description: String, stars: String, image: String) {
+    init(id: Int32, name: String, address: String, country: String, phone: String, description: String, stars: String, image: String) {
+        self.id = id
         self.name = name
         self.address = address
         self.country = country
@@ -28,6 +30,6 @@ struct Hotel: Hashable {
     }
     
     init() {
-        self.init(name: "", address: "", country: "", phone: "", description: "", stars: "", image: "")
+        self.init(id: 0, name: "", address: "", country: "", phone: "", description: "", stars: "", image: "")
     }
 }

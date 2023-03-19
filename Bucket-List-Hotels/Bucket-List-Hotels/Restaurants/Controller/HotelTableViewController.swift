@@ -9,11 +9,15 @@ import UIKit
 
 class HotelTableViewController: UITableViewController {
     lazy var dataSource = setupDataSource()
+    
+    let manager = HotelDataManager()
+    private var hotels:[Hotel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("hotel controller loaded")
-        tableView.dataSource = dataSource
+        hotels = manager.fetch()
+        tableView.dataSource = self
         var snapshot = NSDiffableDataSourceSnapshot<Section, Hotel>()
         snapshot.appendSections([.main])
         snapshot.appendItems(hotels, toSection: .main)
