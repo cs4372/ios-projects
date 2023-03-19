@@ -23,5 +23,4 @@ class HotelTableViewCell: UITableViewCell {
     
     @IBOutlet var countryLabel: UILabel!
     @IBOutlet var starsLabel: UILabel!
-    
 }

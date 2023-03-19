@@ -76,6 +76,7 @@
 		47B53AFF29C6D15E00251BFC /* Hotel */ = {
 			isa = PBXGroup;
 			children = (
+				47FB8A7C296640DD00B0FC04 /* Controller */,
 				47FB8A7B29663E1E00B0FC04 /* Model */,
 				47FB8A812966458A00B0FC04 /* View */,
 			);
@@ -156,7 +157,6 @@
 				47FB8A8C29667C5700B0FC04 /* HotelDescriptionCell.swift */,
 				47FB8A8E29667C7600B0FC04 /* HotelMapCell.swift */,
 				47E03B38296799760023B3AB /* HotelContentView.swift */,
-				47FB8A7C296640DD00B0FC04 /* Controller */,
 			);
 			path = View;
 			sourceTree = "<group>";
