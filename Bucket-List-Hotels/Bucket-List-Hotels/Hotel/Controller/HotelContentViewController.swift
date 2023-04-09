@@ -35,19 +35,55 @@ extension HotelContentViewController: UITableViewDataSource, UITableViewDelegate
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HotelDescriptionCell.self), for: indexPath) as! HotelDescriptionCell
             cell.descriptionLabel.text = hotel.description
+            cell.selectionStyle = .none
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HotelContactInfoCell.self), for: indexPath) as! HotelContactInfoCell
-            cell.addressTextLabel.text = hotel.address
-            cell.phoneNumberTextLabel.text = hotel.phone
+             cell.addressTextLabel.text = hotel.address
+             
+             let attributedString = createPhoneNumberLinkAttributeString(phoneNumber: hotel.phone)
+             cell.phoneNumberTextLabel.attributedText = attributedString
+             setupPhoneNumberTapGesture(label: cell.phoneNumberTextLabel, phoneNumber: hotel.phone)
+            cell.selectionStyle = .none
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HotelMapCell.self), for: indexPath) as! HotelMapCell
+            cell.selectionStyle = .none
             return cell
         default:
-            fatalError("Failed to instantiate the table view cell for detail view controller")
+            fatalError("Failed to instantiate the table view cell for content view controller")
         }
     }
+    
+    func createPhoneNumberLinkAttributeString(phoneNumber: String) -> NSMutableAttributedString {
+        let attributedString = NSMutableAttributedString(string: phoneNumber)
+        attributedString.addAttribute(.link, value: "tel:\(phoneNumber)", range: NSRange(location: 0, length: phoneNumber.count))
+        return attributedString
+    }
+    
+    func setupPhoneNumberTapGesture(label: UILabel, phoneNumber: String) {
+        let tapGesture = CustomTapGestureRecognizer(target: self, action: #selector(callPhoneNumber(sender:)))
+        tapGesture.phoneNum = phoneNumber
+        label.isUserInteractionEnabled = true
+        label.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func callPhoneNumber(sender: CustomTapGestureRecognizer) {
+        guard let phoneNumber = sender.phoneNum else {
+            return
+        }
+        let formattedPhoneNum = phoneNumber.replacingOccurrences(of: " ", with: "")
+
+        let numberUrl = URL(string: "tel://\(formattedPhoneNum)")!
+        if UIApplication.shared.canOpenURL(numberUrl) {
+            UIApplication.shared.open(numberUrl)
+        }
+    }
+    
+    class CustomTapGestureRecognizer: UITapGestureRecognizer {
+        var phoneNum: String?
+    }
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "showMap" {
 //            let destinationController = segue.destination as! MapViewController
