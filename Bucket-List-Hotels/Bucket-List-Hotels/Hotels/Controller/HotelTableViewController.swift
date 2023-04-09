@@ -15,7 +15,6 @@ class HotelTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("hotel controller loaded")
         hotels = manager.fetch()
         tableView.dataSource = self
         var snapshot = NSDiffableDataSourceSnapshot<Section, Hotel>()
@@ -33,7 +32,7 @@ class HotelTableViewController: UITableViewController {
                 cell.nameLabel.text = hotel.name
                 cell.imageCellView.image = UIImage(named: hotel.image)
                 cell.countryLabel.text = hotel.country
-                cell.starsLabel.text = hotel.stars
+                cell.setStars(Int(hotel.stars) ?? 0)
                 return cell
             }
         )
@@ -53,7 +52,7 @@ class HotelTableViewController: UITableViewController {
                 completionHandler(true)
             }
             deleteAction.backgroundColor = .red
-            let configuration = UISwipeActionsConfiguration(actions: [deleteAction, deleteAction])
+            let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
             configuration.performsFirstActionWithFullSwipe = true
             return configuration
         }

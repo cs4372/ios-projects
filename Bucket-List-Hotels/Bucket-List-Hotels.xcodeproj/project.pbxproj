@@ -57,20 +57,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4719504729E26E5B001052E7 /* Restaurants */ = {
-			isa = PBXGroup;
-			children = (
-				4719504829E26E68001052E7 /* Controller */,
-			);
-			path = Restaurants;
-			sourceTree = "<group>";
-		};
 		4719504829E26E68001052E7 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				4719504929E26E7D001052E7 /* HotelTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		4719504B29E283D6001052E7 /* Hotels */ = {
+			isa = PBXGroup;
+			children = (
+				4719504829E26E68001052E7 /* Controller */,
+			);
+			path = Hotels;
 			sourceTree = "<group>";
 		};
 		47B53AF829C6C14300251BFC /* Misc */ = {
@@ -118,7 +118,7 @@
 		47FB8A6429654D9F00B0FC04 /* Bucket-List-Hotels */ = {
 			isa = PBXGroup;
 			children = (
-				4719504729E26E5B001052E7 /* Restaurants */,
+				4719504B29E283D6001052E7 /* Hotels */,
 				47B53AFF29C6D15E00251BFC /* Hotel */,
 				47B53AF829C6C14300251BFC /* Misc */,
 				47FB8A6529654D9F00B0FC04 /* AppDelegate.swift */,

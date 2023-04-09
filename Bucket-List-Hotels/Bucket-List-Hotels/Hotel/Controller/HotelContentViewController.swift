@@ -21,7 +21,6 @@ class HotelContentViewController: UIViewController {
         headerView.headerImageView.image = UIImage(named: hotel.image)
         tableView.dataSource = self
         tableView.delegate = self
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "datacell")
     }
 }
 
@@ -48,6 +47,7 @@ extension HotelContentViewController: UITableViewDataSource, UITableViewDelegate
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HotelMapCell.self), for: indexPath) as! HotelMapCell
+            cell.configureMap(with: hotel.address, hotelName: hotel.name)
             cell.selectionStyle = .none
             return cell
         default:
@@ -83,12 +83,5 @@ extension HotelContentViewController: UITableViewDataSource, UITableViewDelegate
     class CustomTapGestureRecognizer: UITapGestureRecognizer {
         var phoneNum: String?
     }
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "showMap" {
-//            let destinationController = segue.destination as! MapViewController
-//            destinationController.hotel = hotel
-//        }
-//    }
 }
 

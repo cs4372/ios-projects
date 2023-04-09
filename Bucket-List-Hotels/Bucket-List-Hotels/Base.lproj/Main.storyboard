@@ -281,6 +281,9 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="0nK-rS-h1m" secondAttribute="trailing" id="5bU-kS-n1V"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="mapView" destination="0nK-rS-h1m" id="v4w-da-hgC"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
