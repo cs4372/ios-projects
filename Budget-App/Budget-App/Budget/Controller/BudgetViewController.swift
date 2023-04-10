@@ -23,11 +23,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         tableView.reloadData()
     }
     
-    @IBAction func saveBudget(_ sender: UIButton) {
-        guard let budgetTitleText = budgetTitleTextField.text, !budgetTitleText.isEmpty else {
-            AlertHelper.showAlert(title: "Invalid title", message: "Please try again", over: self)
-            return
+        @IBAction func saveBudget(_ sender: UIBarButtonItem) {
+            guard let budgetTitleText = budgetTitleTextField.text, !budgetTitleText.isEmpty else {
+                AlertHelper.showAlert(title: "Invalid title", message: "Please try again", over: self)
+                return
         }
+
         guard let budgetAmountText = budgetAmountTextField.text, !budgetAmountText.isEmpty, let amountNumber = Double(budgetAmountText) else {
             AlertHelper.showAlert(title: "Invalid amount", message: "Please try again", over: self)
             return
@@ -42,7 +43,6 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         DataManager.shared.saveContext()
         tableView.reloadData()
     }
-    
     
     @IBSegueAction func openExpenses(_ coder: NSCoder) -> ExpenseViewController? {
         let vc = ExpenseViewController(coder: coder)

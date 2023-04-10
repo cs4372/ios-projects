@@ -9,7 +9,11 @@ import UIKit
 
 class ExpenseTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var expenseLabel: UILabel!
+    @IBOutlet weak var expenseLabel: UILabel! {
+        didSet {
+            expenseLabel.numberOfLines = 0
+        }
+    }
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
 }

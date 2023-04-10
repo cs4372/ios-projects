@@ -39,6 +39,19 @@ class DataManager {
         return container
     }()
     
+    // MARK: - Budgets
+    
+    func getBudgets() -> [Budget] {
+        let request: NSFetchRequest<Budget> = Budget.fetchRequest()
+        var fetchedBudgets = [Budget]()
+        do {
+            fetchedBudgets = try persistentContainer.viewContext.fetch(request)
+        } catch {
+            print("Error fetching budgets")
+        }
+        return fetchedBudgets
+    }
+    
     func setBudget(title: String, amount: NSDecimalNumber) -> Budget {
         let budget = Budget(context: persistentContainer.viewContext)
         budget.title = title
@@ -46,14 +59,7 @@ class DataManager {
         return budget
     }
     
-    func setExpense(name: String, amount: NSDecimalNumber,  timestamp: Date, budget: Budget) -> Expense {
-        let expense = Expense(context: persistentContainer.viewContext)
-        expense.name = name
-        expense.amount = amount
-        expense.timestamp = timestamp
-        expense.budget = budget
-        return expense
-    }
+    // MARK: - Expenses
     
     func getExpenses(budget: Budget) -> [Expense] {
         let request: NSFetchRequest<Expense> = Expense.fetchRequest()
@@ -63,9 +69,18 @@ class DataManager {
         do {
             fetched = try persistentContainer.viewContext.fetch(request)
         } catch {
-            print("Error fetching budgets")
+            print("Error fetching expenses")
         }
         return fetched
+    }
+    
+    func setExpense(name: String, amount: NSDecimalNumber,  timestamp: Date, budget: Budget) -> Expense {
+        let expense = Expense(context: persistentContainer.viewContext)
+        expense.name = name
+        expense.amount = amount
+        expense.timestamp = timestamp
+        expense.budget = budget
+        return expense
     }
 
     func deleteExpense(idx: Int, budget: Budget) {
@@ -96,17 +111,6 @@ class DataManager {
        } catch let error {
            print("Failed to delete: \(error)")
        }
-    }
-    
-    func getBudgets() -> [Budget] {
-        let request: NSFetchRequest<Budget> = Budget.fetchRequest()
-        var fetchedBudgets = [Budget]()
-        do {
-            fetchedBudgets = try persistentContainer.viewContext.fetch(request)
-        } catch {
-            print("Error fetch budgets")
-        }
-        return fetchedBudgets
     }
     
     // MARK: - Core Data Saving support
