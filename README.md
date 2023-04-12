@@ -20,7 +20,7 @@ This is a collection of projects that aims to solidify my understanding of the f
 </div>
 
 #### [Budget App](https://github.com/cs4372/ios-projects/tree/master/Budget-App)
-- It is a budget and expense tracker that helps users manage their finances by creating a budget plan and keeping track of their expenses. I used Charts which is a third party library to create customizable bar charts for the expenses and Core Data to store permanent data for offline use. 
+- It is a budget and expense tracker that helps users manage their finances by creating a budget plan and keeping track of their expenses. I used Charts which is a third party library to create customizable bar charts for the expenses and Core Data for managing persistent data storage. 
 <div style="display: flex;">
   <img src="https://github.com/cs4372/ios-projects/blob/master/Budget-App/Screenshots/budget-app1.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/Budget-App/Screenshots/budget-app2.png" height="350px"/>
