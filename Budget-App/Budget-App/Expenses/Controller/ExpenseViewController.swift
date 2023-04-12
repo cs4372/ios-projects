@@ -33,15 +33,15 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
     
     private func setupBudgetLabels() {
         guard let budget = budget else { return }
-        budgetLabel.text = budget.title ?? ""
-        amountLabel.text = "$\(budget.amount ?? 0)"
+        budgetLabel.text = budget.title
+        amountLabel.text = Currency.formatCurrency(amount: budget.amount! as Decimal)
     }
     
     private func setupExpenses() {
         guard let budget = budget else { return }
         expenses = DataManager.shared.getExpenses(budget: budget)
         let totalExpenses = calculateTotalExpenses(expenses: expenses)
-        spentLabel.text = "$\(totalExpenses)"
+        spentLabel.text = Currency.formatCurrency(amount: totalExpenses)
         checkOverBudget(totalExpenses: totalExpenses, budget: budget)
         tableView.reloadData()
     }
@@ -66,7 +66,7 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
     }
     
     private func calculateTotalExpenses(expenses: [Expense]) -> Decimal {
-        return expenses.reduce(0) { $0 + (($1.amount ?? 0 as NSDecimalNumber) as Decimal) as Decimal }
+        return expenses.reduce(0) { $0 + (($1.amount ?? 0) as Decimal)}
     }
     
     // MARK: - AddExpenseDelegate Method
@@ -81,7 +81,7 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
         DataManager.shared.saveContext()
         
         let totalExpenses = calculateTotalExpenses(expenses: expenses)
-        spentLabel.text = "$\(totalExpenses)"
+        spentLabel.text = Currency.formatCurrency(amount: totalExpenses)
                 
         self.checkOverBudget(totalExpenses: totalExpenses, budget: budget)
         tableView.reloadData()
@@ -89,7 +89,7 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
       }
     
     private func checkOverBudget(totalExpenses: Decimal, budget: Budget) {
-        if totalExpenses > budget.amount as! Decimal {
+        if totalExpenses > budget.amount! as Decimal {
             AlertHelper.showAlert(title: "You've gone over budget!", message: "Watch your spending", over: self)
             spentLabel.textColor = UIColor.red
         } else {
@@ -111,7 +111,7 @@ extension ExpenseViewController: UITableViewDataSource {
         }
         let expense = expenses[indexPath.row]
         cell.expenseLabel.text = expense.name ?? ""
-        cell.amountLabel.text = "$\(expense.amount ?? 0)"
+        cell.amountLabel.text = Currency.formatCurrency(amount: expense.amount! as Decimal)
         cell.timestampLabel.text = formatDate(date: expense.timestamp)
         return cell
     }
@@ -131,7 +131,7 @@ extension ExpenseViewController: UITableViewDataSource {
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 DataManager.shared.deleteExpense(idx: indexPath.row, budget: budget)
                 let totalExpenses = calculateTotalExpenses(expenses: expenses)
-                spentLabel.text = "$\(totalExpenses)"
+            spentLabel.text = Currency.formatCurrency(amount: totalExpenses)
             expenses = DataManager.shared.getExpenses(budget: budget)
             default:
                 break

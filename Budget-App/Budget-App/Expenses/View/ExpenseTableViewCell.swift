@@ -14,6 +14,14 @@ class ExpenseTableViewCell: UITableViewCell {
             expenseLabel.numberOfLines = 0
         }
     }
-    @IBOutlet weak var amountLabel: UILabel!
-    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel! {
+        didSet {
+            expenseLabel.numberOfLines = 0
+        }
+    }
+    @IBOutlet weak var timestampLabel: UILabel! {
+        didSet {
+            timestampLabel.numberOfLines = 0
+        }
+    }
 }

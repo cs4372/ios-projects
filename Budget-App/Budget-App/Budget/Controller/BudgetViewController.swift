@@ -28,20 +28,21 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                 AlertHelper.showAlert(title: "Invalid title", message: "Please try again", over: self)
                 return
         }
-
-        guard let budgetAmountText = budgetAmountTextField.text, !budgetAmountText.isEmpty, let amountNumber = Double(budgetAmountText) else {
+        
+        if let budgetAmountText = budgetAmountTextField.text, !budgetAmountText.isEmpty,
+            let budgetAmount = Decimal(string: budgetAmountText) {
+            let budgetNum = NSDecimalNumber(decimal: budgetAmount)
+            
+            budgetTitleTextField.text = ""
+            budgetAmountTextField.text = ""
+            
+            let budget = DataManager.shared.setBudget(title: budgetTitleText, amount: budgetNum)
+            budgets.append(budget)
+            DataManager.shared.saveContext()
+            tableView.reloadData()
+        } else {
             AlertHelper.showAlert(title: "Invalid amount", message: "Please try again", over: self)
-            return
         }
-        let budgetAmount = NSDecimalNumber(string: budgetAmountText)
-        
-        budgetTitleTextField.text = ""
-        budgetAmountTextField.text = ""
-        
-        let budget = DataManager.shared.setBudget(title: budgetTitleText, amount: budgetAmount)
-        budgets.append(budget)
-        DataManager.shared.saveContext()
-        tableView.reloadData()
     }
     
     @IBSegueAction func openExpenses(_ coder: NSCoder) -> ExpenseViewController? {
@@ -67,7 +68,7 @@ extension BudgetViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! BudgetTableViewCell
         let budget = budgets[indexPath.row]
         cell.titleLabel?.text = budget.title!
-        cell.expenseLabel?.text = "$\(budget.amount!)"
+        cell.expenseLabel?.text = Currency.formatCurrency(amount: budget.amount! as Decimal)
         return cell
     }
     

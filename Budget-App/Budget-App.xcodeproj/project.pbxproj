@@ -13,6 +13,7 @@
 		477E603729AAFEC100CBBEF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477E603529AAFEC100CBBEF7 /* Main.storyboard */; };
 		477E603C29AAFEC300CBBEF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 477E603B29AAFEC300CBBEF7 /* Assets.xcassets */; };
 		477E603F29AAFEC300CBBEF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 477E603D29AAFEC300CBBEF7 /* LaunchScreen.storyboard */; };
+		4785542229E662E70018BDD6 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4785542129E662E70018BDD6 /* Currency.swift */; };
 		47B53ABB29C2BC6400251BFC /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AB529C2BC6400251BFC /* BudgetViewController.swift */; };
 		47B53ABC29C2BC6400251BFC /* Budget+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AB629C2BC6400251BFC /* Budget+CoreDataProperties.swift */; };
 		47B53ABD29C2BC6400251BFC /* Budget+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47B53AB829C2BC6400251BFC /* Budget+CoreDataClass.swift */; };
@@ -36,6 +37,7 @@
 		477E603B29AAFEC300CBBEF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		477E603E29AAFEC300CBBEF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		477E604029AAFEC300CBBEF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4785542129E662E70018BDD6 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		47B53AB529C2BC6400251BFC /* BudgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
 		47B53AB629C2BC6400251BFC /* Budget+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Budget+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47B53AB829C2BC6400251BFC /* Budget+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Budget+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				47B53AD429C2C91200251BFC /* AlertHelper.swift */,
+				4785542129E662E70018BDD6 /* Currency.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				47B53AD029C2BC7400251BFC /* Budget_App.xcdatamodeld in Sources */,
 				47B53AC729C2BC6E00251BFC /* Expense+CoreDataClass.swift in Sources */,
 				47B53AC829C2BC6E00251BFC /* ExpenseTableViewCell.swift in Sources */,
+				4785542229E662E70018BDD6 /* Currency.swift in Sources */,
 				4719505129E36224001052E7 /* AddExpenseViewController.swift in Sources */,
 				47B53ABE29C2BC6400251BFC /* BudgetTableViewCell.swift in Sources */,
 				47B53ABB29C2BC6400251BFC /* BudgetViewController.swift in Sources */,
