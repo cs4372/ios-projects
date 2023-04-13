@@ -10,7 +10,7 @@ import UIKit
 class TodoListViewController: UIViewController {
     @IBOutlet weak var todoTableView: UITableView!
     
-    var todos = [String]()
+    var todos = [Todo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +19,32 @@ class TodoListViewController: UIViewController {
         todoTableView.dataSource = self
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        let todoObject = UserDefaults.standard.array(forKey: "todos")
-        if let todoItems = todoObject as? [String] {
-            todos = todoItems
-        }
-        UserDefaults.standard.set(todos, forKey: "todos")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        todos = loadTodos()
         todoTableView.reloadData()
+    }
+    
+    // MARK: Decode the Data object into an array of Todo objects
+    
+    func loadTodos() -> [Todo] {
+        if let data = UserDefaults.standard.data(forKey: "todos") {
+            let decoder = JSONDecoder()
+            if let savedTodos = try? decoder.decode([Todo].self, from: data) {
+                return savedTodos
+            }
+        }
+        return []
+    }
+    
+    // MARK: Encoding Todo objects into JSON data to save in UserDefaults
+    
+    func saveTodos(_ todos: [Todo]) {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(todos) {
+            UserDefaults.standard.set(encodedData, forKey: "todos")
+        }
     }
 }
 
@@ -36,7 +55,8 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
     
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableCell", for: indexPath) as! TodoTableViewCell
-        cell.todoTextLabel?.text = todos[indexPath.row]
+        let todo = todos[indexPath.row]
+        cell.todoTextLabel?.text = todo.title
         return cell
     }
     
@@ -44,7 +64,17 @@ extension TodoListViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            UserDefaults.standard.set(todos, forKey: "todos")
+            saveTodos(todos)
+            todoTableView.reloadData()
+        }
+    }
+    
+    internal func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let todo = todos[indexPath.row]
+
+        if let addTodoVC = storyboard?.instantiateViewController(identifier: "EditTodoSegue") as? AddTodoViewController {
+            addTodoVC.todo = todo
+            navigationController?.pushViewController(addTodoVC, animated: true)
         }
     }
 }

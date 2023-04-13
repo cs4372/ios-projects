@@ -10,24 +10,48 @@ import UIKit
 class AddTodoViewController: UIViewController {
     
     @IBOutlet weak var todoTextField: UITextField!
+    
+    var todo: Todo?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let todo = todo {
+            todoTextField.text = todo.title
+        }
     }
 
     @IBAction func addTodo(_ sender: UIButton) {
-        let todosObject = UserDefaults.standard.array(forKey: "todos")
-        var todos: [String]
-        
-        guard let text = todoTextField.text, !text.isEmpty else {
-            return
+        if let title = todoTextField.text, !title.isEmpty {
+            var todos = loadTodos()
+            if var todo = todo {
+                todo.title = title
+                if let index = todos.firstIndex(where: { $0.id == todo.id }) {
+                    todos[index] = todo
+                }
+            } else {
+                let newTodo = Todo(title: title)
+                todos.append(newTodo)
+            }
+            saveTodos(todos)
+            navigationController?.popViewController(animated: true)
         }
-        if let todoList = todosObject as? [String] {
-            todos = todoList
-            todos.append(todoTextField.text!)
-        } else{
-            todos = [todoTextField.text!]
+    }
+    
+    func loadTodos() -> [Todo] {
+        if let data = UserDefaults.standard.data(forKey: "todos") {
+            let decoder = JSONDecoder()
+            if let savedTodos = try? decoder.decode([Todo].self, from: data) {
+                return savedTodos
+            }
         }
-        UserDefaults.standard.set(todos, forKey: "todos")
-        todoTextField.text = ""
+        return []
+    }
+
+    func saveTodos(_ todos: [Todo]) {
+        let encoder = JSONEncoder()
+        if let encodedData = try? encoder.encode(todos) {
+            UserDefaults.standard.set(encodedData, forKey: "todos")
+        }
     }
 }

@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ux8-lG-GJ6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ux8-lG-GJ6">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Todos-->
+        <!--Todo List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TodoListViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="C8Q-Pb-Nfu">
-                                <rect key="frame" x="0.0" y="59" width="393" height="710"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tableCell" id="9rT-PQ-V52" customClass="TodoTableViewCell" customModule="Todo_List" customModuleProvider="target">
@@ -58,19 +59,19 @@
                             <constraint firstItem="C8Q-Pb-Nfu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="VHK-3v-Xle"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Todos" image="list.bullet" catalog="system" id="ak3-0Y-dZO"/>
+                    <navigationItem key="navigationItem" id="H70-O1-qmR"/>
                     <connections>
                         <outlet property="todoTableView" destination="C8Q-Pb-Nfu" id="H8T-UF-eXb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980.91603053435108" y="-294.36619718309862"/>
+            <point key="canvasLocation" x="1907.6335877862596" y="-294.36619718309862"/>
         </scene>
         <!--Add Todo-->
         <scene sceneID="HEH-1p-qXj">
             <objects>
-                <viewController id="L5y-Sd-UPf" customClass="AddTodoViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditTodoSegue" id="L5y-Sd-UPf" customClass="AddTodoViewController" customModule="Todo_List" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fwV-h5-CpO">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1g2-nT-CAR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="980.91603053435108" y="388.73239436619718"/>
+            <point key="canvasLocation" x="981" y="406"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4Q1-1Y-IMf">
@@ -132,13 +133,32 @@
                         <tabBarAppearance key="standardAppearance"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6r2-yh-gXR"/>
+                        <segue destination="ZSh-8t-DFm" kind="relationship" relationship="viewControllers" id="6r2-yh-gXR"/>
                         <segue destination="L5y-Sd-UPf" kind="relationship" relationship="viewControllers" id="9SD-2S-dLe"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iED-l1-voc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
+        </scene>
+        <!--Todos-->
+        <scene sceneID="rqR-lv-Jmy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ZSh-8t-DFm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Todos" image="list.bullet" catalog="system" id="ak3-0Y-dZO"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="snY-Ra-fTt">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="AWa-kZ-tJs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qwt-kT-sGh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="980.91603053435108" y="-294.36619718309862"/>
         </scene>
     </scenes>
     <resources>
