@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RecipesViewController.swift
 //  MealFinder
 //
 //  Created by Catherine Shing on 2/11/23.
@@ -8,24 +8,23 @@
 import UIKit
 import SafariServices
 
-class ViewController: UIViewController {
+class RecipesViewController: UIViewController {
     @IBOutlet weak var foodTableView: UITableView!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var emptyResultsLabel: UILabel!
     var meals = [Recipe]()
     var resultsNotFound = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
         foodTableView.dataSource = self
         foodTableView.delegate = self
         textField.delegate = self
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+extension RecipesViewController: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return meals.count
     }
@@ -51,8 +50,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFiel
         foodTableView.deselectRow(at: indexPath, animated: true)
         let meal = meals[indexPath.row]
         let url = meal.strSource
-        let vc = SFSafariViewController(url: URL(string: url)!)
-        present(vc, animated: true)
+        if let urlObj = URL(string: url) {
+            let vc = SFSafariViewController(url: urlObj)
+            present(vc, animated: true)
+        }
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -67,48 +68,25 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource, UITextFiel
             return
         }
         
-        let query = text.replacingOccurrences(of: " ", with: "%20")        
+        let query = text.replacingOccurrences(of: " ", with: "%20")
         meals.removeAll()
         
-        URLSession.shared.dataTask(with: URL(string: "https://www.themealdb.com/api/json/v1/1/search.php?s=\(query)")!, completionHandler: { data, response, error in
-
-            guard let data = data, error == nil else {
-                return
-            }
-
-            // Convert
-            var result: Recipes?
-            do {
-                result = try JSONDecoder().decode(Recipes.self, from: data)
-                self.resultsNotFound = false
-                print("result", result)
-            }
-            catch {
-                print("inside catch")
-                self.resultsNotFound = true
+        NetworkManager.shared.searchRecipes(withQuery: query) { [weak self] recipes in
+            if let recipes = recipes {
+                self?.resultsNotFound = false
+                print("recipes", recipes)
+                self?.meals.append(contentsOf: recipes)
                 DispatchQueue.main.async {
-                    self.emptyResults()
+                    self?.foodTableView.reloadData()
                 }
-
-                print("Failed to decode data")
+            } else {
+                print("No recipes found")
+                self?.resultsNotFound = true
+                DispatchQueue.main.async {
+                    self?.emptyResults()
+                }
             }
-
-            guard let finalResult = result else {
-                return
-            }
-        
-            print("finalResult", finalResult)
-
-            // Update our movies array
-            let newMeals = finalResult.meals
-            self.meals.append(contentsOf: newMeals)
-
-            // Refresh our table
-            DispatchQueue.main.async {
-                self.foodTableView.reloadData()
-            }
-
-            }).resume()
+        }
     }
     
     func emptyResults() {
