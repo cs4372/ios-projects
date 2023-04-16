@@ -28,3 +28,11 @@ This is a collection of projects that aims to solidify my understanding of the f
   <img src="https://github.com/cs4372/ios-projects/blob/master/Budget-App/Screenshots/budget-app4.png" width="300px"/>
 </div>
 
+#### [Tic Tac Toe](https://github.com/cs4372/ios-projects/tree/master/Tic-Tac-Toe)
+- A classic tic tac toe game played between 2 players on a 3x3 grid. Players take turns placing either a nought or a cross on an empty cell with the goal of getting three of their symbols in a row, either horizontally, vertically, or diagonally. I built this app early on when I started learning Swift, and in the future, I would like to refactor it by using the MVC pattern. 
+<div style="display: flex;">
+  <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe2.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe3.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe4.png" height="350px"/>
+</div>
