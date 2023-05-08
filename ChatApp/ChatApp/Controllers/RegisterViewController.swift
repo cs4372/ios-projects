@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseCore
+import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
     let firstNameTextField = UITextField()
@@ -86,6 +89,37 @@ class RegisterViewController: UIViewController {
     }
     @objc func registerButtonClick() {
         print("register")
+        if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
+                if let e = error {
+                    print(e)
+                    return
+                }
+                guard let user = authResult?.user else {
+                    print("Error: User not found.")
+                    return
+                }
+                    
+                let db = Firestore.firestore()
+                let userRef = db.collection("users").document(user.uid)
+                let data = [
+                    "id": user.uid,
+                    "firstName": firstName,
+                    "lastName": lastName,
+                    "email": email
+                ]
+                    
+                userRef.setData(data) { (error) in
+                    if let error = error {
+                        print("Error writing user data: \(error.localizedDescription)")
+                        // Display an error message to the user or handle the error in another way.
+                    } else {
+                        print("User data successfully written!")
+                        let messagesVC = MessagesViewController()
+                        self.navigationController?.pushViewController(messagesVC, animated: true)
+                    }
+                }
+            }
+        }
     }
-    
 }

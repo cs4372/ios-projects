@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
     let emailTextField = UITextField()
@@ -25,9 +26,11 @@ class LoginViewController: UIViewController {
     private func setupTextFields() {
         emailTextField.placeholder = "Email"
         emailTextField.borderStyle = .roundedRect
+        emailTextField.text = "ty@test.com"
         view.addSubview(emailTextField)
         
         passwordTextField.placeholder = "Password"
+        passwordTextField.text = "123456"
         passwordTextField.borderStyle = .roundedRect
         passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
@@ -63,5 +66,15 @@ class LoginViewController: UIViewController {
     }
     
     @objc func loginButtonClick() {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+                if let error = error {
+                    print("error", error)
+                } else {
+                    let messagesVC = MessagesViewController()
+                    self.navigationController?.pushViewController(messagesVC, animated: true)
+                }
+            }
+        }
     }
 }

@@ -22,7 +22,7 @@ class WelcomeViewController: ViewController {
     
     private func setupButtons() {
         loginButton.setTitle("Login", for: .normal)
-        loginButton.backgroundColor = UIColor.gray
+        loginButton.backgroundColor = UIColor.lightGray
         loginButton.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
         
         registerButton.setTitle("Register", for: .normal)
@@ -62,5 +62,3 @@ class WelcomeViewController: ViewController {
         navigationController?.pushViewController(registerViewController, animated: true)
     }
 }
-
-
