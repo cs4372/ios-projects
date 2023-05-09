@@ -34,7 +34,7 @@ class MessagesViewController: UIViewController {
     }
     
     @objc func sendMessageClick() {
-        let newMessageVC = NewMessageViewController()
-        self.navigationController?.pushViewController(newMessageVC, animated: true)
+        let usersVC = UsersViewController()
+        self.navigationController?.pushViewController(usersVC, animated: true)
     }
 }

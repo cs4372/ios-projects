@@ -99,11 +99,13 @@ class RegisterViewController: UIViewController {
                     print("Error: User not found.")
                     return
                 }
+                
+                let uuid = Auth.auth().currentUser?.uid
                     
                 let db = Firestore.firestore()
-                let userRef = db.collection("users").document(user.uid)
+                let userRef = db.collection("users").document(uuid!)
                 let data = [
-                    "id": user.uid,
+                    "id": uuid,
                     "firstName": firstName,
                     "lastName": lastName,
                     "email": email

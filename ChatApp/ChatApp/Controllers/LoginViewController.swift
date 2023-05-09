@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     private func setupTextFields() {
         emailTextField.placeholder = "Email"
         emailTextField.borderStyle = .roundedRect
-        emailTextField.text = "ty@test.com"
+        emailTextField.text = "C@test.com"
         view.addSubview(emailTextField)
         
         passwordTextField.placeholder = "Password"

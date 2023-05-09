@@ -1,5 +1,5 @@
 //
-//  NewMessageViewController.swift
+//  UsersViewController.swift
 //  ChatApp
 //
 //  Created by Catherine Shing on 5/7/23.
@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseFirestore
 
-class NewMessageViewController: UIViewController {
+class UsersViewController: UIViewController {
     
     private let tableView = UITableView()
     private var users: [User] = []
@@ -57,7 +57,7 @@ class NewMessageViewController: UIViewController {
     }
 }
 
-extension NewMessageViewController: UITableViewDataSource {
+extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return users.count
     }
@@ -72,8 +72,16 @@ extension NewMessageViewController: UITableViewDataSource {
     }
 }
 
-extension NewMessageViewController: UITableViewDelegate {
+extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = users[indexPath.row]
+        let ChatVC = ChatViewController()
+        ChatVC.receiverId = user.id
+        ChatVC.receiverFirstName = user.firstName
+        navigationController?.pushViewController(ChatVC, animated: true)
     }
 }
