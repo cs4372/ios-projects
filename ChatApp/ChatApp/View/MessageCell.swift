@@ -20,7 +20,7 @@ class MessageCell: UITableViewCell {
     let messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .green
+        label.textColor = .white
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
         return label
@@ -30,10 +30,10 @@ class MessageCell: UITableViewCell {
     var messageBubbleViewRightConstraint: NSLayoutConstraint!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: style, reuseIdentifier: "chatCell")
         
-        addSubview(messageBubbleView)
-        addSubview(messageLabel)
+        contentView.addSubview(messageBubbleView)
+        messageBubbleView.addSubview(messageLabel)
         
          messageBubbleViewLeftConstraint = messageBubbleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
          messageBubbleViewRightConstraint = messageBubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)

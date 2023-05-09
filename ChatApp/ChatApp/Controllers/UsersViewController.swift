@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class UsersViewController: UIViewController {
     
@@ -23,7 +24,6 @@ class UsersViewController: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
                 
-        // Add constraints
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -46,7 +46,9 @@ class UsersViewController: UIViewController {
                         if let id = data["id"] as? String,
                            let firstName = data["firstName"] as? String,
                            let lastName = data["lastName"] as? String,
-                           let email = data["email"] as? String {
+                           let email = data["email"] as? String,
+                           id != Auth.auth().currentUser?.uid
+                        {
                             self.users.append(User(id: id, firstName: firstName, lastName: lastName, email: email))
                         }
                     }

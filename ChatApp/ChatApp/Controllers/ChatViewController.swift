@@ -11,10 +11,10 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class ChatViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate {
+class ChatViewController: UIViewController, UITextFieldDelegate {
         
     private let db = Firestore.firestore()
-    private var messages = [Message]()
+    var messages = [Message]()
     var receiverFirstName: String?
     var receiverId: String?
     var senderId: String?
@@ -27,7 +27,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate, UITableViewDele
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
-        tableView.register(MessageCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(MessageCell.self, forCellReuseIdentifier: "chatCell")
         return tableView
     }()
     
@@ -140,11 +140,12 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MessageCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! MessageCell
+        print("messages", messages)
         let message = messages[indexPath.row]
 //        cell.backgroundColor = UIColor.lightGray
         cell.selectionStyle = .none
-        cell.textLabel?.text = message.body
+        cell.messageLabel.text = message.body
         
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
@@ -163,3 +164,10 @@ extension ChatViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension ChatViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
+    }
+}
+
