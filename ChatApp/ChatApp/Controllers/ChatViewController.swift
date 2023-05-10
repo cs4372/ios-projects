@@ -11,7 +11,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class ChatViewController: UIViewController, UITextFieldDelegate {
+class ChatViewController: UIViewController {
         
     private let db = Firestore.firestore()
     var messages = [Message]()
@@ -36,8 +36,9 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.borderStyle = .roundedRect
         textField.placeholder = "Type your message here..."
-        textField.delegate = self
         textField.returnKeyType = .send
+//        textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
+//        textField.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return textField
     }()
     
@@ -54,9 +55,16 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.lightGray
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+        
         loggedInUserId = Auth.auth().currentUser?.uid
         setupViews()
         loadMessages()
+    }
+    
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
     
     private func setupViews() {
@@ -70,8 +78,10 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
             messageTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             messageTableView.bottomAnchor.constraint(equalTo: messageTextField.topAnchor),
             messageTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            messageTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
-            messageTextField.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -16),
+            messageTextField.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            messageTextField.trailingAnchor.constraint(equalTo: sendButton.leadingAnchor, constant: -10),
+            messageTextField.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            messageTextField.widthAnchor.constraint(equalToConstant: 280),
             sendButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             sendButton.centerYAnchor.constraint(equalTo: messageTextField.centerYAnchor)
         ])
@@ -111,7 +121,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
                 self.messages = []
                 
                 if let err = err {
-                    print("Error getting documents: \(err)")
+                    print("Error getting documents inside ChatView: \(err)")
                 } else {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
@@ -136,7 +146,8 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return messages.count
+        print("messages.count", messages.count)
+        return self.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -170,4 +181,3 @@ extension ChatViewController: UITableViewDelegate {
         return 100.0
     }
 }
-

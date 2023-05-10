@@ -23,6 +23,7 @@ class MessageCell: UITableViewCell {
         label.textColor = .white
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
+        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -44,6 +45,10 @@ class MessageCell: UITableViewCell {
             messageLabel.topAnchor.constraint(equalTo: messageBubbleView.topAnchor, constant: 8),
             messageLabel.leadingAnchor.constraint(equalTo: messageBubbleView.leadingAnchor, constant: 16),
             messageLabel.trailingAnchor.constraint(equalTo: messageBubbleView.trailingAnchor, constant: -16),
+            messageLabel.centerXAnchor.constraint(equalTo: messageBubbleView.centerXAnchor),
+            messageLabel.centerYAnchor.constraint(equalTo: messageBubbleView.centerYAnchor),
+            messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250), // Maximum width of the label
+             messageBubbleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50), // Minimum width of the bubble view
         ])
     }
     required init?(coder aDecoder: NSCoder) {
