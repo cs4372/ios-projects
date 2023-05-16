@@ -27,7 +27,7 @@ class ChatViewController: UIViewController {
         tableView.dataSource = self
         tableView.separatorStyle = .none
         tableView.backgroundColor = .white
-        tableView.register(MessageCell.self, forCellReuseIdentifier: "chatCell")
+        tableView.register(ChatCell.self, forCellReuseIdentifier: "chatCell")
         return tableView
     }()
     
@@ -53,6 +53,7 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = UIColor.lightGray
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -68,7 +69,7 @@ class ChatViewController: UIViewController {
     }
     
     private func setupViews() {
-        navigationItem.title = "Chat"
+        navigationItem.title = receiverFirstName
         view.addSubview(messageTableView)
         view.addSubview(messageTextField)
         view.addSubview(sendButton)
@@ -126,10 +127,9 @@ class ChatViewController: UIViewController {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
                             let data = doc.data()
-                            if let messageId = data["id"] as? String, let messageSender = data["senderId"] as? String, let receiverId = data["receiverId"] as? String, let messageBody = data["body"] as? String {
-                                let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody)
+                            if let messageId = data["id"] as? String, let messageSender = data["senderId"] as? String, let receiverId = data["receiverId"] as? String, let messageBody = data["body"] as? String, let timestamp = data["timestamp"] as? TimeInterval {
+                                let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody, timestamp: timestamp)
                                 self.messages.append(newMessage)
-                                print("self.messages", self.messages)
                                 
                                 DispatchQueue.main.async {
                                     self.messageTableView.reloadData()
@@ -151,8 +151,7 @@ extension ChatViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! MessageCell
-        print("messages", messages)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
         let message = messages[indexPath.row]
 //        cell.backgroundColor = UIColor.lightGray
         cell.selectionStyle = .none

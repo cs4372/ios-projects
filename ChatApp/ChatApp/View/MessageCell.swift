@@ -2,56 +2,50 @@
 //  MessageCell.swift
 //  ChatApp
 //
-//  Created by Catherine Shing on 5/9/23.
+//  Created by Catherine Shing on 5/15/23.
 //
 
 import UIKit
 
 class MessageCell: UITableViewCell {
-    let messageBubbleView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 16
-        view.layer.masksToBounds = true
-        view.backgroundColor = .blue
-        return view
-    }()
     
     let messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = UIColor.gray
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
         label.lineBreakMode = .byWordWrapping
         return label
     }()
     
-    var messageBubbleViewLeftConstraint: NSLayoutConstraint!
-    var messageBubbleViewRightConstraint: NSLayoutConstraint!
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = UIColor.orange
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.lineBreakMode = .byWordWrapping
+        return label
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: "chatCell")
-        
-        contentView.addSubview(messageBubbleView)
-        messageBubbleView.addSubview(messageLabel)
-        
-         messageBubbleViewLeftConstraint = messageBubbleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
-         messageBubbleViewRightConstraint = messageBubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
-        
+        super.init(style: style, reuseIdentifier: "messageCell")
+
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(messageLabel)
         NSLayoutConstraint.activate([
-            messageBubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            messageBubbleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            messageLabel.topAnchor.constraint(equalTo: messageBubbleView.topAnchor, constant: 8),
-            messageLabel.leadingAnchor.constraint(equalTo: messageBubbleView.leadingAnchor, constant: 16),
-            messageLabel.trailingAnchor.constraint(equalTo: messageBubbleView.trailingAnchor, constant: -16),
-            messageLabel.centerXAnchor.constraint(equalTo: messageBubbleView.centerXAnchor),
-            messageLabel.centerYAnchor.constraint(equalTo: messageBubbleView.centerYAnchor),
-            messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 250), // Maximum width of the label
-             messageBubbleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50), // Minimum width of the bubble view
+            nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            messageLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            messageLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            messageLabel.topAnchor.constraint(equalTo: nameLabel.topAnchor, constant: 10),
+            messageLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
     }
-    required init?(coder aDecoder: NSCoder) {
+    
+    required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
