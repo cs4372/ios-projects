@@ -18,12 +18,17 @@ class UsersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = UIColor.white
+        setupTableView()
+        fetchUsers()
+    }
+    
+    private func setupTableView() {
+        tableView.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         view.addSubview(tableView)
-                
+        
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -31,28 +36,29 @@ class UsersViewController: UIViewController {
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
-        fetchUsers()
     }
     
     private func fetchUsers() {
         db.collection("users").getDocuments() { (querySnapshot, err) in
             if let err = err {
                 print("Error getting documents: \(err)")
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        if let id = data["id"] as? String,
-                           let firstName = data["firstName"] as? String,
-                           let lastName = data["lastName"] as? String,
-                           let email = data["email"] as? String,
-                           id != Auth.auth().currentUser?.uid
-                        {
-                            self.users.append(User(id: id, firstName: firstName, lastName: lastName, email: email))
-                        }
+                return
+            }
+            if let snapshotDocuments = querySnapshot?.documents {
+                for doc in snapshotDocuments {
+                    let data = doc.data()
+                    if let id = data["id"] as? String,
+                       let firstName = data["firstName"] as? String,
+                       let lastName = data["lastName"] as? String,
+                       let email = data["email"] as? String,
+                       id != Auth.auth().currentUser?.uid
+                    {
+                        let user = User(id: id, firstName: firstName, lastName: lastName, email: email)
+                        self.users.append(user)
                     }
                 }
+            }
+            DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }

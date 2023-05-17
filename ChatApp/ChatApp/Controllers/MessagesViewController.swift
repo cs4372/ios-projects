@@ -12,27 +12,21 @@ import FirebaseFirestore
 class MessagesViewController: UIViewController {
     
     private let db = Firestore.firestore()
-    var loggedInUserId: String?
-    var messages = [Message]()
+    private var loggedInUserId: String?
+    private var users: [User] = []
+    private var messages = [Message]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
-        
-        loadMessages() {}
+        setupNavigationBar()
         loggedInUserId = Auth.auth().currentUser?.uid
-        view.backgroundColor = UIColor.lightGray
-        
-        let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonClick))
-         navigationItem.leftBarButtonItem = logoutButton
-        let sendMessageButton = UIBarButtonItem(title: "Send message", style: .plain, target: self, action: #selector(sendMessageClick))
-         navigationItem.rightBarButtonItem = sendMessageButton
+        loadMessages()
     }
     
     private func setupViews() {
+        view.backgroundColor = UIColor.lightGray
         view.addSubview(messageTableView)
-        
         NSLayoutConstraint.activate([
             messageTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             messageTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -40,6 +34,13 @@ class MessagesViewController: UIViewController {
             messageTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
+    
+    private func setupNavigationBar() {
+         let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonClick))
+         let sendMessageButton = UIBarButtonItem(title: "Send message", style: .plain, target: self, action: #selector(sendMessageClick))
+         navigationItem.leftBarButtonItem = logoutButton
+         navigationItem.rightBarButtonItem = sendMessageButton
+     }
     
     private lazy var messageTableView: UITableView = {
         let tableView = UITableView()
@@ -54,21 +55,7 @@ class MessagesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.hidesBackButton = true
-        loadMessages { [weak self] in
-            DispatchQueue.main.async {
-                self?.messageTableView.reloadData()
-            }
-        }
-        print("inside will appear")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        DispatchQueue.main.async {
-            self.messageTableView.reloadData()
-        }
-        print("inside did appear")
+        messageTableView.reloadData()
     }
     
     @objc func logoutButtonClick() {
@@ -99,53 +86,49 @@ class MessagesViewController: UIViewController {
             }
         }
     }
-        
-    var groupedMessages: [String: [Message]] = [:]
-    
-    func loadMessages(completion: @escaping () -> Void) {
+            
+    func loadMessages() {
         db.collection("messages")
             .order(by: "timestamp", descending: true)
             .addSnapshotListener {(querySnapshot, err) in
                 if let err = err {
                     print("Error getting documents inside ChatView: \(err)")
-                } else {
-                    self.messages = []
-                    self.groupedMessages = [:]
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        for doc in snapshotDocuments {
-                            let data = doc.data()
-                            print("data", data)
-                            if let messageId = data["id"] as? String, let messageSender = data["senderId"] as? String, let receiverId = data["receiverId"] as? String, let messageBody = data["body"] as? String, let timestamp = data["timestamp"] as? TimeInterval {
-                                if messageSender == self.loggedInUserId || receiverId == self.loggedInUserId {
-                                    
-                                    let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody, timestamp: timestamp)
-                                    let id1 = "\(messageSender)-\(receiverId)"
-                                    let id2 = "\(receiverId)-\(messageSender)"
-                                    if let existingMessages = self.groupedMessages[id1] {
-                                        self.groupedMessages[id1] = existingMessages + [newMessage]
-                                    } else if let existingMessages = self.groupedMessages[id2] {
-                                        self.groupedMessages[id2] = existingMessages + [newMessage]
-                                    } else {
-                                        self.groupedMessages[id1] = [newMessage]
-                                    }
+                    return
+                }
+                self.messages = []
+                var groupedMessages: [String: [Message]] = [:]
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        if let messageId = data["id"] as? String, let messageSender = data["senderId"] as? String, let receiverId = data["receiverId"] as? String, let messageBody = data["body"] as? String, let timestamp = data["timestamp"] as? TimeInterval {
+                            if messageSender == self.loggedInUserId || receiverId == self.loggedInUserId {
+                                
+                                let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody, timestamp: timestamp)
+                                let id1 = "\(messageSender)-\(receiverId)"
+                                let id2 = "\(receiverId)-\(messageSender)"
+                                if let existingMessages = groupedMessages[id1] {
+                                    groupedMessages[id1] = existingMessages + [newMessage]
+                                } else if let existingMessages = groupedMessages[id2] {
+                                    groupedMessages[id2] = existingMessages + [newMessage]
+                                } else {
+                                    groupedMessages[id1] = [newMessage]
                                 }
                             }
                         }
                     }
-
-                    for (_, items) in self.groupedMessages {
-                        if let firstMessage = items.first {
-                            self.messages.append(firstMessage)
-                            continue
-                        }
-                    }
-                    self.messages = self.messages.sorted { $0.timestamp > $1.timestamp }
-                    DispatchQueue.main.async {
-                        self.messageTableView.reloadData()
-                        let indexPath = IndexPath(row: self.messages.count-1, section: 0)
-                        self.messageTableView.scrollToRow(at: indexPath, at: .top, animated: true)
                 }
-                    completion()
+
+                for (_, items) in groupedMessages {
+                    if let firstMessage = items.first {
+                        self.messages.append(firstMessage)
+                    }
+                }
+                self.messages = self.messages.sorted { $0.timestamp > $1.timestamp }
+                
+                DispatchQueue.main.async {
+                    self.messageTableView.reloadData()
+                    let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+                    self.messageTableView.scrollToRow(at: indexPath, at: .top, animated: true)
             }
         }
     }
@@ -153,27 +136,24 @@ class MessagesViewController: UIViewController {
 
 extension MessagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("messages.count", messages.count)
         return self.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
-           let message = messages[indexPath.row]
+        let message = messages[indexPath.row]
            cell.messageLabel.text = message.body
         let otherUserId = message.senderId == loggedInUserId ? message.receiverId : message.senderId
         var fullName = ""
           getUserName(userId: otherUserId) { firstName, lastName in
             if let firstName = firstName, let lastName = lastName {
-                print("firstName inside", firstName)
                 fullName = "\(firstName) \(lastName)"
             }
             cell.nameLabel.text = fullName
         }
-        print("fullName ==>", fullName)
         cell.messageLabel.text = message.body
-           cell.backgroundColor = UIColor.white
-           return cell
+        cell.backgroundColor = UIColor.white
+        return cell
     }
 }
 
@@ -181,5 +161,18 @@ extension MessagesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let message = messages[indexPath.row]
+        let ChatVC = ChatViewController()
+        let otherUserId = message.senderId == loggedInUserId ? message.receiverId : message.senderId
+        ChatVC.receiverId = otherUserId
+        
+        getUserName(userId: otherUserId) { firstName, _ in
+          if let firstName = firstName {
+              ChatVC.receiverFirstName = firstName
+          }
+      }
+        navigationController?.pushViewController(ChatVC, animated: true)
+    }
 }
-

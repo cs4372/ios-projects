@@ -37,8 +37,6 @@ class ChatViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.placeholder = "Type your message here..."
         textField.returnKeyType = .send
-//        textField.setContentHuggingPriority(.defaultLow, for: .horizontal)
-//        textField.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         return textField
     }()
     
@@ -53,9 +51,7 @@ class ChatViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.lightGray
-        
+                
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
         
@@ -70,6 +66,7 @@ class ChatViewController: UIViewController {
     
     private func setupViews() {
         navigationItem.title = receiverFirstName
+        view.backgroundColor = UIColor.lightGray
         view.addSubview(messageTableView)
         view.addSubview(messageTextField)
         view.addSubview(sendButton)
@@ -122,20 +119,20 @@ class ChatViewController: UIViewController {
                 self.messages = []
                 
                 if let err = err {
-                    print("Error getting documents inside ChatView: \(err)")
-                } else {
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        for doc in snapshotDocuments {
-                            let data = doc.data()
-                            if let messageId = data["id"] as? String, let messageSender = data["senderId"] as? String, let receiverId = data["receiverId"] as? String, let messageBody = data["body"] as? String, let timestamp = data["timestamp"] as? TimeInterval {
-                                let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody, timestamp: timestamp)
-                                self.messages.append(newMessage)
-                                
-                                DispatchQueue.main.async {
-                                    self.messageTableView.reloadData()
-                                    let indexPath = IndexPath(row: self.messages.count-1, section: 0)
-                                    self.messageTableView.scrollToRow(at: indexPath, at: .top, animated: true)
-                            }
+                    print("Error getting documents inside ChatViewVC \(err)")
+                    return
+                }
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        if let messageId = data["id"] as? String, let messageSender = data["senderId"] as? String, let receiverId = data["receiverId"] as? String, let messageBody = data["body"] as? String, let timestamp = data["timestamp"] as? TimeInterval {
+                            let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody, timestamp: timestamp)
+                            self.messages.append(newMessage)
+                            
+                            DispatchQueue.main.async {
+                                self.messageTableView.reloadData()
+                                let indexPath = IndexPath(row: self.messages.count-1, section: 0)
+                                self.messageTableView.scrollToRow(at: indexPath, at: .top, animated: true)
                         }
                     }
                 }
@@ -146,22 +143,18 @@ class ChatViewController: UIViewController {
 
 extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("messages.count", messages.count)
         return self.messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
         let message = messages[indexPath.row]
-//        cell.backgroundColor = UIColor.lightGray
         cell.selectionStyle = .none
         cell.messageLabel.text = message.body
         
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
-        // add constraints to align bubble to the right or left edge of the cell
         if message.senderId == Auth.auth().currentUser?.uid {
-            print("inside")
             cell.backgroundColor = UIColor.blue
             cell.messageBubbleViewRightConstraint.isActive = true
             cell.messageBubbleViewLeftConstraint.isActive = false

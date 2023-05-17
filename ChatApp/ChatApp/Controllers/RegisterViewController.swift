@@ -88,7 +88,6 @@ class RegisterViewController: UIViewController {
         ])
     }
     @objc func registerButtonClick() {
-        print("register")
         if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
                 if let e = error {
@@ -113,13 +112,11 @@ class RegisterViewController: UIViewController {
                     
                 userRef.setData(data) { (error) in
                     if let error = error {
-                        print("Error writing user data: \(error.localizedDescription)")
-                        // Display an error message to the user or handle the error in another way.
-                    } else {
-                        print("User data successfully written!")
-                        let messagesVC = MessagesViewController()
-                        self.navigationController?.pushViewController(messagesVC, animated: true)
+                        print("Error writing user data: \(error)")
+                        return
                     }
+                    let messagesVC = MessagesViewController()
+                    self.navigationController?.pushViewController(messagesVC, animated: true)
                 }
             }
         }
