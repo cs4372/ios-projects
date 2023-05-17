@@ -37,7 +37,8 @@ class MessagesViewController: UIViewController {
     
     private func setupNavigationBar() {
          let logoutButton = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutButtonClick))
-         let sendMessageButton = UIBarButtonItem(title: "Send message", style: .plain, target: self, action: #selector(sendMessageClick))
+        let sendMessageImage = UIImage(systemName: "square.and.pencil")
+        let sendMessageButton = UIBarButtonItem(image: sendMessageImage, style: .plain, target: self, action: #selector(sendMessageClick))
          navigationItem.leftBarButtonItem = logoutButton
          navigationItem.rightBarButtonItem = sendMessageButton
      }
@@ -47,7 +48,6 @@ class MessagesViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.gray
         tableView.register(MessageCell.self, forCellReuseIdentifier: "messageCell")
         return tableView
@@ -152,7 +152,6 @@ extension MessagesViewController: UITableViewDataSource {
             cell.nameLabel.text = fullName
         }
         cell.messageLabel.text = message.body
-        cell.backgroundColor = UIColor.white
         return cell
     }
 }

@@ -67,13 +67,13 @@ class LoginViewController: UIViewController {
     
     @objc func loginButtonClick() {
         if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-                if let error = error {
-                    print("error", error)
-                } else {
-                    let messagesVC = MessagesViewController()
-                    self.navigationController?.pushViewController(messagesVC, animated: true)
+            Auth.auth().signIn(withEmail: email, password: password) { (result, err) in
+                if let err = err {
+                    print("Error signing in: \(err)")
+                    return
                 }
+                let messagesVC = MessagesViewController()
+                self.navigationController?.pushViewController(messagesVC, animated: true)
             }
         }
     }

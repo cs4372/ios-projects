@@ -73,8 +73,6 @@ extension UsersViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let user = users[indexPath.row]
-        cell.backgroundColor = UIColor.lightGray
-        cell.selectionStyle = .none
         cell.textLabel?.text = user.firstName
         return cell
     }

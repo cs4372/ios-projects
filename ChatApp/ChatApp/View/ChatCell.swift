@@ -11,9 +11,8 @@ class ChatCell: UITableViewCell {
     let messageBubbleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 16
+        view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
-        view.backgroundColor = .blue
         return view
     }()
     
@@ -40,15 +39,15 @@ class ChatCell: UITableViewCell {
          messageBubbleViewRightConstraint = messageBubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         
         NSLayoutConstraint.activate([
-            messageBubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 16),
-            messageBubbleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            messageBubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            messageBubbleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             messageLabel.topAnchor.constraint(equalTo: messageBubbleView.topAnchor, constant: 8),
-            messageLabel.leadingAnchor.constraint(equalTo: messageBubbleView.leadingAnchor, constant: 16),
-            messageLabel.trailingAnchor.constraint(equalTo: messageBubbleView.trailingAnchor, constant: -16),
+            messageLabel.leadingAnchor.constraint(equalTo: messageBubbleView.leadingAnchor, constant: 8),
+            messageLabel.trailingAnchor.constraint(equalTo: messageBubbleView.trailingAnchor, constant: -8),
             messageLabel.centerXAnchor.constraint(equalTo: messageBubbleView.centerXAnchor),
             messageLabel.centerYAnchor.constraint(equalTo: messageBubbleView.centerYAnchor),
-            messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200), // Maximum width of the label
-             messageBubbleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50), // Minimum width of the bubble view
+            messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
+            messageBubbleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
     }
     required init?(coder aDecoder: NSCoder) {

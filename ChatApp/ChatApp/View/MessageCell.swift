@@ -15,7 +15,6 @@ class MessageCell: UITableViewCell {
         label.textColor = UIColor.gray
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
-        label.lineBreakMode = .byWordWrapping
         return label
     }()
     
@@ -25,7 +24,6 @@ class MessageCell: UITableViewCell {
         label.textColor = UIColor.orange
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
-        label.lineBreakMode = .byWordWrapping
         return label
     }()
     

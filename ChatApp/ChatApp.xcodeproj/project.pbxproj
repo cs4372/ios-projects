@@ -9,9 +9,9 @@
 /* Begin PBXBuildFile section */
 		4701A0F02A09FCC800D411BD /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A0EF2A09FCC800D411BD /* ChatCell.swift */; };
 		4701A0F42A12070C00D411BD /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A0F32A12070C00D411BD /* MessageCell.swift */; };
+		4701A0F62A14850000D411BD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A0F52A14850000D411BD /* Constants.swift */; };
 		471C16162A08420200D974EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C16152A08420200D974EA /* AppDelegate.swift */; };
 		471C16182A08420200D974EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C16172A08420200D974EA /* SceneDelegate.swift */; };
-		471C161A2A08420200D974EA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C16192A08420200D974EA /* ViewController.swift */; };
 		471C161F2A08420500D974EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471C161E2A08420500D974EA /* Assets.xcassets */; };
 		471C16222A08420500D974EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471C16202A08420500D974EA /* LaunchScreen.storyboard */; };
 		471C162A2A08438200D974EA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C16292A08438200D974EA /* WelcomeViewController.swift */; };
@@ -32,10 +32,10 @@
 		4701A0EF2A09FCC800D411BD /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4701A0F12A10722200D411BD /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4701A0F32A12070C00D411BD /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		4701A0F52A14850000D411BD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		471C16122A08420200D974EA /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471C16152A08420200D974EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		471C16172A08420200D974EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		471C16192A08420200D974EA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		471C161E2A08420500D974EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		471C16212A08420500D974EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		471C16232A08420500D974EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,12 +96,12 @@
 		471C16142A08420200D974EA /* ChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				4701A0F52A14850000D411BD /* Constants.swift */,
 				4701A0EE2A09FCB900D411BD /* View */,
 				471C163B2A08A1CB00D974EA /* Model */,
 				471C162D2A0844EB00D974EA /* Controllers */,
 				471C16152A08420200D974EA /* AppDelegate.swift */,
 				471C16172A08420200D974EA /* SceneDelegate.swift */,
-				471C16192A08420200D974EA /* ViewController.swift */,
 				471C161E2A08420500D974EA /* Assets.xcassets */,
 				471C16202A08420500D974EA /* LaunchScreen.storyboard */,
 				471C16232A08420500D974EA /* Info.plist */,
@@ -266,7 +266,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				471C161A2A08420200D974EA /* ViewController.swift in Sources */,
 				471C16382A0879CD00D974EA /* MessagesViewController.swift in Sources */,
 				471C162A2A08438200D974EA /* WelcomeViewController.swift in Sources */,
 				471C16162A08420200D974EA /* AppDelegate.swift in Sources */,
@@ -274,6 +273,7 @@
 				471C162F2A0844FD00D974EA /* RegisterViewController.swift in Sources */,
 				4701A0F02A09FCC800D411BD /* ChatCell.swift in Sources */,
 				471C163D2A08A1D600D974EA /* User.swift in Sources */,
+				4701A0F62A14850000D411BD /* Constants.swift in Sources */,
 				471C16412A09E56F00D974EA /* Message.swift in Sources */,
 				471C162C2A0844DE00D974EA /* LoginViewController.swift in Sources */,
 				471C163F2A08C2BA00D974EA /* ChatViewController.swift in Sources */,

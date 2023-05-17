@@ -6,8 +6,6 @@
 //
 
 import UIKit
-
-import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
@@ -155,21 +153,20 @@ extension ChatViewController: UITableViewDataSource {
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
         if message.senderId == Auth.auth().currentUser?.uid {
-            cell.backgroundColor = UIColor.blue
+            cell.messageBubbleView.backgroundColor = UIColor(named: Constants.BrandColors.blue)
             cell.messageBubbleViewRightConstraint.isActive = true
             cell.messageBubbleViewLeftConstraint.isActive = false
         } else {
-            cell.backgroundColor = UIColor.lightGray
+            cell.messageBubbleView.backgroundColor = UIColor(named: Constants.BrandColors.grey)
             cell.messageBubbleViewRightConstraint.isActive = false
             cell.messageBubbleViewLeftConstraint.isActive = true
         }
-            
         return cell
     }
 }
 
 extension ChatViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 100
     }
 }

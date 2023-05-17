@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WelcomeViewController: ViewController {
+class WelcomeViewController: UIViewController {
     
     let loginButton = UIButton(type: .system)
     let registerButton = UIButton(type: .system)
@@ -15,18 +15,21 @@ class WelcomeViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.white
         setupButtons()
         setupConstraints()
     }
     
     private func setupButtons() {
         loginButton.setTitle("Login", for: .normal)
-        loginButton.backgroundColor = UIColor.lightGray
+        loginButton.backgroundColor = UIColor(named: Constants.BrandColors.blue)
+        loginButton.setTitleColor(UIColor.white, for: .normal)
+        loginButton.layer.cornerRadius = 10
         loginButton.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
         
         registerButton.setTitle("Register", for: .normal)
-        registerButton.backgroundColor = UIColor.systemMint
+        registerButton.backgroundColor = UIColor(named: Constants.BrandColors.grey)
+        registerButton.setTitleColor(UIColor.white, for: .normal)
+        registerButton.layer.cornerRadius = 10
         registerButton.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
         
         view.addSubview(loginButton)
@@ -40,15 +43,15 @@ class WelcomeViewController: ViewController {
         NSLayoutConstraint.activate([
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            loginButton.heightAnchor.constraint(equalToConstant: 80),
 
             registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 0),
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            registerButton.heightAnchor.constraint(equalToConstant: 50),
+            registerButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 30),
+            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            registerButton.heightAnchor.constraint(equalToConstant: 80),
         ])
     }
     
