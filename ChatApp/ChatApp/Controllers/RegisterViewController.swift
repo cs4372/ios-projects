@@ -7,59 +7,118 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseCore
 import FirebaseFirestore
 
 class RegisterViewController: UIViewController {
-    let firstNameTextField = UITextField()
-    let lastNameTextField = UITextField()
-    let emailTextField = UITextField()
-    let passwordTextField = UITextField()
-    
-    let registerButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.systemTeal
+        view.backgroundColor = UIColor(named: Constants.BrandColors.blue)
         
-        setupTextFields()
-        setupRegisterButton()
+        setupViews()
         setupConstraints()
+        configureBackground()
+        addDismissKeyboardGesture()
     }
     
-    private func setupTextFields() {
-        firstNameTextField.placeholder = "First Name"
-        firstNameTextField.borderStyle = .roundedRect
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+         
+         backgroundImageView.removeFromSuperview()
+     }
+    
+    private let firstNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "First Name"
+        textField.borderStyle = .roundedRect
+        textField.layer.borderColor = UIColor(named: Constants.BrandColors.blue)?.cgColor
+        textField.layer.borderWidth = 2
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let lastNameTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Last Name"
+        textField.borderStyle = .roundedRect
+        textField.layer.borderColor = UIColor(named: Constants.BrandColors.blue)?.cgColor
+        textField.layer.borderWidth = 2
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let emailTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Email"
+        textField.borderStyle = .roundedRect
+        textField.layer.borderColor = UIColor(named: Constants.BrandColors.blue)?.cgColor
+        textField.layer.borderWidth = 2
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = "Password"
+        textField.borderStyle = .roundedRect
+        textField.layer.borderColor = UIColor(named: Constants.BrandColors.blue)?.cgColor
+        textField.layer.borderWidth = 2
+        textField.isSecureTextEntry = true
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        return textField
+    }()
+    
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Register", for: .normal)
+        button.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
+        button.backgroundColor = UIColor(named: Constants.BrandColors.grey)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let backgroundImageView: UIImageView = {
+        let backgroundImageView = UIImageView(image: UIImage(named: "AppIcon"))
+        backgroundImageView.contentMode = .scaleAspectFill
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.alpha = 0.1
+        return backgroundImageView
+    }()
+    
+    private func addDismissKeyboardGesture() {
+          let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+          tapGesture.cancelsTouchesInView = false
+          view.addGestureRecognizer(tapGesture)
+    }
+      
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    private func configureBackground() {
+        view.backgroundColor = .white
+        
+        NSLayoutConstraint.activate([
+            backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
+            backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    private func setupViews() {
         view.addSubview(firstNameTextField)
-        
-        lastNameTextField.placeholder = "Last Name"
-        lastNameTextField.borderStyle = .roundedRect
         view.addSubview(lastNameTextField)
-        
-        emailTextField.placeholder = "Email"
-        emailTextField.borderStyle = .roundedRect
         view.addSubview(emailTextField)
-        
-        passwordTextField.placeholder = "Password"
-        passwordTextField.borderStyle = .roundedRect
-        passwordTextField.isSecureTextEntry = true
         view.addSubview(passwordTextField)
-    }
-    
-    private func setupRegisterButton() {
-        registerButton.setTitle("Register", for: .normal)
-        registerButton.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
         view.addSubview(registerButton)
+        view.addSubview(backgroundImageView)
     }
     
     private func setupConstraints() {
-        firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
-        emailTextField.translatesAutoresizingMaskIntoConstraints = false
-        passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             firstNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             firstNameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
@@ -87,37 +146,44 @@ class RegisterViewController: UIViewController {
             registerButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-    @objc func registerButtonClick() {
-        if let firstName = firstNameTextField.text, let lastName = lastNameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password) {(authResult, error) in
-                if let e = error {
-                    print(e)
-                    return
-                }
-                guard let user = authResult?.user else {
-                    print("Error: User not found.")
+    
+    @objc private func registerButtonClick() {
+        guard let firstName = firstNameTextField.text,
+              let lastName = lastNameTextField.text,
+              let email = emailTextField.text,
+              let password = passwordTextField.text else {
+            return
+        }
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in            
+            if let error = error {
+                print("Error creating user: \(error)")
+                return
+            }
+            guard let user = authResult?.user else {
+                print("Error: User not found.")
+                return
+            }
+            
+            let userId = user.uid
+            let userData = [
+                "id": userId,
+                "firstName": firstName,
+                "lastName": lastName,
+                "email": email
+            ]
+            
+            let db = Firestore.firestore()
+            let userRef = db.collection("users").document(userId)
+            
+            userRef.setData(userData) { error in
+                if let error = error {
+                    print("Error writing user data: \(error)")
                     return
                 }
                 
-                let uuid = Auth.auth().currentUser?.uid
-                    
-                let db = Firestore.firestore()
-                let userRef = db.collection("users").document(uuid!)
-                let data = [
-                    "id": uuid,
-                    "firstName": firstName,
-                    "lastName": lastName,
-                    "email": email
-                ]
-                    
-                userRef.setData(data) { (error) in
-                    if let error = error {
-                        print("Error writing user data: \(error)")
-                        return
-                    }
-                    let messagesVC = MessagesViewController()
-                    self.navigationController?.pushViewController(messagesVC, animated: true)
-                }
+                let messagesVC = MessagesViewController()
+                self.navigationController?.pushViewController(messagesVC, animated: true)
             }
         }
     }
