@@ -127,8 +127,7 @@ class MessagesViewController: UIViewController {
                 
                 DispatchQueue.main.async {
                     self.messageTableView.reloadData()
-                    let indexPath = IndexPath(row: self.messages.count-1, section: 0)
-                    self.messageTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+//            
             }
         }
     }

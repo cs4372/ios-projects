@@ -9,40 +9,56 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    let loginButton = UIButton(type: .system)
-    let registerButton = UIButton(type: .system)
+    private let loginButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Login", for: .normal)
+        button.backgroundColor = UIColor(named: Constants.BrandColors.blue)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let registerButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Register", for: .normal)
+        button.backgroundColor = UIColor(named: Constants.BrandColors.grey)
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let welcomeImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "AppIcon"))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupButtons()
+        setupViews()
         setupConstraints()
+        configureBackground()
     }
     
-    private func setupButtons() {
-        loginButton.setTitle("Login", for: .normal)
-        loginButton.backgroundColor = UIColor(named: Constants.BrandColors.blue)
-        loginButton.setTitleColor(UIColor.white, for: .normal)
-        loginButton.layer.cornerRadius = 10
-        loginButton.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
-        
-        registerButton.setTitle("Register", for: .normal)
-        registerButton.backgroundColor = UIColor(named: Constants.BrandColors.grey)
-        registerButton.setTitleColor(UIColor.white, for: .normal)
-        registerButton.layer.cornerRadius = 10
-        registerButton.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
-        
+    private func setupViews() {
+        view.addSubview(welcomeImageView)
         view.addSubview(loginButton)
         view.addSubview(registerButton)
     }
     
     private func setupConstraints() {
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        registerButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
+            welcomeImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            welcomeImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80),            welcomeImageView.heightAnchor.constraint(equalToConstant: 200),
+            welcomeImageView.widthAnchor.constraint(equalToConstant: 200),
+
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            loginButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginButton.topAnchor.constraint(equalTo: welcomeImageView.bottomAnchor, constant: 30),
             loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             loginButton.heightAnchor.constraint(equalToConstant: 80),
@@ -53,6 +69,10 @@ class WelcomeViewController: UIViewController {
             registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             registerButton.heightAnchor.constraint(equalToConstant: 80),
         ])
+    }
+    
+    private func configureBackground() {
+        view.backgroundColor = .white
     }
     
     @objc private func loginButtonClick() {
