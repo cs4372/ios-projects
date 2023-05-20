@@ -197,9 +197,10 @@ class RegisterViewController: UIViewController {
                 return
             }
             
+            let userId = user.uid
             let storageRef = Storage.storage().reference()
-            let userRef = storageRef.child("user1.jpg")
-            
+            let userRef = storageRef.child("profile_images").child("\(userId).jpg")
+
             if let image = self.profileImageView.image, let imageData = image.pngData() {
                 userRef.putData(imageData, metadata: nil) { metadata, error in
                     if let error = error {
@@ -207,7 +208,7 @@ class RegisterViewController: UIViewController {
                         return
                     }
                     
-                    if let metadata = metadata {
+                    if let _ = metadata {
                         userRef.downloadURL { url, error in
                             if let error = error {
                                 print("Error retrieving download URL: \(error)")
@@ -217,7 +218,6 @@ class RegisterViewController: UIViewController {
                             if let profileImageUrl = url?.absoluteString {
                                 print("Profile image URL: \(profileImageUrl)")
                                 
-                                let userId = user.uid
                                 let userData = [
                                     "id": userId,
                                     "firstName": firstName,
@@ -238,9 +238,7 @@ class RegisterViewController: UIViewController {
                                     let messagesVC = MessagesViewController()
                                     self.navigationController?.pushViewController(messagesVC, animated: true)
                                 }
-                                
                             }
-                            
                             print("Successfully uploaded to Firebase Storage.")
                         }
                     }

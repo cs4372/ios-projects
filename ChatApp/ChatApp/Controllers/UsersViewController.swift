@@ -26,7 +26,7 @@ class UsersViewController: UIViewController {
         tableView.backgroundColor = .white
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(UserCell.self, forCellReuseIdentifier: "userCell")
         view.addSubview(tableView)
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,9 +72,29 @@ extension UsersViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userCell", for: indexPath) as! UserCell
         let user = users[indexPath.row]
-        cell.textLabel?.text = user.firstName
+        cell.nameLabel.text = user.firstName
+        
+        cell.imageView?.contentMode = .scaleAspectFill
+        
+        // Check if the user has a profile image URL
+        if let profileImageUrl = user.profileImageUrl,
+           let url = URL(string: profileImageUrl) {
+            URLSession.shared.dataTask(with: url) { (data, response, error) in
+                if let error = error {
+                    print("Error downloading profile image: \(error)")
+                    return
+                }
+
+                if let data = data, let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        cell.profileImageView.image = image
+                    }
+                }
+            }.resume()
+        }
+
         return cell
     }
 }
