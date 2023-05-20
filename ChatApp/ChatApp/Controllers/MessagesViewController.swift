@@ -25,8 +25,9 @@ class MessagesViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.white
         view.addSubview(messageTableView)
+
         NSLayoutConstraint.activate([
             messageTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             messageTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -55,7 +56,17 @@ class MessagesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        title = "Messages"
+        navigationController?.navigationBar.prefersLargeTitles = true
         messageTableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        title = ""
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     @objc func logoutButtonClick() {
@@ -72,7 +83,7 @@ class MessagesViewController: UIViewController {
         self.navigationController?.pushViewController(usersVC, animated: true)
     }
     
-    func getUserName(userId: String, completion: @escaping (String?, String?) -> Void) {
+    func getUserData(userId: String, completion: @escaping (String?, String?, String?) -> Void) {
         let usersCollection = db.collection("users")
         let userDocRef = usersCollection.document(userId)
         userDocRef.getDocument { (document, error) in
@@ -80,9 +91,10 @@ class MessagesViewController: UIViewController {
                 let data = document.data()
                 let firstName = data?["firstName"] as? String
                 let lastName = data?["lastName"] as? String
-                completion(firstName, lastName)
+                let profileImageUrl = data?["profileImageUrl"] as? String
+                completion(firstName, lastName, profileImageUrl)
             } else {
-                completion(nil, nil)
+                completion(nil, nil, nil)
             }
         }
     }
@@ -131,6 +143,26 @@ class MessagesViewController: UIViewController {
             }
         }
     }
+    
+    func convertTimestampToString(timestamp: TimeInterval) -> String {
+        let currentDate = Date()
+        let date = Date(timeIntervalSince1970: timestamp)
+        
+        let dateFormatter = DateFormatter()
+        
+        if Calendar.current.isDate(date, inSameDayAs: currentDate) {
+            dateFormatter.dateFormat = "h:mm a"
+            return dateFormatter.string(from: date)
+        }
+        
+        if Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .weekOfYear) {
+            dateFormatter.dateFormat = "EEEE"
+            return dateFormatter.string(from: date)
+        }
+        
+        dateFormatter.dateFormat = "M/d/yy"
+        return dateFormatter.string(from: date)
+    }
 }
 
 extension MessagesViewController: UITableViewDataSource {
@@ -141,14 +173,21 @@ extension MessagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
         let message = messages[indexPath.row]
-           cell.messageLabel.text = message.body
+        
+        cell.imageView?.contentMode = .scaleAspectFill
+        
+        cell.messageLabel.text = message.body
         let otherUserId = message.senderId == loggedInUserId ? message.receiverId : message.senderId
         var fullName = ""
-          getUserName(userId: otherUserId) { firstName, lastName in
+          getUserData(userId: otherUserId) { firstName, lastName, profileImageUrl in
             if let firstName = firstName, let lastName = lastName {
                 fullName = "\(firstName) \(lastName)"
             }
+            if let profileImageUrl = profileImageUrl {
+                cell.profileImageView.loadImageUsingCache(urlString: profileImageUrl)
+            }
             cell.nameLabel.text = fullName
+            cell.timestampLabel.text = self.convertTimestampToString(timestamp: message.timestamp)
         }
         cell.messageLabel.text = message.body
         return cell
@@ -166,11 +205,15 @@ extension MessagesViewController: UITableViewDelegate {
         let otherUserId = message.senderId == loggedInUserId ? message.receiverId : message.senderId
         ChatVC.receiverId = otherUserId
         
-        getUserName(userId: otherUserId) { firstName, _ in
+        getUserData(userId: otherUserId) { firstName, lastName, profileImageUrl in
           if let firstName = firstName {
               ChatVC.receiverFirstName = firstName
+              ChatVC.receiverProfileImageUrl = profileImageUrl
+              
+              DispatchQueue.main.async {
+                  self.navigationController?.pushViewController(ChatVC, animated: true)
+              }
           }
       }
-        navigationController?.pushViewController(ChatVC, animated: true)
     }
 }

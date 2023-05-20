@@ -8,6 +8,7 @@
 import UIKit
 
 class ChatCell: UITableViewCell {
+    
     let messageBubbleView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +39,12 @@ class ChatCell: UITableViewCell {
          messageBubbleViewLeftConstraint = messageBubbleView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
          messageBubbleViewRightConstraint = messageBubbleView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16)
         
+        messageLabel.numberOfLines = 0
+         messageLabel.lineBreakMode = .byWordWrapping
+         
+         messageBubbleView.layer.cornerRadius = 10
+         messageBubbleView.clipsToBounds = true
+        
         NSLayoutConstraint.activate([
             messageBubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             messageBubbleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
@@ -50,6 +57,7 @@ class ChatCell: UITableViewCell {
             messageBubbleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50)
         ])
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

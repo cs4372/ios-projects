@@ -22,6 +22,20 @@ class UsersViewController: UIViewController {
         fetchUsers()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        title = "Users"
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        title = ""
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+    
     private func setupTableView() {
         tableView.backgroundColor = .white
         tableView.dataSource = self

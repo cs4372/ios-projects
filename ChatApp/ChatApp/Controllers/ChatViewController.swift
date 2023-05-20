@@ -14,9 +14,18 @@ class ChatViewController: UIViewController {
     private let db = Firestore.firestore()
     var messages = [Message]()
     var receiverFirstName: String?
+    var receiverProfileImageUrl: String?
     var receiverId: String?
     var senderId: String?
     var loggedInUserId: String?
+    
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "person.crop.rectangle")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        return imageView
+    }()
         
     private lazy var messageTableView: UITableView = {
         let tableView = UITableView()
@@ -58,13 +67,21 @@ class ChatViewController: UIViewController {
         loadMessages()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let firstName = receiverFirstName, let imageURL = receiverProfileImageUrl {
+            navigationItem.title = firstName
+            navigationController?.navigationBar.prefersLargeTitles = false
+        }
+        messageTableView.reloadData()
+    }
+    
     @objc private func dismissKeyboard() {
         view.endEditing(true)
     }
     
     private func setupViews() {
-        navigationItem.title = receiverFirstName
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.white
         view.addSubview(messageTableView)
         view.addSubview(messageTextField)
         view.addSubview(sendButton)
@@ -149,7 +166,7 @@ extension ChatViewController: UITableViewDataSource {
         let message = messages[indexPath.row]
         cell.selectionStyle = .none
         cell.messageLabel.text = message.body
-        
+
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
         if message.senderId == Auth.auth().currentUser?.uid {
@@ -167,6 +184,18 @@ extension ChatViewController: UITableViewDataSource {
 
 extension ChatViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        let message = messages[indexPath.row]
+        let messageText = message.body
+        
+        let labelWidth: CGFloat = 200
+        let labelFont = UIFont.systemFont(ofSize: 17)
+        let labelSize = CGSize(width: labelWidth, height: .greatestFiniteMagnitude)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        
+        let estimatedHeight = NSString(string: messageText).boundingRect(with: labelSize, options: options, attributes: [NSAttributedString.Key.font: labelFont], context: nil).height
+        
+        let extraHeight: CGFloat = 30
+        
+        return estimatedHeight + extraHeight
     }
 }
