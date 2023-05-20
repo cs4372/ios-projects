@@ -78,21 +78,8 @@ extension UsersViewController: UITableViewDataSource {
         
         cell.imageView?.contentMode = .scaleAspectFill
         
-        // Check if the user has a profile image URL
-        if let profileImageUrl = user.profileImageUrl,
-           let url = URL(string: profileImageUrl) {
-            URLSession.shared.dataTask(with: url) { (data, response, error) in
-                if let error = error {
-                    print("Error downloading profile image: \(error)")
-                    return
-                }
-
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        cell.profileImageView.image = image
-                    }
-                }
-            }.resume()
+        if let profileImageUrl = user.profileImageUrl {
+            cell.profileImageView.loadImageUsingCache(urlString: profileImageUrl)
         }
 
         return cell

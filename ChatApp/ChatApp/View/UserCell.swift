@@ -37,7 +37,7 @@ class UserCell: UITableViewCell {
             profileImageView.heightAnchor.constraint(equalToConstant: 80),
 
             nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 20),
-            nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
     
