@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 
 class RegisterViewController: UIViewController {
     
@@ -28,6 +29,27 @@ class RegisterViewController: UIViewController {
          backgroundImageView.removeFromSuperview()
      }
     
+    let profileImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "person.crop.rectangle")
+        imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    private lazy var selectImageButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Select your profile picture", for: .normal)
+        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.tintColor = .systemBlue
+        button.addTarget(self, action: #selector(handleSelectImage), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+
     private let firstNameTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "First Name"
@@ -69,7 +91,7 @@ class RegisterViewController: UIViewController {
         return textField
     }()
     
-    private let registerButton: UIButton = {
+    lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Register", for: .normal)
         button.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
@@ -110,6 +132,8 @@ class RegisterViewController: UIViewController {
     }
     
     private func setupViews() {
+        view.addSubview(profileImageView)
+        view.addSubview(selectImageButton)
         view.addSubview(firstNameTextField)
         view.addSubview(lastNameTextField)
         view.addSubview(emailTextField)
@@ -120,8 +144,16 @@ class RegisterViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            profileImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            profileImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            profileImageView.heightAnchor.constraint(equalToConstant: 200),
+            profileImageView.widthAnchor.constraint(equalToConstant: 200),
+
+            selectImageButton.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 20),
+            selectImageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             firstNameTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            firstNameTextField.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            firstNameTextField.topAnchor.constraint(equalTo: selectImageButton.bottomAnchor, constant: 30),
             firstNameTextField.widthAnchor.constraint(equalToConstant: 250),
             firstNameTextField.heightAnchor.constraint(equalToConstant: 50),
             
@@ -165,25 +197,54 @@ class RegisterViewController: UIViewController {
                 return
             }
             
-            let userId = user.uid
-            let userData = [
-                "id": userId,
-                "firstName": firstName,
-                "lastName": lastName,
-                "email": email
-            ]
+            let storageRef = Storage.storage().reference()
+            let userRef = storageRef.child("user1.jpg")
             
-            let db = Firestore.firestore()
-            let userRef = db.collection("users").document(userId)
-            
-            userRef.setData(userData) { error in
-                if let error = error {
-                    print("Error writing user data: \(error)")
-                    return
+            if let image = self.profileImageView.image, let imageData = image.pngData() {
+                userRef.putData(imageData, metadata: nil) { metadata, error in
+                    if let error = error {
+                        print("Error uploading user data: \(error)")
+                        return
+                    }
+                    
+                    if let metadata = metadata {
+                        userRef.downloadURL { url, error in
+                            if let error = error {
+                                print("Error retrieving download URL: \(error)")
+                                return
+                            }
+                            
+                            if let profileImageUrl = url?.absoluteString {
+                                print("Profile image URL: \(profileImageUrl)")
+                                
+                                let userId = user.uid
+                                let userData = [
+                                    "id": userId,
+                                    "firstName": firstName,
+                                    "lastName": lastName,
+                                    "email": email,
+                                    "profileImageUrl": profileImageUrl
+                                ]
+                                
+                                let db = Firestore.firestore()
+                                let userRef = db.collection("users").document(userId)
+                                
+                                userRef.setData(userData) { error in
+                                    if let error = error {
+                                        print("Error writing user data: \(error)")
+                                        return
+                                    }
+                                    
+                                    let messagesVC = MessagesViewController()
+                                    self.navigationController?.pushViewController(messagesVC, animated: true)
+                                }
+                                
+                            }
+                            
+                            print("Successfully uploaded to Firebase Storage.")
+                        }
+                    }
                 }
-                
-                let messagesVC = MessagesViewController()
-                self.navigationController?.pushViewController(messagesVC, animated: true)
             }
         }
     }

@@ -9,7 +9,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    private let loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(named: Constants.BrandColors.blue)
@@ -20,7 +20,7 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
-    private let registerButton: UIButton = {
+    lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Register", for: .normal)
         button.backgroundColor = UIColor(named: Constants.BrandColors.grey)

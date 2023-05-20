@@ -8,6 +8,7 @@ target 'ChatApp' do
   # Pods for ChatApp
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'Firebase/Storage'
   pod 'IQKeyboardManagerSwift'
 
 end

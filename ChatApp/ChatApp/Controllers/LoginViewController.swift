@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
-    private let loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(named: Constants.BrandColors.grey)

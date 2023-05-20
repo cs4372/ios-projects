@@ -51,9 +51,10 @@ class UsersViewController: UIViewController {
                        let firstName = data["firstName"] as? String,
                        let lastName = data["lastName"] as? String,
                        let email = data["email"] as? String,
+                       let profileImageUrl = data["profileImageUrl"] as? String,
                        id != Auth.auth().currentUser?.uid
                     {
-                        let user = User(id: id, firstName: firstName, lastName: lastName, email: email)
+                        let user = User(id: id, firstName: firstName, lastName: lastName, email: email, profileImageUrl: profileImageUrl)
                         self.users.append(user)
                     }
                 }
