@@ -169,14 +169,24 @@ extension ChatViewController: UITableViewDataSource {
 
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
+        cell.imageView?.contentMode = .scaleAspectFill
+        
+        if let profileImageUrl = receiverProfileImageUrl {
+            cell.profileImageView.loadImageUsingCache(urlString: profileImageUrl)
+        }
+        
         if message.senderId == Auth.auth().currentUser?.uid {
             cell.messageBubbleView.backgroundColor = UIColor(named: Constants.BrandColors.blue)
             cell.messageBubbleViewRightConstraint.isActive = true
+            cell.profileImageViewRightConstraint.isActive = true
             cell.messageBubbleViewLeftConstraint.isActive = false
+            cell.profileImageViewLeftConstraint.isActive = false
         } else {
             cell.messageBubbleView.backgroundColor = UIColor(named: Constants.BrandColors.grey)
             cell.messageBubbleViewRightConstraint.isActive = false
+            cell.profileImageViewRightConstraint.isActive = false
             cell.messageBubbleViewLeftConstraint.isActive = true
+            cell.profileImageViewLeftConstraint.isActive = true
         }
         return cell
     }
