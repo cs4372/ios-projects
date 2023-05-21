@@ -61,13 +61,14 @@ class ChatCell: UITableViewCell {
             messageBubbleView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
             messageBubbleView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
             messageBubbleView.widthAnchor.constraint(greaterThanOrEqualToConstant: 50),
+
             
             messageLabel.topAnchor.constraint(equalTo: messageBubbleView.topAnchor, constant: 8),
             messageLabel.leadingAnchor.constraint(equalTo: messageBubbleView.leadingAnchor, constant: 8),
             messageLabel.trailingAnchor.constraint(equalTo: messageBubbleView.trailingAnchor, constant: -8),
             messageLabel.centerXAnchor.constraint(equalTo: messageBubbleView.centerXAnchor),
             messageLabel.centerYAnchor.constraint(equalTo: messageBubbleView.centerYAnchor),
-            messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200)
+            messageLabel.widthAnchor.constraint(lessThanOrEqualToConstant: 200),
         ])
         
         profileImageViewLeftConstraint = profileImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20)

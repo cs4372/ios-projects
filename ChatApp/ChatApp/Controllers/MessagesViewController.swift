@@ -163,6 +163,20 @@ class MessagesViewController: UIViewController {
         dateFormatter.dateFormat = "M/d/yy"
         return dateFormatter.string(from: date)
     }
+    
+    func getProfileImageUrl(for userId: String, completion: @escaping (String?) -> Void) {
+        let userRef = Firestore.firestore().collection("users").document(userId)
+        
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let userData = document.data()
+                let profileImageUrl = userData?["profileImageUrl"] as? String
+                completion(profileImageUrl)
+            } else {
+                completion(nil)
+            }
+        }
+    }
 }
 
 extension MessagesViewController: UITableViewDataSource {
@@ -205,15 +219,27 @@ extension MessagesViewController: UITableViewDelegate {
         let otherUserId = message.senderId == loggedInUserId ? message.receiverId : message.senderId
         ChatVC.receiverId = otherUserId
         
-        getUserData(userId: otherUserId) { firstName, lastName, profileImageUrl in
-          if let firstName = firstName {
-              ChatVC.receiverFirstName = firstName
-              ChatVC.receiverProfileImageUrl = profileImageUrl
-              
-              DispatchQueue.main.async {
-                  self.navigationController?.pushViewController(ChatVC, animated: true)
-              }
-          }
-      }
+        getUserData(userId: otherUserId) { firstName, lastName, selectedProfileImageUrl in
+            if let firstName = firstName {
+                ChatVC.receiverFirstName = firstName
+                ChatVC.receiverProfileImageUrl = selectedProfileImageUrl
+            }
+            
+            let group = DispatchGroup()
+            
+            if let loggedInUserId = self.loggedInUserId {
+                group.enter()
+                self.getProfileImageUrl(for: loggedInUserId) { profileImageUrl in
+                    if let profileImageUrl = profileImageUrl {
+                        ChatVC.currentUserProfileImageUrl = profileImageUrl
+                    }
+                    group.leave()
+                }
+            }
+            
+            group.notify(queue: .main) {
+                self.navigationController?.pushViewController(ChatVC, animated: true)
+            }
+        }
     }
 }

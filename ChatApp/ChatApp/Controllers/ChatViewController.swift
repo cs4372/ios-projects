@@ -15,6 +15,7 @@ class ChatViewController: UIViewController {
     var messages = [Message]()
     var receiverFirstName: String?
     var receiverProfileImageUrl: String?
+    var currentUserProfileImageUrl: String?
     var receiverId: String?
     var senderId: String?
     var loggedInUserId: String?
@@ -170,9 +171,11 @@ extension ChatViewController: UITableViewDataSource {
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
         cell.imageView?.contentMode = .scaleAspectFill
-        
-        if let profileImageUrl = receiverProfileImageUrl {
-            cell.profileImageView.loadImageUsingCache(urlString: profileImageUrl)
+
+        if message.senderId == loggedInUserId {
+            cell.profileImageView.loadImageUsingCache(urlString: currentUserProfileImageUrl!)
+        } else {
+            cell.profileImageView.loadImageUsingCache(urlString: receiverProfileImageUrl!)
         }
         
         if message.senderId == Auth.auth().currentUser?.uid {
