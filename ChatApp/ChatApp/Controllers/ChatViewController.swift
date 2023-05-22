@@ -9,16 +9,16 @@ import UIKit
 import FirebaseFirestore
 import FirebaseAuth
 
-class ChatViewController: UIViewController {
+class ChatViewController: UIViewController, UITextFieldDelegate {
         
     private let db = Firestore.firestore()
-    var messages = [Message]()
+    private var messages = [Message]()
+    private var senderId: String?
+    private var loggedInUserId: String?
     var receiverFirstName: String?
     var receiverProfileImageUrl: String?
     var currentUserProfileImageUrl: String?
     var receiverId: String?
-    var senderId: String?
-    var loggedInUserId: String?
     
     let profileImageView: UIImageView = {
         let imageView = UIImageView()
@@ -42,8 +42,9 @@ class ChatViewController: UIViewController {
     private lazy var messageTextField: UITextField = {
         let textField = UITextField()
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         textField.borderStyle = .roundedRect
-        textField.placeholder = "Type your message here..."
+        textField.placeholder = "Enter your message here..."
         textField.returnKeyType = .send
         return textField
     }()
@@ -57,8 +58,17 @@ class ChatViewController: UIViewController {
         return button
     }()
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == messageTextField {
+            sendMessageClick()
+        }
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
                 
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGesture)
@@ -68,9 +78,21 @@ class ChatViewController: UIViewController {
         loadMessages()
     }
     
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.messageTableView.reloadData()
+            let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+            self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let firstName = receiverFirstName, let imageURL = receiverProfileImageUrl {
+        if let firstName = receiverFirstName {
             navigationItem.title = firstName
             navigationController?.navigationBar.prefersLargeTitles = false
         }
@@ -147,8 +169,8 @@ class ChatViewController: UIViewController {
                             
                             DispatchQueue.main.async {
                                 self.messageTableView.reloadData()
-                                let indexPath = IndexPath(row: self.messages.count-1, section: 0)
-                                self.messageTableView.scrollToRow(at: indexPath, at: .top, animated: true)
+                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
                         }
                     }
                 }
