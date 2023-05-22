@@ -13,6 +13,7 @@ class MessageCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.crop.rectangle")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         return imageView
     }()

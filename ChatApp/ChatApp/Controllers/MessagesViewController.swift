@@ -155,7 +155,7 @@ class MessagesViewController: UIViewController {
             return dateFormatter.string(from: date)
         }
         
-        if Calendar.current.isDate(date, equalTo: currentDate, toGranularity: .weekOfYear) {
+        if let daysAgo = Calendar.current.dateComponents([.day], from: date, to: currentDate).day, daysAgo < 7 {
             dateFormatter.dateFormat = "EEEE"
             return dateFormatter.string(from: date)
         }
@@ -187,13 +187,11 @@ extension MessagesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as! MessageCell
         let message = messages[indexPath.row]
-        
-        cell.imageView?.contentMode = .scaleAspectFill
-        
+                
         cell.messageLabel.text = message.body
         let otherUserId = message.senderId == loggedInUserId ? message.receiverId : message.senderId
         var fullName = ""
-          getUserData(userId: otherUserId) { firstName, lastName, profileImageUrl in
+        getUserData(userId: otherUserId) { firstName, lastName, profileImageUrl in
             if let firstName = firstName, let lastName = lastName {
                 fullName = "\(firstName) \(lastName)"
             }

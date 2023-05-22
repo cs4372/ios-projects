@@ -78,6 +78,22 @@ class UsersViewController: UIViewController {
             }
         }
     }
+    
+    func getUserData(userId: String, completion: @escaping (String?, String?, String?) -> Void) {
+        let usersCollection = db.collection("users")
+        let userDocRef = usersCollection.document(userId)
+        userDocRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let data = document.data()
+                let firstName = data?["firstName"] as? String
+                let lastName = data?["lastName"] as? String
+                let profileImageUrl = data?["profileImageUrl"] as? String
+                completion(firstName, lastName, profileImageUrl)
+            } else {
+                completion(nil, nil, nil)
+            }
+        }
+    }
 }
 
 extension UsersViewController: UITableViewDataSource {
@@ -98,6 +114,20 @@ extension UsersViewController: UITableViewDataSource {
 
         return cell
     }
+    
+    func getProfileImageUrl(for userId: String, completion: @escaping (String?) -> Void) {
+        let userRef = Firestore.firestore().collection("users").document(userId)
+        
+        userRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let userData = document.data()
+                let profileImageUrl = userData?["profileImageUrl"] as? String
+                completion(profileImageUrl)
+            } else {
+                completion(nil)
+            }
+        }
+    }
 }
 
 extension UsersViewController: UITableViewDelegate {
@@ -108,8 +138,25 @@ extension UsersViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
         let ChatVC = ChatViewController()
+        
         ChatVC.receiverId = user.id
         ChatVC.receiverFirstName = user.firstName
-        navigationController?.pushViewController(ChatVC, animated: true)
+        ChatVC.receiverProfileImageUrl = user.profileImageUrl
+
+        let group = DispatchGroup()
+        
+        if let loggedInUserId = Auth.auth().currentUser?.uid {
+            group.enter()
+            self.getProfileImageUrl(for: loggedInUserId) { profileImageUrl in
+                if let profileImageUrl = profileImageUrl {
+                    ChatVC.currentUserProfileImageUrl = profileImageUrl
+                }
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.navigationController?.pushViewController(ChatVC, animated: true)
+        }
     }
 }
