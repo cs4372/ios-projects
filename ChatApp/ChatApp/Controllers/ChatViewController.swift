@@ -126,26 +126,29 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
     }
         
     @objc private func sendMessageClick() {
-        if let messageText = messageTextField.text,
-           let receiverId = receiverId, let senderId = Auth.auth().currentUser?.uid {
-            let messageId = db.collection("messages").document().documentID
+        if let messageText = messageTextField.text, let receiverId = receiverId,
+           let senderId = Auth.auth().currentUser?.uid {
+            let newMessageRef = db.collection("messages").document()
+            let messageId = newMessageRef.documentID
             
-            db.collection("messages").addDocument(data: [
+            newMessageRef.setData([
                 "id": messageId,
-                "senderId": Auth.auth().currentUser?.uid,
+                "senderId": senderId,
                 "receiverId": receiverId,
                 "body": messageText,
                 "timestamp": Date().timeIntervalSince1970
             ]) { (error) in
-                if let e = error {
-                    print("There was an issue saving data to Firestore, \(e)")
+                if let error = error {
+                    print("There was an issue saving data to Firestore: \(error)")
                 } else {
                     print("Successfully saved data.")
                 }
             }
-          DispatchQueue.main.async {
-              self.messageTextField.text = ""
-          }
+            
+            DispatchQueue.main.async {
+                self.messageTextField.text = ""
+            }
+            
             self.loadMessages()
         }
     }
