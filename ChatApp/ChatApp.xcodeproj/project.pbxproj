@@ -13,6 +13,7 @@
 		4701A0F82A1861CF00D411BD /* RegisterViewController+handlers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A0F72A1861CE00D411BD /* RegisterViewController+handlers.swift */; };
 		4701A0FA2A188B9100D411BD /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A0F92A188B9100D411BD /* UserCell.swift */; };
 		4701A0FD2A19328600D411BD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A0FC2A19328600D411BD /* Extensions.swift */; };
+		4701A1052A1C7F3500D411BD /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4701A1042A1C7F3500D411BD /* DateUtils.swift */; };
 		471C16162A08420200D974EA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C16152A08420200D974EA /* AppDelegate.swift */; };
 		471C16182A08420200D974EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C16172A08420200D974EA /* SceneDelegate.swift */; };
 		471C161F2A08420500D974EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 471C161E2A08420500D974EA /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		4701A0F72A1861CE00D411BD /* RegisterViewController+handlers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterViewController+handlers.swift"; sourceTree = "<group>"; };
 		4701A0F92A188B9100D411BD /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		4701A0FC2A19328600D411BD /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4701A1042A1C7F3500D411BD /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		471C16122A08420200D974EA /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471C16152A08420200D974EA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		471C16172A08420200D974EA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				4701A0F52A14850000D411BD /* Constants.swift */,
 				4701A0FC2A19328600D411BD /* Extensions.swift */,
+				4701A1042A1C7F3500D411BD /* DateUtils.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				471C16412A09E56F00D974EA /* Message.swift in Sources */,
 				4701A0FD2A19328600D411BD /* Extensions.swift in Sources */,
 				471C162C2A0844DE00D974EA /* LoginViewController.swift in Sources */,
+				4701A1052A1C7F3500D411BD /* DateUtils.swift in Sources */,
 				471C163F2A08C2BA00D974EA /* ChatViewController.swift in Sources */,
 				471C16182A08420200D974EA /* SceneDelegate.swift in Sources */,
 				471C163A2A08A03800D974EA /* UsersViewController.swift in Sources */,

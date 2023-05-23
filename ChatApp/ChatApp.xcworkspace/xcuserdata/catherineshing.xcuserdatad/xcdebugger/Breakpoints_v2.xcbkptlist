@@ -14,10 +14,10 @@
             filePath = "ChatApp/Controllers/ChatViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "loadMessages()"
-            landmarkType = "7">
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "6EACE560-38E8-4B35-8348-8C749B83B777 - cd4da9f9670661a9"
@@ -122,9 +122,9 @@
             filePath = "ChatApp/Controllers/MessagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "getProfileImageUrl(for:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,9 +138,9 @@
             filePath = "ChatApp/Controllers/MessagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "getProfileImageUrl(for:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -154,8 +154,8 @@
             filePath = "ChatApp/Controllers/MessagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -170,9 +170,9 @@
             filePath = "ChatApp/Controllers/MessagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "193"
-            endingLineNumber = "193"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "getProfileImageUrl(for:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -186,8 +186,8 @@
             filePath = "ChatApp/Controllers/MessagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "getUserData(userId:completion:)"
             landmarkType = "7">
             <Locations>
@@ -234,8 +234,8 @@
             filePath = "ChatApp/Controllers/MessagesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "getUserData(userId:completion:)"
             landmarkType = "7">
             <Locations>

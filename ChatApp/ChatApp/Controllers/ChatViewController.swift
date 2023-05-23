@@ -80,9 +80,11 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func keyboardWillHide(_ notification: Notification) {
         DispatchQueue.main.async {
-            self.messageTableView.reloadData()
-            let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
-            self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            if !self.messages.isEmpty {
+                self.messageTableView.reloadData()
+                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            }
         }
     }
     
@@ -168,9 +170,11 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
                             self.messages.append(newMessage)
                             
                             DispatchQueue.main.async {
-                                self.messageTableView.reloadData()
-                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
-                                self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                if !self.messages.isEmpty {
+                                    self.messageTableView.reloadData()
+                                    let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                    self.messageTableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                                }
                         }
                     }
                 }
