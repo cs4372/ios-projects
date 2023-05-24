@@ -117,7 +117,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Register", for: .normal)
         button.addTarget(self, action: #selector(registerButtonClick), for: .touchUpInside)
         button.backgroundColor = UIColor(named: Constants.BrandColors.grey)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor(named: Constants.BrandColors.backgroundColor), for: .normal)
         button.layer.cornerRadius = 10
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -142,7 +142,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func configureBackground() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: Constants.BrandColors.backgroundColor)
         
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),

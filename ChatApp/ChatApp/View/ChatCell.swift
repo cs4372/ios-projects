@@ -34,7 +34,7 @@ class ChatCell: UITableViewCell {
     let messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = UIColor(named: Constants.BrandColors.backgroundColor)
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 16)
         label.lineBreakMode = .byWordWrapping

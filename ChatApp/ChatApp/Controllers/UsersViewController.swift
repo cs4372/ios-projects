@@ -37,7 +37,7 @@ class UsersViewController: UIViewController {
     }
     
     private func setupTableView() {
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = UIColor(named: Constants.BrandColors.backgroundColor)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UserCell.self, forCellReuseIdentifier: "userCell")

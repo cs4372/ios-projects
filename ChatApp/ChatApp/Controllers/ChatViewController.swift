@@ -34,7 +34,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .none
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = UIColor(named: Constants.BrandColors.backgroundColor)
         tableView.register(ChatCell.self, forCellReuseIdentifier: "chatCell")
         return tableView
     }()
@@ -106,7 +106,7 @@ class ChatViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func setupViews() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(named: Constants.BrandColors.backgroundColor)
         view.addSubview(messageTableView)
         view.addSubview(messageTextField)
         view.addSubview(sendButton)

@@ -12,6 +12,7 @@ struct Constants {
         static let blue = "BrandBlue"
         static let grey = "BrandGrey"
         static let lightBlue = "BrandLightBlue"
+        static let backgroundColor = "BackgroundColor"
     }
 }
 

@@ -15,6 +15,7 @@ class MessagesViewController: UIViewController {
     private var loggedInUserId: String?
     private var users: [User] = []
     private var messages = [Message]()
+    private var groupedMessages: [String: [Message]] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,7 @@ class MessagesViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(named: Constants.BrandColors.backgroundColor)
         view.addSubview(messageTableView)
 
         NSLayoutConstraint.activate([
@@ -61,7 +62,7 @@ class MessagesViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         messageTableView.reloadData()
     }
-    
+        
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -108,7 +109,7 @@ class MessagesViewController: UIViewController {
                     return
                 }
                 self.messages = []
-                var groupedMessages: [String: [Message]] = [:]
+                self.groupedMessages = [:]
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
@@ -118,19 +119,19 @@ class MessagesViewController: UIViewController {
                                 let newMessage = Message(id: messageId, senderId: messageSender, receiverId: receiverId, body: messageBody, timestamp: timestamp)
                                 let id1 = "\(messageSender)-\(receiverId)"
                                 let id2 = "\(receiverId)-\(messageSender)"
-                                if let existingMessages = groupedMessages[id1] {
-                                    groupedMessages[id1] = existingMessages + [newMessage]
-                                } else if let existingMessages = groupedMessages[id2] {
-                                    groupedMessages[id2] = existingMessages + [newMessage]
+                                if let existingMessages = self.groupedMessages[id1] {
+                                    self.groupedMessages[id1] = existingMessages + [newMessage]
+                                } else if let existingMessages = self.groupedMessages[id2] {
+                                    self.groupedMessages[id2] = existingMessages + [newMessage]
                                 } else {
-                                    groupedMessages[id1] = [newMessage]
+                                    self.groupedMessages[id1] = [newMessage]
                                 }
                             }
                         }
                     }
                 }
 
-                for (_, items) in groupedMessages {
+                for (_, items) in self.groupedMessages {
                     if let firstMessage = items.first {
                         self.messages.append(firstMessage)
                     }

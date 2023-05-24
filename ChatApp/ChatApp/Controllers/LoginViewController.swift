@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
         button.backgroundColor = UIColor(named: Constants.BrandColors.grey)
-        button.setTitleColor(.white, for: .normal)
+        button.setTitleColor(UIColor(named: Constants.BrandColors.backgroundColor), for: .normal)
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(loginButtonClick), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -78,7 +78,7 @@ class LoginViewController: UIViewController {
     }()
     
     private func configureBackground() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: Constants.BrandColors.backgroundColor)
         
         NSLayoutConstraint.activate([
             backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor),
