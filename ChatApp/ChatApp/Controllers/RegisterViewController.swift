@@ -210,57 +210,56 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in            
             if let error = error {
-                print("Error creating user: \(error)")
-                return
-            }
-            guard let user = authResult?.user else {
-                print("Error: User not found.")
+                self.handleError(error)
                 return
             }
             
-            let userId = user.uid
-            let storageRef = Storage.storage().reference()
-            let userRef = storageRef.child("profile_images").child("\(userId).jpg")
+            if let user = authResult?.user {
+                let userId = user.uid
+                
+                let storageRef = Storage.storage().reference()
+                let userRef = storageRef.child("profile_images").child("\(userId).jpg")
 
-            if let image = self.profileImageView.image, let imageData = image.pngData() {
-                userRef.putData(imageData, metadata: nil) { metadata, error in
-                    if let error = error {
-                        print("Error uploading user data: \(error)")
-                        return
-                    }
-                    
-                    if let _ = metadata {
-                        userRef.downloadURL { url, error in
-                            if let error = error {
-                                print("Error retrieving download URL: \(error)")
-                                return
-                            }
-                            
-                            if let profileImageUrl = url?.absoluteString {
-                                print("Profile image URL: \(profileImageUrl)")
-                                
-                                let userData = [
-                                    "id": userId,
-                                    "firstName": firstName,
-                                    "lastName": lastName,
-                                    "email": email,
-                                    "profileImageUrl": profileImageUrl
-                                ]
-                                
-                                let db = Firestore.firestore()
-                                let userRef = db.collection("users").document(userId)
-                                
-                                userRef.setData(userData) { error in
-                                    if let error = error {
-                                        print("Error writing user data: \(error)")
-                                        return
-                                    }
-                                    
-                                    let messagesVC = MessagesViewController()
-                                    self.navigationController?.pushViewController(messagesVC, animated: true)
+                if let image = self.profileImageView.image, let imageData = image.pngData() {
+                    userRef.putData(imageData, metadata: nil) { metadata, error in
+                        if let error = error {
+                            print("Error uploading user data: \(error)")
+                            return
+                        }
+                        
+                        if let _ = metadata {
+                            userRef.downloadURL { url, error in
+                                if let error = error {
+                                    print("Error retrieving download URL: \(error)")
+                                    return
                                 }
+                                
+                                if let profileImageUrl = url?.absoluteString {
+                                    print("Profile image URL: \(profileImageUrl)")
+                                    
+                                    let userData = [
+                                        "id": userId,
+                                        "firstName": firstName,
+                                        "lastName": lastName,
+                                        "email": email,
+                                        "profileImageUrl": profileImageUrl
+                                    ]
+                                    
+                                    let db = Firestore.firestore()
+                                    let userRef = db.collection("users").document(userId)
+                                    
+                                    userRef.setData(userData) { error in
+                                        if let error = error {
+                                            print("Error writing user data: \(error)")
+                                            return
+                                        }
+                                        
+                                        let messagesVC = MessagesViewController()
+                                        self.navigationController?.pushViewController(messagesVC, animated: true)
+                                    }
+                                }
+                                print("Successfully uploaded to Firebase Storage.")
                             }
-                            print("Successfully uploaded to Firebase Storage.")
                         }
                     }
                 }

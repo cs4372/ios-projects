@@ -121,7 +121,7 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
-                print("Error signing in: \(error)")
+                self.handleError(error)
                 return
             }
             
