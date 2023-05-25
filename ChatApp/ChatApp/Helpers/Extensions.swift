@@ -65,13 +65,10 @@ extension UIViewController{
     func handleError(_ error: Error) {
         
         if let errorCode = AuthErrorCode.Code(rawValue: error._code) {
-            print(errorCode.errorMessage)
             let alert = UIAlertController(title: "Error", message: errorCode.errorMessage, preferredStyle: .alert)
-
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-
+            
             alert.addAction(okAction)
-
             self.present(alert, animated: true, completion: nil)
 
         }
