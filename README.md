@@ -29,10 +29,21 @@ This is a collection of projects that aims to solidify my understanding of the f
 </div>
 
 #### [Tic Tac Toe](https://github.com/cs4372/ios-projects/tree/master/Tic-Tac-Toe)
-- A classic tic tac toe game played between 2 players on a 3x3 grid. Players take turns placing either a nought or a cross on an empty cell with the goal of getting three of their symbols in a row, either horizontally, vertically, or diagonally. I built this app early on when I started learning Swift, and in the future, I would like to refactor it by using the MVC pattern. 
+- A classic tic tac toe game played between 2 players on a 3x3 grid. Players take turns placing either a nought or a cross on an empty cell with the goal of getting three of their symbols in a row, either horizontally, vertically, or diagonally.
 <div style="display: flex;">
   <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe2.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe3.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/Tic-Tac-Toe/Screenshots/tictactoe4.png" height="350px"/>
+</div>
+
+#### [Chat App](https://github.com/cs4372/ios-projects/tree/master/ChatApp/ChatApp)
+- Application that allows users to send text messages to other users in real-time. Built using Firebase Storage, a NoSQL cloud database for instant synchronization across devices, Firebase Authentication for secure user authentication, and Firebase Storage for storing profile pictures securely.
+<div style="display: flex;">
+  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/welcomeVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/LoginVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/registerVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/MessagesVC.png" height="350px"/>
+   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/ChatVC.png" height="350px"/>
+   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/UsersVC.png" height="350px"/>
 </div>
