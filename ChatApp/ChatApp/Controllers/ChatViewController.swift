@@ -194,13 +194,9 @@ extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "chatCell", for: indexPath) as! ChatCell
         let message = messages[indexPath.row]
-        cell.selectionStyle = .none
         cell.messageLabel.text = message.body
-
         cell.messageBubbleView.backgroundColor = message.senderId == self.senderId ? UIColor.blue : UIColor.gray
         
-        cell.imageView?.contentMode = .scaleAspectFill
-
         if message.senderId == loggedInUserId {
             cell.profileImageView.loadImageUsingCache(urlString: currentUserProfileImageUrl!)
         } else {

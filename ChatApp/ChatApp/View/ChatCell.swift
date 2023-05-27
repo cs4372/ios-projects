@@ -14,9 +14,10 @@ class ChatCell: UITableViewCell {
         imageView.image = UIImage(systemName: "person.crop.rectangle")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }()
-    
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2

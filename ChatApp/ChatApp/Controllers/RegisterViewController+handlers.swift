@@ -10,13 +10,14 @@ import UIKit
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc func handleSelectImage() {
-        let imagePicker = UIImagePickerController()
-        
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = true
-        
-        present(imagePicker, animated: true, completion: nil)
-
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

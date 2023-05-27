@@ -51,8 +51,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
      }
     
     let profileImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.crop.rectangle")
+        let imageView = CircularImageView()
+        imageView.image = UIImage(systemName: "person.crop.circle")
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -265,5 +265,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+}
+
+class CircularImageView: UIImageView {
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.width / 2
+        layer.masksToBounds = true
     }
 }
