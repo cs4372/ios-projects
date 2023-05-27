@@ -41,9 +41,8 @@ This is a collection of projects that aims to solidify my understanding of the f
 - Application that allows users to send text messages to other users in real-time. Built using Firebase Storage, a NoSQL cloud database for instant synchronization across devices, Firebase Authentication for secure user authentication, and Firebase Storage for storing profile pictures securely.
 <div style="display: flex;">
   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/welcomeVC.png" height="350px"/>
-  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/LoginVC.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/registerVC.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/MessagesVC.png" height="350px"/>
-   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/ChatVC.png" height="350px"/>
-   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/UsersVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/ChatVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/UsersVC.png" height="350px"/>
 </div>
