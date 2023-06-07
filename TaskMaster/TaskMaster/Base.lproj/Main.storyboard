@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="itL-p5-UWw">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tasks-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TaskViewController" customModule="TaskMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yVh-BW-179">
+                                <rect key="frame" x="20" y="139" width="337" height="581"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dvK-Rf-dIP">
+                                    <size key="itemSize" width="215" height="272"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaskCollectionViewCell" id="e1q-JY-RXA" customClass="TaskCollectionViewCell" customModule="TaskMaster" customModuleProvider="target">
+                                        <rect key="frame" x="61" y="0.0" width="215" height="272"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hmt-tC-XTp">
+                                            <rect key="frame" x="0.0" y="0.0" width="215" height="272"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clean the garden" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGd-jm-tIC">
+                                                    <rect key="frame" x="8" y="208.66666666666666" width="199" height="25.333333333333343"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 Jan" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4P3-xM-uv7">
+                                                    <rect key="frame" x="8" y="30.000000000000004" width="199" height="32.333333333333343"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXN-aZ-zWu">
+                                                    <rect key="frame" x="156" y="18.000000000000004" width="49" height="34.333333333333343"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="square" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="toggleCheckbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1hw-5H-DUj"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="4P3-xM-uv7" secondAttribute="trailing" id="IgE-aG-MeW"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="SGd-jm-tIC" secondAttribute="bottom" constant="30" id="Ohl-OI-g5f"/>
+                                                <constraint firstItem="SGd-jm-tIC" firstAttribute="centerX" secondItem="hmt-tC-XTp" secondAttribute="centerX" id="WnH-A6-qc8"/>
+                                                <constraint firstItem="SGd-jm-tIC" firstAttribute="leading" secondItem="hmt-tC-XTp" secondAttribute="leadingMargin" id="XVM-vI-xV7"/>
+                                                <constraint firstItem="4P3-xM-uv7" firstAttribute="top" secondItem="hmt-tC-XTp" secondAttribute="top" constant="30" id="XgN-tA-jGp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SGd-jm-tIC" secondAttribute="trailing" id="Xly-rR-g3B"/>
+                                                <constraint firstItem="WXN-aZ-zWu" firstAttribute="top" secondItem="hmt-tC-XTp" secondAttribute="topMargin" constant="10" id="geE-xL-Ior"/>
+                                                <constraint firstItem="4P3-xM-uv7" firstAttribute="centerX" secondItem="hmt-tC-XTp" secondAttribute="centerX" id="hwD-ts-ibB"/>
+                                                <constraint firstItem="4P3-xM-uv7" firstAttribute="leading" secondItem="hmt-tC-XTp" secondAttribute="leadingMargin" id="mTP-rU-56L"/>
+                                                <constraint firstAttribute="trailing" secondItem="WXN-aZ-zWu" secondAttribute="trailing" constant="10" id="x57-fs-R0a"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <color key="backgroundColor" red="0.48627450979999998" green="0.64313725489999995" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <gestureRecognizers/>
+                                        <size key="customSize" width="215" height="272"/>
+                                        <connections>
+                                            <outlet property="DateLabel" destination="4P3-xM-uv7" id="pEa-fc-yFN"/>
+                                            <outlet property="checkboxButton" destination="WXN-aZ-zWu" id="tro-Nx-f9y"/>
+                                            <outlet property="taskLabel" destination="SGd-jm-tIC" id="6Od-1p-ifG"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ary-Jh-Oae">
+                                <rect key="frame" x="323" y="74" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.99991959330000002" green="0.71596952390000002" blue="0.48343690020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="H1Q-bN-JxP"/>
+                                    <constraint firstAttribute="height" constant="40" id="Vfd-Gy-ptc"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ff-1W-cR7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="yVh-BW-179" secondAttribute="trailing" constant="20" id="Bb0-IK-wNg"/>
+                            <constraint firstItem="Ary-Jh-Oae" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="OKZ-1u-QZI"/>
+                            <constraint firstItem="yVh-BW-179" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fIJ-UB-wqt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ary-Jh-Oae" secondAttribute="trailing" constant="30" id="jFh-z1-T50"/>
+                            <constraint firstItem="yVh-BW-179" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="ydy-6A-6af"/>
+                            <constraint firstItem="yVh-BW-179" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zJy-K0-iqx"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Tasks" image="list.bullet.clipboard" catalog="system" id="Bqq-9w-uvN"/>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="addTaskButton" destination="Ary-Jh-Oae" id="Ki2-YE-amG"/>
+                        <outlet property="collectionView" destination="yVh-BW-179" id="QWZ-7t-nOn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="984" y="5"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="uV4-Vz-ml6">
+            <objects>
+                <viewController id="qWb-z1-RcJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qly-JC-ded">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="byB-Kj-apQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="aK7-lr-041"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-Ug-nYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2393" y="195"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="H0i-Cf-iVh">
+            <objects>
+                <viewController id="NRe-eL-vG5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1dF-i4-P00">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qqC-lR-sgn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="ayF-aZ-a8Q"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8kY-R0-5KH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2422" y="-489"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="CFz-lM-JJ1">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="itL-p5-UWw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="whJ-jz-eBR">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="6Mj-jj-W62"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vc-nv-s0F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93.89312977099236" y="4.9295774647887329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="list.bullet.clipboard" catalog="system" width="103" height="128"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <image name="square" catalog="system" width="128" height="114"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
