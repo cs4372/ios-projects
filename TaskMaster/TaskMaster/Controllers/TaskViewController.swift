@@ -7,8 +7,9 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
-class TaskViewController: UIViewController {
+class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addTaskButton: UIButton!
@@ -35,29 +36,17 @@ class TaskViewController: UIViewController {
         addTaskButton.clipsToBounds = true
     }
     
+    func didAddTask(_ task: Task) {
+        self.tasks?.append(task)
+        self.saveTasks()
+        self.collectionView.reloadData()
+    }
+    
     @IBAction func addTask(_ sender: UIButton) {
-        var textField = UITextField()
+        let addTaskViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+        addTaskViewController.delegate = self
 
-        let alert = UIAlertController(title: "Add New Task", message: "", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Add Task", style: .default) { (action) in
-            let newTask = Task(context: self.context)
-            newTask.title = textField.text!
-            newTask.dueDate = Date()
-            newTask.isCompleted = false
-
-            self.tasks?.append(newTask)
-            self.saveTasks()
-            self.collectionView.reloadData()
-        }
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create New Item"
-            textField = alertTextField
-        }
-        
-        alert.addAction(action)
-        
-        present(alert, animated: true, completion: nil)
+        presentPanModal(addTaskViewController)
     }
     
     
@@ -103,6 +92,13 @@ extension TaskViewController: UICollectionViewDataSource {
         
         if let task = tasks?[indexPath.row] {
             cell.taskLabel?.text = task.title ?? "No Tasks Added Yet"
+            
+            if let color = UIColor(hexString: task.taskColor ?? "CA4E3") {
+                cell.taskLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+                cell.DateLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+                cell.backgroundColor = color
+            }
+
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd-MMM EEE"
@@ -113,7 +109,6 @@ extension TaskViewController: UICollectionViewDataSource {
             let checkboxImage = task.isCompleted ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square")
             cell.checkboxButton.setImage(checkboxImage, for: .normal)
         }
-
         return cell
     }
 }

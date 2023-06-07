@@ -17,10 +17,5 @@ class TaskCollectionViewCell: UICollectionViewCell {
          super.awakeFromNib()
          
          layer.cornerRadius = 10
-         layer.masksToBounds = true
-         layer.borderWidth = 5
-         layer.borderColor = UIColor(red: 0.49, green: 0.64, blue: 0.89, alpha: 1.0).cgColor
      }
-    
-    
 }

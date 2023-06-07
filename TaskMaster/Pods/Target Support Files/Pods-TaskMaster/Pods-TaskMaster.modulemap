@@ -1,0 +1,6 @@
+framework module Pods_TaskMaster {
+  umbrella header "Pods-TaskMaster-umbrella.h"
+
+  export *
+  module * { export * }
+}

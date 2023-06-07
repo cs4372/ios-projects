@@ -19,7 +19,7 @@ extension Task {
     @NSManaged public var title: String?
     @NSManaged public var dueDate: Date?
     @NSManaged public var isCompleted: Bool
-
+    @NSManaged public var taskColor: String?
 }
 
 extension Task : Identifiable {

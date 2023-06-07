@@ -116,6 +116,72 @@
             </objects>
             <point key="canvasLocation" x="984" y="5"/>
         </scene>
+        <!--Add Task View Controller-->
+        <scene sceneID="M7h-Qf-acx">
+            <objects>
+                <viewController storyboardIdentifier="AddTaskViewController" id="amQ-6w-GwM" customClass="AddTaskViewController" customModule="TaskMaster" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QYF-4A-WIh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yh-lG-vMc">
+                                <rect key="frame" x="40" y="89" width="353" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A69-4b-nD2">
+                                <rect key="frame" x="166.66666666666666" y="223" width="99.999999999999972" height="34.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="I4C-iW-uoP"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Save"/>
+                                <connections>
+                                    <action selector="saveTask:" destination="amQ-6w-GwM" eventType="touchUpInside" id="A2g-jN-UuW"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yLR-dr-nmk">
+                                <rect key="frame" x="40" y="143" width="353" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06M-Dl-6p9">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ROo-RF-o34">
+                                        <rect key="frame" x="36" y="0.0" width="317" height="50"/>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="4ob-SH-O6Y"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Khl-tx-I1s"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="A69-4b-nD2" firstAttribute="top" secondItem="yLR-dr-nmk" secondAttribute="bottom" constant="30" id="92P-Wd-wuJ"/>
+                            <constraint firstItem="yLR-dr-nmk" firstAttribute="top" secondItem="9yh-lG-vMc" secondAttribute="bottom" constant="20" id="9L0-rR-c0s"/>
+                            <constraint firstItem="9yh-lG-vMc" firstAttribute="top" secondItem="Khl-tx-I1s" secondAttribute="top" constant="30" id="Bqy-Wi-fX2"/>
+                            <constraint firstItem="yLR-dr-nmk" firstAttribute="leading" secondItem="Khl-tx-I1s" secondAttribute="leading" constant="40" id="G8j-nh-Ggd"/>
+                            <constraint firstItem="yLR-dr-nmk" firstAttribute="centerX" secondItem="QYF-4A-WIh" secondAttribute="centerX" id="TwY-7w-bF1"/>
+                            <constraint firstItem="A69-4b-nD2" firstAttribute="centerX" secondItem="QYF-4A-WIh" secondAttribute="centerX" id="XNd-IZ-Ef6"/>
+                            <constraint firstItem="Khl-tx-I1s" firstAttribute="trailing" secondItem="yLR-dr-nmk" secondAttribute="trailing" constant="40" id="a30-RR-bK4"/>
+                            <constraint firstItem="Khl-tx-I1s" firstAttribute="trailing" secondItem="9yh-lG-vMc" secondAttribute="trailing" constant="40" id="bWg-aN-hHn"/>
+                            <constraint firstItem="9yh-lG-vMc" firstAttribute="leading" secondItem="Khl-tx-I1s" secondAttribute="leading" constant="40" id="zLf-Xe-UQa"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dueDate" destination="ROo-RF-o34" id="sGy-fQ-9xY"/>
+                        <outlet property="saveButton" destination="A69-4b-nD2" id="M6r-K3-xJc"/>
+                        <outlet property="titleText" destination="9yh-lG-vMc" id="OJu-gl-4xU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-Tx-y8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1736.6412213740457" y="4.9295774647887329"/>
+        </scene>
         <!--Item 2-->
         <scene sceneID="uV4-Vz-ml6">
             <objects>
@@ -130,7 +196,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-Ug-nYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2393" y="195"/>
+            <point key="canvasLocation" x="2737" y="210"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="H0i-Cf-iVh">
@@ -146,7 +212,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8kY-R0-5KH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="-489"/>
+            <point key="canvasLocation" x="2775" y="-485"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CFz-lM-JJ1">
