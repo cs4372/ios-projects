@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yVh-BW-179">
-                                <rect key="frame" x="20" y="139" width="337" height="581"/>
+                                <rect key="frame" x="10" y="139" width="373" height="581"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dvK-Rf-dIP">
                                     <size key="itemSize" width="215" height="272"/>
@@ -28,14 +28,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TaskCollectionViewCell" id="e1q-JY-RXA" customClass="TaskCollectionViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="61" y="0.0" width="215" height="272"/>
+                                        <rect key="frame" x="79" y="0.0" width="215" height="272"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hmt-tC-XTp">
                                             <rect key="frame" x="0.0" y="0.0" width="215" height="272"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clean the garden" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" showsExpansionTextWhenTruncated="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGd-jm-tIC">
-                                                    <rect key="frame" x="8" y="112.33333333333333" width="199" height="25.333333333333329"/>
+                                                    <rect key="frame" x="8" y="117.33333333333333" width="199" height="25.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -56,7 +56,7 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SGd-jm-tIC" firstAttribute="top" secondItem="4P3-xM-uv7" secondAttribute="bottom" constant="10" id="Dhs-iq-x5k"/>
+                                                <constraint firstItem="SGd-jm-tIC" firstAttribute="top" secondItem="4P3-xM-uv7" secondAttribute="bottom" constant="15" id="Dhs-iq-x5k"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="4P3-xM-uv7" secondAttribute="trailing" id="IgE-aG-MeW"/>
                                                 <constraint firstItem="SGd-jm-tIC" firstAttribute="centerX" secondItem="hmt-tC-XTp" secondAttribute="centerX" id="WnH-A6-qc8"/>
                                                 <constraint firstItem="SGd-jm-tIC" firstAttribute="leading" secondItem="hmt-tC-XTp" secondAttribute="leadingMargin" id="XVM-vI-xV7"/>
@@ -96,12 +96,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="yVh-BW-179" secondAttribute="trailing" constant="20" id="Bb0-IK-wNg"/>
                             <constraint firstItem="Ary-Jh-Oae" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="OKZ-1u-QZI"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fIJ-UB-wqt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ary-Jh-Oae" secondAttribute="trailing" constant="30" id="jFh-z1-T50"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yVh-BW-179" secondAttribute="trailing" constant="10" id="pNw-03-RUm"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="ydy-6A-6af"/>
-                            <constraint firstItem="yVh-BW-179" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zJy-K0-iqx"/>
+                            <constraint firstItem="yVh-BW-179" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zJy-K0-iqx"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" image="list.bullet.clipboard" catalog="system" id="Bqq-9w-uvN"/>
@@ -181,6 +181,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-Tx-y8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1736.6412213740457" y="4.9295774647887329"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="uV4-Vz-ml6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8BM-Ug-nYx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="qWb-z1-RcJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qly-JC-ded">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="byB-Kj-apQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="aK7-lr-041"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2737" y="210"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CFz-lM-JJ1">

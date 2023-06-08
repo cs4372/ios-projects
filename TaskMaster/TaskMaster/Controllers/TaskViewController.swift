@@ -42,6 +42,11 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
         self.collectionView.reloadData()
     }
     
+    func didEditTask(_ task: Task) {
+        self.saveTasks()
+        self.collectionView.reloadData()
+    }
+    
     @IBAction func addTask(_ sender: UIButton) {
         let addTaskViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
         addTaskViewController.delegate = self
@@ -105,7 +110,7 @@ extension TaskViewController: UICollectionViewDataSource {
 
 extension TaskViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 220)
+        return CGSize(width: 180, height: 200)
     }
 }
 
@@ -117,7 +122,22 @@ extension TaskViewController: UICollectionViewDelegate {
         
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
             
-            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash")) { action in
+            let editAction = UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { action in
+                
+                if let editItem = self.tasks?[indexPath.row] {
+                    let addTaskCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+                    let task = self.tasks?[indexPath.row]
+                    addTaskCV.delegate = self
+                    
+                    if let currentTask = task {
+                        addTaskCV.taskToEdit = currentTask
+                    }
+
+                    self.presentPanModal(addTaskCV)
+                }
+            }
+            
+            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
                 
                 if let deleteItem = self.tasks?[indexPath.row] {
                     self.context.delete(deleteItem)
@@ -127,7 +147,7 @@ extension TaskViewController: UICollectionViewDelegate {
                 }
             }
             
-            return UIMenu(title: "", children: [deleteAction])
+            return UIMenu(title: "", children: [editAction, deleteAction])
         }
         return configuration
     }
