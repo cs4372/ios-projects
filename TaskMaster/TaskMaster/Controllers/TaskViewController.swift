@@ -70,6 +70,9 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
     }
     
     func loadTasks(with request: NSFetchRequest<Task> = Task.fetchRequest()) {
+        let sortByDueDate = NSSortDescriptor(key: "dueDate", ascending: true)
+          request.sortDescriptors = [sortByDueDate]
+        
         do {
             tasks = try context.fetch(request)
         } catch {
@@ -91,24 +94,9 @@ extension TaskViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TaskCollectionViewCell", for: indexPath) as! TaskCollectionViewCell
         
         if let task = tasks?[indexPath.row] {
-            cell.taskLabel?.text = task.title ?? "No Tasks Added Yet"
-            
-            if let color = UIColor(hexString: task.taskColor ?? "CA4E3") {
-                cell.taskLabel?.textColor = ContrastColorOf(color, returnFlat: true)
-                cell.DateLabel?.textColor = ContrastColorOf(color, returnFlat: true)
-                cell.backgroundColor = color
-            }
-
-            let date = Date()
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd-MMM EEE"
-
-            let formattedDate = dateFormatter.string(from: date)
-            cell.DateLabel?.text = formattedDate
-            
-            let checkboxImage = task.isCompleted ? UIImage(systemName: "checkmark.square") : UIImage(systemName: "square")
-            cell.checkboxButton.setImage(checkboxImage, for: .normal)
+            cell.setup(with: task)
         }
+        
         return cell
     }
 }

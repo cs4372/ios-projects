@@ -22,11 +22,16 @@ class AddTaskViewController: UIViewController {
     weak var delegate: AddTaskViewControllerDelegate?
         
     override func viewDidLoad() {
+        titleText.delegate = self
+        
         saveButton.layer.cornerRadius = 5
         saveButton.backgroundColor = FlatWatermelon()
     }
     
     @IBAction func saveTask(_ sender: UIButton) {
+        guard let text = titleText.text, !text.isEmpty else {
+            return
+        }
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let newTask = Task(context: context)
         newTask.title = titleText.text
@@ -41,12 +46,25 @@ class AddTaskViewController: UIViewController {
     
 }
 
+// MARK: UITextFieldDelegate
+
+extension AddTaskViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+ 
+          let newText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+
+          return newText.count <= 30
+      }
+}
+
+// MARK: PanModalPresentable
+
 extension AddTaskViewController: PanModalPresentable {
     var panScrollable: UIScrollView? {
         return nil
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(300)
+        return .contentHeight(200)
     }
 }
