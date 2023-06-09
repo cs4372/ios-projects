@@ -13,16 +13,21 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addTaskButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupCollectionView()
         addTaskButton.layer.cornerRadius = addTaskButton.bounds.width / 2
         setupAddTaskButton()
         loadTasks()
+        if let savedUserName = UserDefaults.standard.string(forKey: "UserName") {
+            nameLabel.text = savedUserName
+        }
     }
     
     private func setupCollectionView() {

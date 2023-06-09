@@ -8,4 +8,6 @@ target 'TaskMaster' do
   # Pods for TaskMaster
   pod 'ChameleonFramework/Swift', :git => 'https://github.com/wowansm/Chameleon.git', :branch => 'swift5'
   pod 'PanModal'
+  pod 'CLTypingLabel'
+  pod 'TextFieldEffects'
 end
