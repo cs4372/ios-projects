@@ -14,6 +14,7 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addTaskButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task]?
@@ -26,8 +27,13 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
         setupAddTaskButton()
         loadTasks()
         if let savedUserName = UserDefaults.standard.string(forKey: "UserName") {
-            nameLabel.text = savedUserName
+            let greeting = "Hi \(savedUserName)!"
+            nameLabel.text = greeting
+            nameLabel.textColor = FlatWatermelon()
         }
+        let dateMessage = "Today is \(DateHelper.formattedDate(from: Date()))"
+        dateLabel.text = dateMessage
+        dateLabel.textColor = FlatSkyBlue()
     }
     
     private func setupCollectionView() {

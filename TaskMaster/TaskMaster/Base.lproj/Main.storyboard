@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yVh-BW-179">
-                                <rect key="frame" x="10" y="139" width="373" height="581"/>
+                                <rect key="frame" x="10" y="159" width="373" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dvK-Rf-dIP">
                                     <size key="itemSize" width="215" height="272"/>
@@ -92,15 +92,21 @@
                                     <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ff-1W-cR7"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6CZ-ma-ICi">
-                                <rect key="frame" x="20" y="74" width="16" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Dusty!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7z-TL-8Ok">
+                                <rect key="frame" x="20" y="64" width="253" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fEY-OO-nVp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7z-TL-8Ok">
-                                <rect key="frame" x="38" y="74" width="45" height="40"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today is 09-Jun Fri" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-Dc-z6N">
+                                <rect key="frame" x="20" y="109" width="323" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5Zu-se-A10"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -108,17 +114,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="r7z-TL-8Ok" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="9Si-dh-qlI"/>
+                            <constraint firstItem="bmV-Dc-z6N" firstAttribute="top" secondItem="r7z-TL-8Ok" secondAttribute="bottom" constant="5" id="52G-zo-tHa"/>
+                            <constraint firstItem="r7z-TL-8Ok" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="9Si-dh-qlI"/>
+                            <constraint firstItem="bmV-Dc-z6N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JPX-z9-WCm"/>
                             <constraint firstItem="Ary-Jh-Oae" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="OKZ-1u-QZI"/>
-                            <constraint firstItem="6CZ-ma-ICi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="V1H-VR-buo"/>
-                            <constraint firstItem="r7z-TL-8Ok" firstAttribute="centerY" secondItem="Ary-Jh-Oae" secondAttribute="centerY" id="cGH-gr-PSC"/>
-                            <constraint firstItem="6CZ-ma-ICi" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="d8j-Ik-2Uz"/>
+                            <constraint firstItem="r7z-TL-8Ok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aSJ-PQ-ILo"/>
+                            <constraint firstItem="Ary-Jh-Oae" firstAttribute="leading" secondItem="r7z-TL-8Ok" secondAttribute="trailing" constant="50" id="cZ7-sN-P3t"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fIJ-UB-wqt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ary-Jh-Oae" secondAttribute="trailing" constant="30" id="jFh-z1-T50"/>
-                            <constraint firstItem="6CZ-ma-ICi" firstAttribute="centerY" secondItem="Ary-Jh-Oae" secondAttribute="centerY" id="nfH-I6-8U2"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yVh-BW-179" secondAttribute="trailing" constant="10" id="pNw-03-RUm"/>
-                            <constraint firstItem="r7z-TL-8Ok" firstAttribute="leading" secondItem="6CZ-ma-ICi" secondAttribute="trailing" constant="2" id="snm-CP-fGJ"/>
-                            <constraint firstItem="yVh-BW-179" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="ydy-6A-6af"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmV-Dc-z6N" secondAttribute="trailing" constant="50" id="q3Y-XG-Jfa"/>
+                            <constraint firstItem="yVh-BW-179" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ydy-6A-6af"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zJy-K0-iqx"/>
                         </constraints>
                     </view>
@@ -129,12 +135,13 @@
                     <connections>
                         <outlet property="addTaskButton" destination="Ary-Jh-Oae" id="Ki2-YE-amG"/>
                         <outlet property="collectionView" destination="yVh-BW-179" id="QWZ-7t-nOn"/>
+                        <outlet property="dateLabel" destination="bmV-Dc-z6N" id="fgt-9O-Mwd"/>
                         <outlet property="nameLabel" destination="r7z-TL-8Ok" id="H8M-tF-udg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="68"/>
+            <point key="canvasLocation" x="890.83969465648852" y="67.605633802816911"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="M7h-Qf-acx">
@@ -200,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-Tx-y8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1736.6412213740457" y="4.9295774647887329"/>
+            <point key="canvasLocation" x="1615" y="68"/>
         </scene>
         <!--Initial Launch View Controller-->
         <scene sceneID="YYM-EX-cS1">
@@ -255,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kQZ-Zi-tqm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="984" y="-661"/>
+            <point key="canvasLocation" x="891" y="-641"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="CFz-lM-JJ1">

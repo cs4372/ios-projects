@@ -81,6 +81,6 @@ extension AddTaskViewController: PanModalPresentable {
     }
     
     var shortFormHeight: PanModalHeight {
-        return .contentHeight(200)
+        return .contentHeight(500)
     }
 }
