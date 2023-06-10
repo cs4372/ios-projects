@@ -10,4 +10,5 @@ target 'TaskMaster' do
   pod 'PanModal'
   pod 'CLTypingLabel'
   pod 'TextFieldEffects'
+  pod 'lottie-ios'
 end

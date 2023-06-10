@@ -3,18 +3,21 @@ PODS:
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
   - CLTypingLabel (0.4.0)
+  - lottie-ios (4.2.0)
   - PanModal (1.2.7)
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/wowansm/Chameleon.git`, branch `swift5`)
   - CLTypingLabel
+  - lottie-ios
   - PanModal
   - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - CLTypingLabel
+    - lottie-ios
     - PanModal
     - TextFieldEffects
 
@@ -31,9 +34,10 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CLTypingLabel: 95a7d1faf7e3d1d952cd11cb0491d17d80c50934
+  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 5ceb69b72d6a4932f72d419e5864bf1daa339ecb
+PODFILE CHECKSUM: 5dcc8ff6754cd047bb37252ef2c35c29b51a10c9
 
 COCOAPODS: 1.12.1

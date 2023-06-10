@@ -21,15 +21,15 @@ class TaskCollectionViewCell: UICollectionViewCell {
      }
     
     func setup(with task: Task) {
-        taskLabel.text = task.title ?? "No Tasks Added Yet"
-        DateLabel.text = DateHelper.formattedDate(from: task.dueDate!)
+        taskLabel?.text = task.title ?? "No Tasks Added Yet"
+        DateLabel?.text = DateHelper.formattedDate(from: task.dueDate!)
         
         guard let color = UIColor(hexString: task.taskColor) else {
             return
         }
         
-        taskLabel.textColor = ContrastColorOf(color, returnFlat: true)
-        DateLabel.textColor = ContrastColorOf(color, returnFlat: true)
+        taskLabel?.textColor = ContrastColorOf(color, returnFlat: true)
+        DateLabel?.textColor = ContrastColorOf(color, returnFlat: true)
         backgroundColor = color
         
         let checkboxImageName = task.isCompleted ? "checkmark.circle" : "circle"
@@ -42,7 +42,7 @@ class TaskCollectionViewCell: UICollectionViewCell {
                 checkboxImage.draw(in: CGRect(origin: .zero, size: imageSize))
             }
             
-            checkboxButton.setImage(resizedCheckboxImage, for: .normal)
+            checkboxButton?.setImage(resizedCheckboxImage, for: .normal)
         }
     }
 }

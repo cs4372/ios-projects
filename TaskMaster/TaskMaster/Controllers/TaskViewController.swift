@@ -23,7 +23,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         super.viewDidLoad()
         
         setupCollectionView()
-        addTaskButton.layer.cornerRadius = addTaskButton.bounds.width / 2
+        addTaskButton?.layer.cornerRadius = addTaskButton.bounds.width / 2
         setupAddTaskButton()
         loadTasks()
         setupUserNameLabel()
@@ -39,20 +39,20 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     private func setupUserNameLabel() {
         if let savedUserName = UserDefaults.standard.string(forKey: "UserName") {
             let greeting = "Hi \(savedUserName)!"
-            nameLabel.text = greeting
-            nameLabel.textColor = FlatWatermelon()
+            nameLabel?.text = greeting
+            nameLabel?.textColor = FlatWatermelon()
         }
     }
 
     private func setupDateLabel() {
         let dateMessage = "Today is \(DateHelper.formattedDate(from: Date()))"
-        dateLabel.text = dateMessage
-        dateLabel.textColor = FlatSkyBlue()
+        dateLabel?.text = dateMessage
+        dateLabel?.textColor = FlatSkyBlue()
     }
     
     private func setupAddTaskButton() {
-        addTaskButton.layer.cornerRadius = addTaskButton.bounds.width / 2
-        addTaskButton.clipsToBounds = true
+        addTaskButton?.layer.cornerRadius = addTaskButton.bounds.width / 2
+        addTaskButton?.clipsToBounds = true
     }
     
     // MARK: Task Operations
@@ -114,7 +114,7 @@ extension TaskViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if tasks?.count == 0 {
-            collectionView.setEmptyView(title: "You don't have any tasks yet!", message: "Add some tasks by clicking the + button")
+            collectionView.setEmptyView(title: "You don't have any tasks yet!", message: "Click the + button to add some tasks")
         } else {
             collectionView.restore()
         }
@@ -135,7 +135,7 @@ extension TaskViewController: UICollectionViewDataSource {
 // MARK: UICollectionViewDelegateFlowLayout
 
 extension TaskViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 180, height: 200)
     }
 }
