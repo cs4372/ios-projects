@@ -113,6 +113,11 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
 extension TaskViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if tasks?.count == 0 {
+            collectionView.setEmptyView(title: "You don't have any tasks yet!", message: "Add some tasks by clicking the + button")
+        } else {
+            collectionView.restore()
+        }
         return tasks?.count ?? 1
     }
     
