@@ -17,7 +17,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let userDefaults = UserDefaults.standard
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
         if userDefaults.string(forKey: "UserName") == nil {

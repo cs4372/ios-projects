@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import ChameleonFramework
 
-class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
+class TaskViewController: UIViewController, TaskViewVCDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addTaskButton: UIButton!
@@ -26,14 +26,8 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
         addTaskButton.layer.cornerRadius = addTaskButton.bounds.width / 2
         setupAddTaskButton()
         loadTasks()
-        if let savedUserName = UserDefaults.standard.string(forKey: "UserName") {
-            let greeting = "Hi \(savedUserName)!"
-            nameLabel.text = greeting
-            nameLabel.textColor = FlatWatermelon()
-        }
-        let dateMessage = "Today is \(DateHelper.formattedDate(from: Date()))"
-        dateLabel.text = dateMessage
-        dateLabel.textColor = FlatSkyBlue()
+        setupUserNameLabel()
+        setupDateLabel()
     }
     
     private func setupCollectionView() {
@@ -42,10 +36,26 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
         collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
+    private func setupUserNameLabel() {
+        if let savedUserName = UserDefaults.standard.string(forKey: "UserName") {
+            let greeting = "Hi \(savedUserName)!"
+            nameLabel.text = greeting
+            nameLabel.textColor = FlatWatermelon()
+        }
+    }
+
+    private func setupDateLabel() {
+        let dateMessage = "Today is \(DateHelper.formattedDate(from: Date()))"
+        dateLabel.text = dateMessage
+        dateLabel.textColor = FlatSkyBlue()
+    }
+    
     private func setupAddTaskButton() {
         addTaskButton.layer.cornerRadius = addTaskButton.bounds.width / 2
         addTaskButton.clipsToBounds = true
     }
+    
+    // MARK: Task Operations
     
     func didAddTask(_ task: Task) {
         self.tasks?.append(task)
@@ -77,14 +87,6 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
         }
     }
     
-    func saveTasks() {
-        do {
-            try self.context.save()
-        } catch {
-            print("Error saving context \(error)")
-        }
-    }
-    
     func loadTasks(with request: NSFetchRequest<Task> = Task.fetchRequest()) {
         let sortByDueDate = NSSortDescriptor(key: "dueDate", ascending: true)
           request.sortDescriptors = [sortByDueDate]
@@ -95,6 +97,14 @@ class TaskViewController: UIViewController, AddTaskViewControllerDelegate {
             print("Error fetching data from context \(error)")
         }
         self.collectionView.reloadData()
+    }
+    
+    func saveTasks() {
+        do {
+            try self.context.save()
+        } catch {
+            print("Error saving context \(error)")
+        }
     }
 }
 
@@ -128,38 +138,51 @@ extension TaskViewController: UICollectionViewDelegateFlowLayout {
 // MARK: UICollectionViewDelegate
 
 extension TaskViewController: UICollectionViewDelegate {
-    
+
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         
         let configuration = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            
-            let editAction = UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { action in
-                
-                if let editItem = self.tasks?[indexPath.row] {
-                    let addTaskCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
-                    let task = self.tasks?[indexPath.row]
-                    addTaskCV.delegate = self
-                    
-                    if let currentTask = task {
-                        addTaskCV.taskToEdit = currentTask
-                    }
-
-                    self.presentPanModal(addTaskCV)
-                }
-            }
-            
-            let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { action in
-                
-                if let deleteItem = self.tasks?[indexPath.row] {
-                    self.context.delete(deleteItem)
-                    self.tasks?.remove(at: indexPath.row)
-                    self.saveTasks()
-                    self.collectionView.reloadData()
-                }
-            }
+            let editAction = self.createEditAction(for: indexPath)
+            let deleteAction = self.createDeleteAction(for: indexPath)
             
             return UIMenu(title: "", children: [editAction, deleteAction])
         }
+        
         return configuration
+    }
+    
+    private func createEditAction(for indexPath: IndexPath) -> UIAction {
+        let editAction = UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] action in
+            guard let self = self else { return }
+            
+            if let editItem = self.tasks?[indexPath.row] {
+                let addTaskCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+                let task = self.tasks?[indexPath.row]
+                addTaskCV.delegate = self
+                
+                if let currentTask = task {
+                    addTaskCV.editTask = currentTask
+                }
+                
+                self.presentPanModal(addTaskCV)
+            }
+        }
+        
+        return editAction
+    }
+    
+    private func createDeleteAction(for indexPath: IndexPath) -> UIAction {
+        let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] action in
+            guard let self = self else { return }
+            
+            if let deleteItem = self.tasks?[indexPath.row] {
+                self.context.delete(deleteItem)
+                self.tasks?.remove(at: indexPath.row)
+                self.saveTasks()
+                self.collectionView.reloadData()
+            }
+        }
+        
+        return deleteAction
     }
 }

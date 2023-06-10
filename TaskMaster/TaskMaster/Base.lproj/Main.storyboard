@@ -202,7 +202,7 @@
                     <connections>
                         <outlet property="dueDate" destination="ROo-RF-o34" id="sGy-fQ-9xY"/>
                         <outlet property="saveButton" destination="A69-4b-nD2" id="M6r-K3-xJc"/>
-                        <outlet property="titleText" destination="9yh-lG-vMc" id="OJu-gl-4xU"/>
+                        <outlet property="titleInput" destination="9yh-lG-vMc" id="OJu-gl-4xU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-Tx-y8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

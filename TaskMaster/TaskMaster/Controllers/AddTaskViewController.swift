@@ -9,47 +9,51 @@ import UIKit
 import PanModal
 import ChameleonFramework
 
-protocol AddTaskViewControllerDelegate: AnyObject {
+protocol TaskViewVCDelegate: AnyObject {
     func didAddTask(_ task: Task)
     func didEditTask(_ task: Task)
 }
 
 class AddTaskViewController: UIViewController {
     
-    @IBOutlet weak var titleText: UITextField!
+    @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var dueDate: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
-    var taskToEdit: Task?
+    var editTask: Task?
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    weak var delegate: AddTaskViewControllerDelegate?
+    weak var delegate: TaskViewVCDelegate?
         
     override func viewDidLoad() {
-        titleText.delegate = self
+        titleInput.delegate = self
         
-        saveButton.layer.cornerRadius = 5
-        saveButton.backgroundColor = FlatWatermelon()
+        setupUI()
         
-        if let editTask = taskToEdit {
+        if let editTask {
             dueDate.date = editTask.dueDate!
-            titleText.text = editTask.title!
+            titleInput.text = editTask.title!
         }
     }
     
+    private func setupUI() {
+        saveButton.layer.cornerRadius = 5
+        saveButton.backgroundColor = FlatWatermelon()
+    }
+    
     @IBAction func saveTask(_ sender: UIButton) {
-        guard let text = titleText.text, !text.isEmpty else {
+        guard let text = titleInput.text, !text.isEmpty else {
             return
         }
         
-        if let taskToEdit = taskToEdit {
-             taskToEdit.title = titleText.text
-             taskToEdit.dueDate = dueDate.date
-             delegate?.didEditTask(taskToEdit)
+        if let editTask {
+             editTask.title = titleInput.text
+             editTask.dueDate = dueDate.date
+             delegate?.didEditTask(editTask)
          } else {
              let newTask = Task(context: context)
-             newTask.title = titleText.text
+             newTask.title = titleInput.text
              newTask.dueDate = dueDate.date
              newTask.taskColor = RandomFlatColorWithShade(.light).hexValue()
              newTask.isCompleted = false
@@ -59,7 +63,6 @@ class AddTaskViewController: UIViewController {
                     
         dismiss(animated: true, completion: nil)
     }
-    
 }
 
 // MARK: UITextFieldDelegate
