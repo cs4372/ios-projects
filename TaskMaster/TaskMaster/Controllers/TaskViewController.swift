@@ -30,10 +30,16 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         setupDateLabel()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        loadTasks()
+    }
+    
     private func setupCollectionView() {
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        collectionView?.dataSource = self
+        collectionView?.delegate = self
+        collectionView?.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     private func setupUserNameLabel() {
@@ -87,9 +93,10 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         }
     }
     
-    func loadTasks(with request: NSFetchRequest<Task> = Task.fetchRequest()) {
+    func loadTasks(with request: NSFetchRequest<Task> = Task.fetchRequest(), predicate: NSPredicate? = nil) {
         let sortByDueDate = NSSortDescriptor(key: "dueDate", ascending: true)
           request.sortDescriptors = [sortByDueDate]
+          request.predicate = NSPredicate(format: "isCompleted == %d", false)
         
         do {
             tasks = try context.fetch(request)

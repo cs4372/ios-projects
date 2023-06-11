@@ -121,8 +121,8 @@
 		47C0AA5F2A2EF0D6003BC512 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				47A805312A3020C900641772 /* Task+CoreDataProperties.swift */,
 				47A805302A3020C900641772 /* Task+CoreDataClass.swift */,
+				47A805312A3020C900641772 /* Task+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

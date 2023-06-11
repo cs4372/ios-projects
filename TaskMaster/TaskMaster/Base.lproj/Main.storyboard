@@ -264,7 +264,7 @@
             </objects>
             <point key="canvasLocation" x="94" y="-675"/>
         </scene>
-        <!--Completed Items-->
+        <!--Completed tasks-->
         <scene sceneID="9O7-qJ-LFI">
             <objects>
                 <viewController id="w9G-QZ-Hb4" customClass="CompletedTasksViewController" customModule="TaskMaster" customModuleProvider="target" sceneMemberID="viewController">
@@ -280,7 +280,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eaY-Cq-skQ">
-                                <rect key="frame" x="10" y="215" width="373" height="554"/>
+                                <rect key="frame" x="10" y="170" width="373" height="599"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="24F-8l-Sy6">
                                     <size key="itemSize" width="215" height="272"/>
@@ -313,6 +313,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
                                                     <connections>
+                                                        <action selector="toggleCheckbox:" destination="w9G-QZ-Hb4" eventType="touchUpInside" id="Fch-es-XAv"/>
                                                         <action selector="toggleCheckbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSh-wf-qKz"/>
                                                     </connections>
                                                 </button>
@@ -341,23 +342,36 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You completed 5 tasks!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvp-F9-2bt">
+                                <rect key="frame" x="20" y="120" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="t3r-P8-SxN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9eN-rg-tt9"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ZY0-8f-wkq" firstAttribute="top" secondItem="9eN-rg-tt9" secondAttribute="top" id="54D-L4-znk"/>
+                            <constraint firstItem="eaY-Cq-skQ" firstAttribute="top" secondItem="dvp-F9-2bt" secondAttribute="bottom" constant="10" id="7av-WL-dSX"/>
+                            <constraint firstItem="9eN-rg-tt9" firstAttribute="trailing" secondItem="dvp-F9-2bt" secondAttribute="trailing" constant="20" id="9oc-gn-y5z"/>
                             <constraint firstItem="ZY0-8f-wkq" firstAttribute="leading" secondItem="9eN-rg-tt9" secondAttribute="leading" id="DBK-HQ-69h"/>
                             <constraint firstItem="ZY0-8f-wkq" firstAttribute="trailing" secondItem="9eN-rg-tt9" secondAttribute="trailing" id="LE2-tE-2Li"/>
                             <constraint firstItem="9eN-rg-tt9" firstAttribute="bottom" secondItem="eaY-Cq-skQ" secondAttribute="bottom" id="McR-hT-CPj"/>
                             <constraint firstItem="9eN-rg-tt9" firstAttribute="trailing" secondItem="eaY-Cq-skQ" secondAttribute="trailing" constant="10" id="Nks-qZ-weC"/>
-                            <constraint firstItem="eaY-Cq-skQ" firstAttribute="top" secondItem="ZY0-8f-wkq" secondAttribute="bottom" constant="100" id="Zld-Nt-7fE"/>
+                            <constraint firstItem="dvp-F9-2bt" firstAttribute="top" secondItem="ZY0-8f-wkq" secondAttribute="bottom" constant="5" id="RXD-i3-zYI"/>
+                            <constraint firstItem="dvp-F9-2bt" firstAttribute="leading" secondItem="9eN-rg-tt9" secondAttribute="leading" constant="20" id="Vfv-nR-Qmw"/>
                             <constraint firstItem="eaY-Cq-skQ" firstAttribute="leading" secondItem="9eN-rg-tt9" secondAttribute="leading" constant="10" id="uaZ-v8-1SJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Completed Items" image="checkmark.icloud" catalog="system" id="QgC-9l-1R0"/>
+                    <tabBarItem key="tabBarItem" title="Completed tasks" image="checkmark.icloud" catalog="system" id="QgC-9l-1R0"/>
                     <connections>
-                        <outlet property="collectionView" destination="eaY-Cq-skQ" id="f8y-Hj-oFd"/>
+                        <outlet property="collectionView" destination="eaY-Cq-skQ" id="Yza-5o-pYB"/>
                         <outlet property="searchBar" destination="ZY0-8f-wkq" id="6Y0-4h-ZHB"/>
+                        <outlet property="tasksLabel" destination="dvp-F9-2bt" id="gi4-kB-gM5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eNR-l8-tfR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
