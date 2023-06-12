@@ -103,7 +103,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         } catch {
             print("Error fetching data from context \(error)")
         }
-        self.collectionView.reloadData()
+        self.collectionView?.reloadData()
     }
     
     func saveTasks() {

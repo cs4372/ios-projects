@@ -16,7 +16,7 @@ protocol TaskViewVCDelegate: AnyObject {
 
 class AddTaskViewController: UIViewController {
     
-    @IBOutlet weak var titleInput: UITextField!
+    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var dueDate: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     
@@ -27,14 +27,19 @@ class AddTaskViewController: UIViewController {
     weak var delegate: TaskViewVCDelegate?
         
     override func viewDidLoad() {
-        titleInput.delegate = self
+        searchTextField.delegate = self
         
         setupUI()
         
         if let editTask {
             dueDate.date = editTask.dueDate!
-            titleInput.text = editTask.title!
+            searchTextField.text = editTask.title!
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchTextField.becomeFirstResponder()
     }
     
     private func setupUI() {
@@ -43,17 +48,17 @@ class AddTaskViewController: UIViewController {
     }
     
     @IBAction func saveTask(_ sender: UIButton) {
-        guard let text = titleInput.text, !text.isEmpty else {
+        guard let text = searchTextField.text, !text.isEmpty else {
             return
         }
         
         if let editTask {
-             editTask.title = titleInput.text
+             editTask.title = searchTextField.text
              editTask.dueDate = dueDate.date
              delegate?.didEditTask(editTask)
          } else {
              let newTask = Task(context: context)
-             newTask.title = titleInput.text
+             newTask.title = searchTextField.text
              newTask.dueDate = dueDate.date
              newTask.taskColor = RandomFlatColorWithShade(.light).hexValue()
              newTask.isCompleted = false
