@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0Q0-51-b9S">
+                                <rect key="frame" x="10" y="149" width="373" height="491"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yVh-BW-179">
                                 <rect key="frame" x="10" y="159" width="373" height="561"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -79,21 +83,8 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ary-Jh-Oae">
-                                <rect key="frame" x="323" y="74" width="40" height="40"/>
-                                <color key="backgroundColor" red="0.99991959330000002" green="0.71596952390000002" blue="0.48343690020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="H1Q-bN-JxP"/>
-                                    <constraint firstAttribute="height" constant="40" id="Vfd-Gy-ptc"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
-                                <connections>
-                                    <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7Ff-1W-cR7"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hi Dusty!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7z-TL-8Ok">
-                                <rect key="frame" x="20" y="64" width="253" height="40"/>
+                                <rect key="frame" x="20" y="64" width="103" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fEY-OO-nVp"/>
                                 </constraints>
@@ -110,20 +101,48 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QDR-VX-Atj">
+                                <rect key="frame" x="290" y="64" width="83" height="32"/>
+                                <segments>
+                                    <segment title="Tile"/>
+                                    <segment title="List"/>
+                                </segments>
+                                <connections>
+                                    <action selector="ViewTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jay-kW-YXo"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXu-TF-VKH">
+                                <rect key="frame" x="307" y="640" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.99991959330000002" green="0.71596952390000002" blue="0.48343690020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Imp-HA-scd"/>
+                                    <constraint firstAttribute="width" constant="50" id="jj1-11-Tqv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <connections>
+                                    <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LRf-ip-CVe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bmV-Dc-z6N" firstAttribute="top" secondItem="r7z-TL-8Ok" secondAttribute="bottom" constant="5" id="52G-zo-tHa"/>
+                            <constraint firstItem="QDR-VX-Atj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="8o9-rO-VSv"/>
                             <constraint firstItem="r7z-TL-8Ok" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="5" id="9Si-dh-qlI"/>
+                            <constraint firstItem="hXu-TF-VKH" firstAttribute="top" secondItem="0Q0-51-b9S" secondAttribute="bottom" id="9er-B1-pXd"/>
                             <constraint firstItem="bmV-Dc-z6N" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="JPX-z9-WCm"/>
-                            <constraint firstItem="Ary-Jh-Oae" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="OKZ-1u-QZI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hXu-TF-VKH" secondAttribute="trailing" constant="20" id="ONG-E9-r0R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QDR-VX-Atj" secondAttribute="trailing" constant="20" id="WU2-cl-lWH"/>
                             <constraint firstItem="r7z-TL-8Ok" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aSJ-PQ-ILo"/>
-                            <constraint firstItem="Ary-Jh-Oae" firstAttribute="leading" secondItem="r7z-TL-8Ok" secondAttribute="trailing" constant="50" id="cZ7-sN-P3t"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fIJ-UB-wqt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ary-Jh-Oae" secondAttribute="trailing" constant="30" id="jFh-z1-T50"/>
+                            <constraint firstItem="0Q0-51-b9S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="gIs-fp-hKj"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="hXu-TF-VKH" secondAttribute="bottom" constant="30" id="ggP-2a-514"/>
+                            <constraint firstItem="0Q0-51-b9S" firstAttribute="top" secondItem="bmV-Dc-z6N" secondAttribute="bottom" constant="10" id="mt7-4g-H0L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yVh-BW-179" secondAttribute="trailing" constant="10" id="pNw-03-RUm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmV-Dc-z6N" secondAttribute="trailing" constant="50" id="q3Y-XG-Jfa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Q0-51-b9S" secondAttribute="trailing" constant="10" id="uhA-hK-dwY"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ydy-6A-6af"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zJy-K0-iqx"/>
                         </constraints>
@@ -133,10 +152,12 @@
                     <navigationItem key="navigationItem" id="09S-M4-lNQ"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addTaskButton" destination="Ary-Jh-Oae" id="Ki2-YE-amG"/>
+                        <outlet property="addTaskButton" destination="hXu-TF-VKH" id="nNI-nt-xck"/>
                         <outlet property="collectionView" destination="yVh-BW-179" id="QWZ-7t-nOn"/>
                         <outlet property="dateLabel" destination="bmV-Dc-z6N" id="fgt-9O-Mwd"/>
                         <outlet property="nameLabel" destination="r7z-TL-8Ok" id="H8M-tF-udg"/>
+                        <outlet property="segmentedControl" destination="QDR-VX-Atj" id="d50-cs-K8g"/>
+                        <outlet property="tableView" destination="0Q0-51-b9S" id="Nal-0V-0d7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -310,7 +331,6 @@
                     <tabBarItem key="tabBarItem" title="Calendar" image="calendar" catalog="system" id="XOB-Pb-5CF"/>
                     <connections>
                         <outlet property="calendar" destination="46X-wM-55x" id="a53-H5-Ajn"/>
-                        <outlet property="tableView" destination="2r0-fi-IXu" id="ci9-xi-AsL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvy-lP-SdO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
