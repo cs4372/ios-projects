@@ -35,7 +35,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,16 +47,17 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         setupCollectionView()
         addTaskButton?.layer.cornerRadius = addTaskButton.bounds.width / 2
         setupAddTaskButton()
-        loadTasks()
-        groupTasksByDate()
         setupUserNameLabel()
         setupDateLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        
+
         loadTasks()
+        groupTasksByDate()
+        self.tableView?.reloadData()
+        self.collectionView?.reloadData()
     }
     
     private func setupCollectionView() {
@@ -88,9 +89,9 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     
     func didAddTask(_ task: Task) {
         self.tasks?.append(task)
+        guard let dueDate = task.dueDate else { return }
         self.saveTasks()
-        self.collectionView.reloadData()
-        self.tableView?.reloadData()
+
     }
     
     func didEditTask(_ task: Task) {
@@ -127,8 +128,6 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         } catch {
             print("Error fetching data from context \(error)")
         }
-        self.collectionView?.reloadData()
-        tableView?.reloadData()
     }
     
     func saveTasks() {
@@ -141,14 +140,13 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     
     @IBAction func ViewTypeChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-              case 0:
-                  displayMode = .collection
-              case 1:
-                  displayMode = .list
-              default:
-                  break
-              }
-
+             case 0:
+                 displayMode = .collection
+             case 1:
+                 displayMode = .list
+             default:
+                 break
+            }
         updateViews()
     }
     
@@ -232,10 +230,26 @@ extension TaskViewController: UICollectionViewDelegate {
             guard let self = self else { return }
             
             if let deleteItem = self.tasks?[indexPath.row] {
+                guard let dueDate = deleteItem.dueDate else { return }
+                
+                let dateString = dateFormatter.string(from: dueDate)
+
+                if var tasksOnDueDate = tasksByDate[dateString] {
+                    if let taskIndex = tasksOnDueDate.firstIndex(of: deleteItem) {
+                        tasksOnDueDate.remove(at: taskIndex)
+                        tasksByDate[dateString] = tasksOnDueDate
+                        
+                        if tasksOnDueDate.isEmpty {
+                            tasksByDate.removeValue(forKey: dateString)
+                        }
+                    }
+                }
+                
                 self.context.delete(deleteItem)
                 self.tasks?.remove(at: indexPath.row)
                 self.saveTasks()
                 self.collectionView.reloadData()
+                self.tableView.reloadData()
             }
         }
         
@@ -243,9 +257,12 @@ extension TaskViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: UITableViewDataSource
+
 extension TaskViewController: UITableViewDataSource {
     
     func groupTasksByDate() {
+        tasksByDate = [:]
         if let tasks {
             for task in tasks {
                 guard let dueDate = task.dueDate else { continue }
@@ -262,6 +279,11 @@ extension TaskViewController: UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        if tasksByDate.count == 0 {
+            self.tableView.setEmptyView(title: "You don't have any tasks yet!", message: "Click the + button to add some tasks")
+        } else {
+            self.tableView.restore()
+        }
         return tasksByDate.count
     }
     
@@ -292,14 +314,14 @@ extension TaskViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let sectionDates = Array(self.tasksByDate.keys).sorted()
-        let sectionDateString = sectionDates[indexPath.section]
-        let tasksForSection = self.tasksByDate[sectionDateString]
+            let sectionDates = Array(self.tasksByDate.keys)
+            let sectionDateString = sectionDates[indexPath.section]
+            let tasksForSection = self.tasksByDate[sectionDateString]
+            DispatchQueue.main.async {
+                let task = tasksForSection?[indexPath.row]
+                cell.textLabel?.text = task?.title
+            }
         
-        DispatchQueue.main.async {
-            let task = tasksForSection?[indexPath.row]
-            cell.textLabel?.text = task?.title
-        }
         return cell
     }
 }
