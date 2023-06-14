@@ -9,16 +9,16 @@ import UIKit
 import CLTypingLabel
 import ChameleonFramework
 
-protocol EmptyViewable: AnyObject {
+protocol EmptyView: AnyObject {
     var backgroundView: UIView? { get set }
     var bounds: CGRect { get }
 }
 
-extension UITableView: EmptyViewable {}
-extension UICollectionView: EmptyViewable {}
+extension UITableView: EmptyView {}
+extension UICollectionView: EmptyView {}
 
 class EmptyViewHelper {
-    static func setEmptyView(for view: EmptyViewable, frame: CGRect, title: String, message: String) {
+    static func setEmptyView(for view: EmptyView, frame: CGRect, title: String, message: String) {
         let emptyView = UIView(frame: frame)
         let titleLabel = createTitleLabel()
         let messageLabel = createMessageLabel()
@@ -34,7 +34,7 @@ class EmptyViewHelper {
         view.backgroundView = emptyView
     }
     
-    static func restore(for view: EmptyViewable) {
+    static func restore(for view: EmptyView) {
         view.backgroundView = nil
     }
     

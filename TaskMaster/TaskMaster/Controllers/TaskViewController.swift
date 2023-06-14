@@ -54,6 +54,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
+        print("viewDidAppear")
         loadTasks()
         groupTasksByDate()
         self.tableView?.reloadData()
@@ -97,6 +98,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     func didEditTask(_ task: Task) {
         self.saveTasks()
         self.collectionView.reloadData()
+        self.tableView.reloadData()
     }
     
     @IBAction func addTask(_ sender: UIButton) {
@@ -213,11 +215,11 @@ extension TaskViewController: UICollectionViewDelegate {
                 let addTaskCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
                 let task = self.tasks?[indexPath.row]
                 addTaskCV.delegate = self
-                
+
                 if let currentTask = task {
                     addTaskCV.editTask = currentTask
                 }
-                
+
                 self.presentPanModal(addTaskCV)
             }
         }
@@ -263,7 +265,8 @@ extension TaskViewController: UITableViewDataSource {
     
     func groupTasksByDate() {
         tasksByDate = [:]
-        if let tasks {
+        
+        if let tasks = tasks {
             for task in tasks {
                 guard let dueDate = task.dueDate else { continue }
                 
@@ -288,8 +291,8 @@ extension TaskViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let dates = Array(tasksByDate.keys)
-        let date = dates[section]
+        let sortedTasksByDate = tasksByDate.keys.sorted(by: { dateFormatter.date(from: $0)! < dateFormatter.date(from: $1)! })
+        let date = sortedTasksByDate[section]
         
         if let tasks = tasksByDate[date] {
             return tasks.count
@@ -298,7 +301,8 @@ extension TaskViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionDates = Array(tasksByDate.keys)
+        let sectionDates = Array(tasksByDate.keys).sorted()
+
         let sectionDateString = sectionDates[section]
         
         let dateFormatter = DateFormatter()
@@ -311,10 +315,74 @@ extension TaskViewController: UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let editAction = UIContextualAction(style: .normal, title: "Edit") { (_, _, completionHandler) in
+            let addTaskCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
+            let sectionDates = Array(self.tasksByDate.keys).sorted()
+            let sectionDateString = sectionDates[indexPath.section]
+            let tasksForSection = self.tasksByDate[sectionDateString]
+            
+            let task = tasksForSection?[indexPath.row]
+            addTaskCV.delegate = self
+
+            if let currentTask = task {
+                addTaskCV.editTask = currentTask
+            }
+
+            self.presentPanModal(addTaskCV)
+            completionHandler(true)
+        }
+        editAction.backgroundColor = .flatSkyBlue()
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (_, _, completionHandler) in
+            guard let self = self else { return }
+            
+            let sectionDates = Array(self.tasksByDate.keys).sorted()
+            let sectionDateString = sectionDates[indexPath.section]
+            
+            var tasksForSection = self.tasksByDate[sectionDateString]
+            
+            if let deleteItem = tasksForSection?[indexPath.row] {
+                tasksForSection?.remove(at: indexPath.row)
+                self.tasksByDate[sectionDateString] = tasksForSection
+                
+                if var tasksOnDueDate = tasksByDate[sectionDateString] {
+                    if let taskIndex = tasksOnDueDate.firstIndex(of: deleteItem) {
+                        tasksOnDueDate.remove(at: taskIndex)
+                        tasksByDate[sectionDateString] = tasksOnDueDate
+                        
+                        if tasksOnDueDate.isEmpty {
+                            tasksByDate.removeValue(forKey: sectionDateString)
+                        }
+                    }
+                }
+                
+                self.context.delete(deleteItem)
+                self.saveTasks()
+                loadTasks()
+                self.tableView.reloadData()
+                self.collectionView.reloadData()
+            }
+            
+            completionHandler(true)
+        }
+        deleteAction.backgroundColor = .flatWatermelon()
+        
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
+        return configuration
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let sectionDates = Array(self.tasksByDate.keys).sorted()
+        let sectionDateString = sectionDates[indexPath.section]
+        let tasksForSection = self.tasksByDate[sectionDateString]
+        let task = tasksForSection?[indexPath.row]
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        
-            let sectionDates = Array(self.tasksByDate.keys)
+        let sectionDates = Array(self.tasksByDate.keys).sorted()
             let sectionDateString = sectionDates[indexPath.section]
             let tasksForSection = self.tasksByDate[sectionDateString]
             DispatchQueue.main.async {

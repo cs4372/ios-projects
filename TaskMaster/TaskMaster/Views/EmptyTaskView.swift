@@ -6,8 +6,6 @@
 //
 
 import UIKit
-import CLTypingLabel
-import ChameleonFramework
 
 extension UICollectionView {
     func setEmptyView(title: String, message: String) {
