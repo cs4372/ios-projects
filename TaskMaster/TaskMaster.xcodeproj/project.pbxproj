@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		474110FB2A381461000F41C3 /* EmptyViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474110FA2A381461000F41C3 /* EmptyViewHelper.swift */; };
+		474110FD2A397E1D000F41C3 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474110FC2A397E1D000F41C3 /* TaskTableViewCell.swift */; };
+		474111032A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474111022A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift */; };
+		474111052A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474111042A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift */; };
 		47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805302A3020C900641772 /* Task+CoreDataClass.swift */; };
 		47A805332A3020C900641772 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805312A3020C900641772 /* Task+CoreDataProperties.swift */; };
 		47A805352A31319800641772 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805342A31319800641772 /* AddTaskViewController.swift */; };
@@ -31,6 +34,9 @@
 /* Begin PBXFileReference section */
 		0703DC0FEC1E7C99DB7C8BB1 /* Pods_TaskMaster.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaskMaster.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		474110FA2A381461000F41C3 /* EmptyViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyViewHelper.swift; sourceTree = "<group>"; };
+		474110FC2A397E1D000F41C3 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		474111022A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+TableViewExtensions.swift"; sourceTree = "<group>"; };
+		474111042A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+CollectionViewExtensions.swift"; sourceTree = "<group>"; };
 		47A805302A3020C900641772 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		47A805312A3020C900641772 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47A805342A31319800641772 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				47C0AA4B2A2EEF14003BC512 /* TaskViewController.swift */,
+				474111042A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift */,
+				474111022A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift */,
 				47A805342A31319800641772 /* AddTaskViewController.swift */,
 				47A8055B2A32CD7B00641772 /* InitialLaunchViewController.swift */,
 				47A805612A34FA3200641772 /* CompletedTasksViewController.swift */,
@@ -138,6 +146,7 @@
 			children = (
 				47C0AA612A2EF650003BC512 /* TaskCollectionViewCell.swift */,
 				47A8055D2A341D1000641772 /* EmptyTaskView.swift */,
+				474110FC2A397E1D000F41C3 /* TaskTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,9 +286,12 @@
 			files = (
 				47A8055C2A32CD7B00641772 /* InitialLaunchViewController.swift in Sources */,
 				47A8055E2A341D1000641772 /* EmptyTaskView.swift in Sources */,
+				474110FD2A397E1D000F41C3 /* TaskTableViewCell.swift in Sources */,
+				474111032A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift in Sources */,
 				474110FB2A381461000F41C3 /* EmptyViewHelper.swift in Sources */,
 				47C0AA4C2A2EEF14003BC512 /* TaskViewController.swift in Sources */,
 				47A805622A34FA3300641772 /* CompletedTasksViewController.swift in Sources */,
+				474111052A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift in Sources */,
 				47C0AA482A2EEF14003BC512 /* AppDelegate.swift in Sources */,
 				47A805352A31319800641772 /* AddTaskViewController.swift in Sources */,
 				47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */,
