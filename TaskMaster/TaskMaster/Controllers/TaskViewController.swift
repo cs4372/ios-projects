@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import ChameleonFramework
 
-class TaskViewController: UIViewController, TaskViewVCDelegate {
+class TaskViewController: UIViewController, TaskViewVCDelegate, UITabBarControllerDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addTaskButton: UIButton!
@@ -35,12 +35,21 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }()
-        
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        if let calendarVC = viewController as? CalendarViewController {
+            print("inside tab", tasksByDate)
+            calendarVC.tasksByDate = tasksByDate
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView?.delegate = self
         tableView?.dataSource = self
+        
+        self.tabBarController?.delegate = self
         
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -156,5 +165,4 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
          collectionView.isHidden = displayMode == .list
          tableView.isHidden = displayMode == .collection
      }
-    
 }

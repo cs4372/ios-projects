@@ -11,6 +11,7 @@
 		474110FD2A397E1D000F41C3 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474110FC2A397E1D000F41C3 /* TaskTableViewCell.swift */; };
 		474111032A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474111022A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift */; };
 		474111052A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474111042A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift */; };
+		474111072A3AA323000F41C3 /* CalendarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474111062A3AA323000F41C3 /* CalendarTableViewCell.swift */; };
 		47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805302A3020C900641772 /* Task+CoreDataClass.swift */; };
 		47A805332A3020C900641772 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805312A3020C900641772 /* Task+CoreDataProperties.swift */; };
 		47A805352A31319800641772 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805342A31319800641772 /* AddTaskViewController.swift */; };
@@ -37,6 +38,7 @@
 		474110FC2A397E1D000F41C3 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		474111022A3984C8000F41C3 /* TaskViewController+TableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+TableViewExtensions.swift"; sourceTree = "<group>"; };
 		474111042A398592000F41C3 /* TaskViewController+CollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskViewController+CollectionViewExtensions.swift"; sourceTree = "<group>"; };
+		474111062A3AA323000F41C3 /* CalendarTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarTableViewCell.swift; sourceTree = "<group>"; };
 		47A805302A3020C900641772 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		47A805312A3020C900641772 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47A805342A31319800641772 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				47C0AA612A2EF650003BC512 /* TaskCollectionViewCell.swift */,
 				47A8055D2A341D1000641772 /* EmptyTaskView.swift */,
 				474110FC2A397E1D000F41C3 /* TaskTableViewCell.swift */,
+				474111062A3AA323000F41C3 /* CalendarTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				47C0AA482A2EEF14003BC512 /* AppDelegate.swift in Sources */,
 				47A805352A31319800641772 /* AddTaskViewController.swift in Sources */,
 				47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */,
+				474111072A3AA323000F41C3 /* CalendarTableViewCell.swift in Sources */,
 				47C0AA522A2EEF15003BC512 /* TaskMaster.xcdatamodeld in Sources */,
 				47A805642A366EF800641772 /* CalendarViewController.swift in Sources */,
 				47C0AA622A2EF650003BC512 /* TaskCollectionViewCell.swift in Sources */,

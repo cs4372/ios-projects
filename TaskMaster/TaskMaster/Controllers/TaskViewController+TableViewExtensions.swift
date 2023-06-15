@@ -25,6 +25,7 @@ extension TaskViewController: UITableViewDataSource {
                 }
             }
         }
+        print("tasksByDate inside groupTasksByDate==>",tasksByDate)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
