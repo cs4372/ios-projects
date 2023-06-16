@@ -13,4 +13,10 @@ struct DateHelper {
         dateFormatter.dateFormat = "dd-MMM EEE"
         return dateFormatter.string(from: date)
     }
+    
+    static func formattedFullDate(from date: Date) -> String {
+        let dataFormatter = DateFormatter()
+        dataFormatter.dateFormat = "yyyy-MM-dd"
+        return dataFormatter.string(from: date)
+    }
 }

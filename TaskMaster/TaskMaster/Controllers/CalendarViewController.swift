@@ -15,48 +15,39 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     
     var selectedTasks:[Task]? = nil
     var tasksByDate: [String: [Task]]?
-    var selectedDate: String?
+    var selectedDate: String? = DateHelper.formattedFullDate(from: Date())
     var dateKeys: [String]? = nil
             
-    fileprivate lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        self.tableView?.reloadData()
-
-        if let tasksByDate = tasksByDate {
-            dateKeys = Array(tasksByDate.keys)
-        }
-        calendar.reloadData()
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         calendar.delegate = self
         calendar.dataSource = self
         tableView.delegate = self
         tableView.dataSource = self
-        
-        if let tasksByDate = tasksByDate {
-            dateKeys = Array(tasksByDate.keys)
-        }
+        reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        reloadData()
+    }
+
+    func reloadData() {
+        tasksByDate = DataManager.shared.tasksByDate
+        selectedTasks = getTasks(date: selectedDate!)
+        dateKeys = Array(tasksByDate!.keys)
+        self.calendar.reloadData()
+        self.tableView.reloadData()
     }
 
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        selectedDate = dateFormatter.string(from: date)
+        selectedDate = DateHelper.formattedFullDate(from: date)
         selectedTasks = getTasks(date: selectedDate!)
         self.tableView.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
-        let dateString = dateFormatter.string(from: date)
+        let dateString = DateHelper.formattedFullDate(from: date)
         
         if let dateKeys {
             if dateKeys.contains(dateString) {
@@ -91,11 +82,11 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if selectedTasks == nil {
-              tableView.setEmptyView(title: "You don't have any tasks on this date!", message: "")
-          } else {
-              tableView.restore()
-              return selectedDate
-          }
+            tableView.setEmptyView(title: "You don't have any tasks on this date!", message: "")
+        } else {
+            tableView.restore()
+            return selectedDate
+        }
         return nil
     }
 }

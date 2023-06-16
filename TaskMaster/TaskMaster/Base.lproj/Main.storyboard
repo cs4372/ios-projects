@@ -22,14 +22,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="V02-54-ESP" customClass="TaskTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="373" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="373" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V02-54-ESP" id="xxc-s2-LJM">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56Z-vf-J4j">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="323" height="21.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="323" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today is 09-Jun Fri" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-Dc-z6N">
-                                <rect key="frame" x="20" y="109" width="323" height="30"/>
+                                <rect key="frame" x="20" y="109" width="273" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5Zu-se-A10"/>
                                 </constraints>
@@ -168,7 +168,7 @@
                             <constraint firstAttribute="bottomMargin" secondItem="hXu-TF-VKH" secondAttribute="bottom" constant="30" id="ggP-2a-514"/>
                             <constraint firstItem="0Q0-51-b9S" firstAttribute="top" secondItem="bmV-Dc-z6N" secondAttribute="bottom" constant="10" id="mt7-4g-H0L"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yVh-BW-179" secondAttribute="trailing" constant="10" id="pNw-03-RUm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmV-Dc-z6N" secondAttribute="trailing" constant="50" id="q3Y-XG-Jfa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bmV-Dc-z6N" secondAttribute="trailing" constant="100" id="q3Y-XG-Jfa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0Q0-51-b9S" secondAttribute="trailing" constant="10" id="uhA-hK-dwY"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="ydy-6A-6af"/>
                             <constraint firstItem="yVh-BW-179" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="zJy-K0-iqx"/>

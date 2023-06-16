@@ -98,6 +98,9 @@ extension TaskViewController: UICollectionViewDelegate {
                 self.context.delete(deleteItem)
                 self.tasks?.remove(at: indexPath.row)
                 self.saveTasks()
+                if let tasks = tasks {
+                    DataManager.shared.groupTasksByDate(tasks: tasks)
+                }
                 self.collectionView.reloadData()
                 self.tableView.reloadData()
             }

@@ -32,6 +32,8 @@ class CompletedTasksViewController: TaskViewController {
         super.viewDidAppear(true)
         
         loadTasks()
+        
+        let tasksByDate = DataManager.shared.tasksByDate
     }
     
     override func loadTasks(with request: NSFetchRequest<Task> = Task.fetchRequest(), predicate: NSPredicate? = nil) {

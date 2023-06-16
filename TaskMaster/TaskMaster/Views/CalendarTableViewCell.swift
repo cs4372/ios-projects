@@ -10,10 +10,6 @@ import UIKit
 class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var taskLabel: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     func setup(with task: Task) {
         taskLabel.text = task.title
     }

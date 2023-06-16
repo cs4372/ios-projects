@@ -40,7 +40,6 @@ class AddTaskViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchTextField.becomeFirstResponder()
-        print("inside add task view did appear")
     }
     
     private func setupUI() {
@@ -67,7 +66,6 @@ class AddTaskViewController: UIViewController {
              delegate?.didAddTask(newTask)
          }
            
-        print("dismiss ==>")
         dismiss(animated: true, completion: nil)
     }
 }

@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import ChameleonFramework
 
-class TaskViewController: UIViewController, TaskViewVCDelegate, UITabBarControllerDelegate {
+class TaskViewController: UIViewController, TaskViewVCDelegate {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addTaskButton: UIButton!
@@ -30,27 +30,12 @@ class TaskViewController: UIViewController, TaskViewVCDelegate, UITabBarControll
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task]?
     
-    lazy var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
-    }()
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if let calendarVC = viewController as? CalendarViewController {
-            print("inside tab", tasksByDate)
-            calendarVC.tasksByDate = tasksByDate
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView?.delegate = self
         tableView?.dataSource = self
-        
-        self.tabBarController?.delegate = self
-        
+                
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         setupCollectionView()
@@ -63,11 +48,13 @@ class TaskViewController: UIViewController, TaskViewVCDelegate, UITabBarControll
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
-        print("viewDidAppear")
         loadTasks()
         groupTasksByDate()
         self.tableView?.reloadData()
         self.collectionView?.reloadData()
+        if let tasks = tasks {
+            DataManager.shared.groupTasksByDate(tasks: tasks)
+        }
     }
     
     private func setupCollectionView() {
@@ -101,7 +88,6 @@ class TaskViewController: UIViewController, TaskViewVCDelegate, UITabBarControll
         self.tasks?.append(task)
         guard let dueDate = task.dueDate else { return }
         self.saveTasks()
-
     }
     
     func didEditTask(_ task: Task) {

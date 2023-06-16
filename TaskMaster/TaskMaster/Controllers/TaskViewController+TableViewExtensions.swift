@@ -25,7 +25,6 @@ extension TaskViewController: UITableViewDataSource {
                 }
             }
         }
-        print("tasksByDate inside groupTasksByDate==>",tasksByDate)
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -109,6 +108,9 @@ extension TaskViewController: UITableViewDataSource {
                 self.context.delete(deleteItem)
                 self.saveTasks()
                 loadTasks()
+                if let tasks = tasks {
+                    DataManager.shared.groupTasksByDate(tasks: tasks)
+                }
                 self.tableView.reloadData()
                 self.collectionView.reloadData()
             }
