@@ -44,7 +44,9 @@ class AddTaskViewController: UIViewController {
     
     private func setupUI() {
         saveButton.layer.cornerRadius = 5
-        saveButton.backgroundColor = FlatWatermelon()
+        saveButton.backgroundColor = FlatSkyBlue()
+        saveButton.tintColor = FlatWhite()
+        saveButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
     }
     
     @IBAction func saveTask(_ sender: UIButton) {

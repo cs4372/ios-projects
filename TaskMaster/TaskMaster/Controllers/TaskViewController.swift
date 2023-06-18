@@ -45,7 +45,6 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         setupCollectionView()
-        addTaskButton?.layer.cornerRadius = addTaskButton.bounds.width / 2
         setupAddTaskButton()
         setupUserNameLabel()
         setupDateLabel()
@@ -92,7 +91,6 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     
     func didAddTask(_ task: Task) {
         self.tasks?.append(task)
-        guard let dueDate = task.dueDate else { return }
         self.saveTasks()
     }
     
