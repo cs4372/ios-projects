@@ -82,7 +82,7 @@ extension TaskViewController: UICollectionViewDelegate {
             if let deleteItem = self.tasks?[indexPath.row] {
                 guard let dueDate = deleteItem.dueDate else { return }
                 
-                let dateString = dateFormatter.string(from: dueDate)
+                let dateString = DateHelper.formattedFullDate(from: dueDate)
 
                 if var tasksOnDueDate = tasksByDate[dateString] {
                     if let taskIndex = tasksOnDueDate.firstIndex(of: deleteItem) {

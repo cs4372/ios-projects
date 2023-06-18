@@ -126,10 +126,7 @@ extension TaskViewController: UITableViewDataSource {
 
 extension TaskViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let sectionDates = Array(self.tasksByDate.keys).sorted()
-        let sectionDateString = sectionDates[indexPath.section]
-        let tasksForSection = self.tasksByDate[sectionDateString]
-        let task = tasksForSection?[indexPath.row]
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

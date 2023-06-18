@@ -22,14 +22,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="V02-54-ESP" customClass="TaskTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="373" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="373" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V02-54-ESP" id="xxc-s2-LJM">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56Z-vf-J4j">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="323" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11" width="323" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -200,12 +200,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yh-lG-vMc">
-                                <rect key="frame" x="40" y="89" width="312.66666666666669" height="34"/>
+                                <rect key="frame" x="40" y="89" width="313" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A69-4b-nD2">
-                                <rect key="frame" x="146.33333333333334" y="223" width="100" height="34.333333333333314"/>
+                                <rect key="frame" x="146.66666666666666" y="223" width="100" height="34.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="I4C-iW-uoP"/>
                                 </constraints>
@@ -216,7 +216,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="yLR-dr-nmk">
-                                <rect key="frame" x="40" y="143" width="312.66666666666669" height="50"/>
+                                <rect key="frame" x="40" y="143" width="313" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06M-Dl-6p9">
                                         <rect key="frame" x="0.0" y="0.0" width="69" height="50"/>
@@ -225,12 +225,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="ROo-RF-o34">
-                                        <rect key="frame" x="68.999999999999986" y="0.0" width="243.66666666666663" height="50"/>
+                                        <rect key="frame" x="69" y="0.0" width="244" height="50"/>
                                     </datePicker>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="4ob-SH-O6Y"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Khl-tx-I1s"/>
@@ -332,14 +329,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarTableViewCell" id="6j7-iz-jXP" customClass="CalendarTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6j7-iz-jXP" id="oIa-P5-Hjs">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="in8-en-4Es">
-                                                    <rect key="frame" x="20" y="11" width="293" height="21"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="293" height="21.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -60,9 +60,8 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     func getTasks(date dateString: String) -> [Task]? {
            if let tasks = tasksByDate?[dateString] {
                return tasks
-           } else {
-               return nil
            }
+            return nil
        }
 }
 

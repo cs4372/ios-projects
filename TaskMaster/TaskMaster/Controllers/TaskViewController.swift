@@ -30,6 +30,12 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task]?
     
+    lazy var dateFormatter: DateFormatter = {
+         let formatter = DateFormatter()
+         formatter.dateFormat = "yyyy-MM-dd"
+         return formatter
+     }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
