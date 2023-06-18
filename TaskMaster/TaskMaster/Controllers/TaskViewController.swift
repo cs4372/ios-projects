@@ -109,13 +109,18 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     
     
     @IBAction func toggleCheckbox(_ sender: UIButton) {
-        if let cell = sender.superview?.superview as? TaskCollectionViewCell,
-            let collectionView = self.collectionView,
-            let indexPath = collectionView.indexPath(for: cell) {
-                let task = tasks?[indexPath.row]
-                task!.isCompleted.toggle()
-                saveTasks()
-                collectionView.reloadData()
+        if let cell = sender.superview?.superview as? TaskCollectionViewCell, let collectionView = self.collectionView, let indexPath = collectionView.indexPath(for: cell) {
+            let task = tasks?[indexPath.row]
+            task!.isCompleted.toggle()
+            collectionView.reloadData()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if let index = self.tasks?.firstIndex(where: { $0 == task }) {
+                    self.tasks?.remove(at: index)
+                    self.saveTasks()
+                    collectionView.reloadData()
+                }
+            }
         }
     }
     

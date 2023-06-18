@@ -59,10 +59,16 @@ class CompletedTasksViewController: TaskViewController {
             let collectionView = self.collectionView,
             let indexPath = collectionView.indexPath(for: cell) {
                 let task = self.completedTasks?[indexPath.row]
-                self.completedTasks?.remove(at: indexPath.row)
                 task!.isCompleted.toggle()
-                saveTasks()
                 collectionView.reloadData()
+            
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if let index = self.completedTasks?.firstIndex(where: { $0 == task }) {
+                    self.completedTasks?.remove(at: index)
+                    self.saveTasks()
+                    collectionView.reloadData()
+                }
+            }
         }
     }
 }
