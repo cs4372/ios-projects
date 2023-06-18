@@ -49,7 +49,7 @@ extension CompletedTasksViewController {
    }
    
    private func createEditAction(for indexPath: IndexPath) -> UIAction {
-       let editAction = UIAction(title: "Set it to incomplete", image: UIImage(systemName: "pencil")) { [weak self] action in
+       let editAction = UIAction(title: "Set it to incomplete", image: UIImage(systemName: "pencil")) { [weak self] _ in
            guard let self = self else { return }
            
            if let task = self.completedTasks?[indexPath.row] {
@@ -64,7 +64,7 @@ extension CompletedTasksViewController {
    }
    
    private func createDeleteAction(for indexPath: IndexPath) -> UIAction {
-       let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] action in
+       let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
            guard let self = self else { return }
            
            if let deleteItem = self.completedTasks?[indexPath.row] {

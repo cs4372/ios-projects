@@ -4,24 +4,24 @@ PODS:
     - ChameleonFramework/Default
   - CLTypingLabel (0.4.0)
   - FSCalendar (2.8.4)
-  - lottie-ios (4.2.0)
   - PanModal (1.2.7)
+  - SwiftLint (0.52.2)
   - TextFieldEffects (1.6.0)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift (from `https://github.com/wowansm/Chameleon.git`, branch `swift5`)
   - CLTypingLabel
   - FSCalendar
-  - lottie-ios
   - PanModal
+  - SwiftLint
   - TextFieldEffects
 
 SPEC REPOS:
   trunk:
     - CLTypingLabel
     - FSCalendar
-    - lottie-ios
     - PanModal
+    - SwiftLint
     - TextFieldEffects
 
 EXTERNAL SOURCES:
@@ -38,10 +38,10 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   CLTypingLabel: 95a7d1faf7e3d1d952cd11cb0491d17d80c50934
   FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
-  lottie-ios: 809ecf2d460ed650a6aed7aa88b2ec45fab4779c
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
+  SwiftLint: 1ac76dac888ca05cb0cf24d0c85887ec1209961d
   TextFieldEffects: 529b8aff706fb40f82c41c780c0777941a893796
 
-PODFILE CHECKSUM: 2578a31aa855f58de84043e7621bd7f743d011a0
+PODFILE CHECKSUM: 6ed7d3ce2e4a04b59a97af0c66040899a60e7ff2
 
 COCOAPODS: 1.12.1

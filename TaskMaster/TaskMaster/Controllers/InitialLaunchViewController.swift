@@ -11,7 +11,6 @@ import TextFieldEffects
 import ChameleonFramework
 
 class InitialLaunchViewController: UIViewController {
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameTextField: YoshikoTextField!
     
@@ -19,6 +18,7 @@ class InitialLaunchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
+                print("hi")     
     }
 
     private func setupUI() {

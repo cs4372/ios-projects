@@ -107,7 +107,6 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         presentPanModal(addTaskViewController)
     }
     
-    
     @IBAction func toggleCheckbox(_ sender: UIButton) {
         if let cell = sender.superview?.superview as? TaskCollectionViewCell, let collectionView = self.collectionView, let indexPath = collectionView.indexPath(for: cell) {
             let task = tasks?[indexPath.row]
@@ -144,15 +143,15 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         }
     }
     
-    @IBAction func ViewTypeChanged(_ sender: UISegmentedControl) {
+    @IBAction func viewTypeChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
-             case 0:
-                 displayMode = .collection
-             case 1:
-                 displayMode = .list
-             default:
-                 break
-            }
+        case 0:
+            displayMode = .collection
+        case 1:
+            displayMode = .list
+        default:
+            break
+        }
         updateViews()
     }
     

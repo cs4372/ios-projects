@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()
     }
@@ -29,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let container = NSPersistentContainer(name: "TaskMaster")
 
-    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+    container.loadPersistentStores(completionHandler: { (_, error) in
 
     if let error = error as NSError? {
         fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -38,8 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return container
 
     }()
-
-
+    
     // MARK: - Core Data Saving support
 
     func saveContext () {

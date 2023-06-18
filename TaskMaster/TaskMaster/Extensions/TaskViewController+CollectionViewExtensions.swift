@@ -56,10 +56,10 @@ extension TaskViewController: UICollectionViewDelegate {
     }
     
     private func createEditAction(for indexPath: IndexPath) -> UIAction {
-        let editAction = UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] action in
+        let editAction = UIAction(title: "Edit", image: UIImage(systemName: "pencil")) { [weak self] _ in
             guard let self = self else { return }
             
-            if let editItem = self.tasks?[indexPath.row] {
+            if self.tasks?[indexPath.row] != nil {
                 let addTaskCV = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddTaskViewController") as! AddTaskViewController
                 let task = self.tasks?[indexPath.row]
                 addTaskCV.delegate = self
@@ -76,7 +76,7 @@ extension TaskViewController: UICollectionViewDelegate {
     }
     
     private func createDeleteAction(for indexPath: IndexPath) -> UIAction {
-        let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] action in
+        let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { [weak self] _ in
             guard let self = self else { return }
             
             if let deleteItem = self.tasks?[indexPath.row] {
@@ -109,4 +109,3 @@ extension TaskViewController: UICollectionViewDelegate {
         return deleteAction
     }
 }
-

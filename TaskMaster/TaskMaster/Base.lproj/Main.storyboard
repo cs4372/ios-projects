@@ -22,14 +22,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="V02-54-ESP" customClass="TaskTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="373" height="43"/>
+                                        <rect key="frame" x="0.0" y="50" width="373" height="43.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V02-54-ESP" id="xxc-s2-LJM">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="43.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56Z-vf-J4j">
-                                                    <rect key="frame" x="20" y="11" width="323" height="21"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="323" height="21.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -103,8 +103,8 @@
                                         <gestureRecognizers/>
                                         <size key="customSize" width="215" height="272"/>
                                         <connections>
-                                            <outlet property="DateLabel" destination="4P3-xM-uv7" id="pEa-fc-yFN"/>
                                             <outlet property="checkboxButton" destination="WXN-aZ-zWu" id="tro-Nx-f9y"/>
+                                            <outlet property="dateLabel" destination="4P3-xM-uv7" id="pEa-fc-yFN"/>
                                             <outlet property="taskLabel" destination="SGd-jm-tIC" id="6Od-1p-ifG"/>
                                         </connections>
                                     </collectionViewCell>
@@ -135,7 +135,7 @@
                                     <segment title="List"/>
                                 </segments>
                                 <connections>
-                                    <action selector="ViewTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jay-kW-YXo"/>
+                                    <action selector="viewTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jay-kW-YXo"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXu-TF-VKH">
@@ -329,14 +329,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarTableViewCell" id="6j7-iz-jXP" customClass="CalendarTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="353" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6j7-iz-jXP" id="oIa-P5-Hjs">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="in8-en-4Es">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="293" height="21.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="293" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -450,8 +450,8 @@
                                         <gestureRecognizers/>
                                         <size key="customSize" width="215" height="272"/>
                                         <connections>
-                                            <outlet property="DateLabel" destination="k7i-U1-vR4" id="DE8-cC-ak2"/>
                                             <outlet property="checkboxButton" destination="dAo-gj-w68" id="MxE-36-4cM"/>
+                                            <outlet property="dateLabel" destination="k7i-U1-vR4" id="DE8-cC-ak2"/>
                                             <outlet property="taskLabel" destination="gvA-9E-r0I" id="CEQ-Bt-kdo"/>
                                         </connections>
                                     </collectionViewCell>

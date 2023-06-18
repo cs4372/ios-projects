@@ -15,6 +15,7 @@
 		474111092A3BE81E000F41C3 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474111082A3BE81E000F41C3 /* DataManager.swift */; };
 		4758391B2A3F7D3A009031EE /* CompletedTasksViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758391A2A3F7D3A009031EE /* CompletedTasksViewController+Extensions.swift */; };
 		4758391D2A3F8E71009031EE /* CalendarViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758391C2A3F8E71009031EE /* CalendarViewController+Extensions.swift */; };
+		4764C4A52A3FC7C70079E9CA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4764C4A42A3FC7C70079E9CA /* .swiftlint.yml */; };
 		47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805302A3020C900641772 /* Task+CoreDataClass.swift */; };
 		47A805332A3020C900641772 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805312A3020C900641772 /* Task+CoreDataProperties.swift */; };
 		47A805352A31319800641772 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805342A31319800641772 /* AddTaskViewController.swift */; };
@@ -44,6 +45,7 @@
 		474111082A3BE81E000F41C3 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		4758391A2A3F7D3A009031EE /* CompletedTasksViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletedTasksViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4758391C2A3F8E71009031EE /* CalendarViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+Extensions.swift"; sourceTree = "<group>"; };
+		4764C4A42A3FC7C70079E9CA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		47A805302A3020C900641772 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		47A805312A3020C900641772 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47A805342A31319800641772 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		47C0AA3B2A2EEF14003BC512 = {
 			isa = PBXGroup;
 			children = (
+				4764C4A42A3FC7C70079E9CA /* .swiftlint.yml */,
 				47C0AA462A2EEF14003BC512 /* TaskMaster */,
 				47C0AA452A2EEF14003BC512 /* Products */,
 				E261204EC96D84B6D321A744 /* Pods */,
@@ -197,6 +200,7 @@
 				47C0AA412A2EEF14003BC512 /* Frameworks */,
 				47C0AA422A2EEF14003BC512 /* Resources */,
 				709DE934603E22EBCC278353 /* [CP] Embed Pods Frameworks */,
+				4764C4A32A3FC6CE0079E9CA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -245,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4764C4A52A3FC7C70079E9CA /* .swiftlint.yml in Resources */,
 				47C0AA572A2EEF17003BC512 /* LaunchScreen.storyboard in Resources */,
 				47C0AA542A2EEF17003BC512 /* Assets.xcassets in Resources */,
 				47C0AA4F2A2EEF15003BC512 /* Main.storyboard in Resources */,
@@ -254,6 +259,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4764C4A32A3FC6CE0079E9CA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		709DE934603E22EBCC278353 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

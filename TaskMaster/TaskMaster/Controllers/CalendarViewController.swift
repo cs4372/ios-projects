@@ -13,10 +13,10 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var calendar: FSCalendar!
     
-    var selectedTasks:[Task]? = nil
+    var selectedTasks: [Task]?
     var tasksByDate: [String: [Task]]?
     var selectedDate: String? = DateHelper.formattedFullDate(from: Date())
-    var dateKeys: [String]? = nil
+    var dateKeys: [String]?
             
     override func viewDidLoad() {
         super.viewDidLoad()
