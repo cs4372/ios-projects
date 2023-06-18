@@ -60,7 +60,9 @@ class AddTaskViewController: UIViewController {
              let newTask = Task(context: context)
              newTask.title = searchTextField.text
              newTask.dueDate = dueDate.date
-             newTask.taskColor = RandomFlatColorWithShade(.light).hexValue()
+             let color = RandomFlatColorWithShade(.light)
+             let lightenedColor = color.lighten(byPercentage: 0.3)
+             newTask.taskColor = (lightenedColor?.hexValue())!
              newTask.isCompleted = false
              
              delegate?.didAddTask(newTask)

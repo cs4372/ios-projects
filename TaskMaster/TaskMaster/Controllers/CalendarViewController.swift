@@ -24,6 +24,7 @@ class CalendarViewController: UIViewController, FSCalendarDelegate, FSCalendarDa
         calendar.dataSource = self
         tableView.delegate = self
         tableView.dataSource = self
+        calendar.appearance.titleDefaultColor = UIColor(named: "CalenderDateColor")
         reloadData()
     }
     
