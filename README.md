@@ -46,3 +46,18 @@ This is a collection of projects that aims to solidify my understanding of the f
   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/ChatVC.png" height="350px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/ChatApp/Screenshots/UsersVC.png" height="350px"/>
 </div>
+
+#### [Task Master](https://github.com/cs4372/ios-projects/tree/master/TaskMaster)
+- App that allows users to organize and keep track of their tasks. Users have the flexibility to view their tasks in various forms including a list view, grid view, and calendar view.
+<div style="display: flex;">
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/TasksVC-tiles.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/TasksVC-context%20menu.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/AddTaskVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/TasksVC-list.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/TasksVC-list-swipe.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CalendarView.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasksVC.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasksVC-context-menu.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasks-searchbar.png" height="350px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/empty-tasks.png" height="350px"/>
+</div>
