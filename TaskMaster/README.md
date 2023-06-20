@@ -1,6 +1,10 @@
 # TaskMaster
 Introducing TaskMaster, an app designed to help users organize and manage their tasks with ease and efficiency. 
 
+# Requirements
+- iOS 13.0+
+- Xcode 14.1+
+
 # Features
 - Add, edit, and delete tasks
 - Set due dates for tasks to stay organized
@@ -10,7 +14,7 @@ Introducing TaskMaster, an app designed to help users organize and manage their 
 - Access and review all the completed tasks in one place
 - Easily find completed tasks using search and filtering options
 
-# Features
+# Installation
 1. Clone the ios-projects repository
 ```
 git clone https://github.com/cs4372/ios-projects.git
