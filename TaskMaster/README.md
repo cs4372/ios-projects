@@ -14,6 +14,7 @@ Introducing TaskMaster, an app designed to help users organize and manage their 
 - Choose from grid, list, or calendar views to visualize tasks
 - Access and review all the completed tasks in one place
 - Easily find completed tasks using search and filtering options
+- Support for light/dark mode based on user's phone settings
 
 # Installation
 1. Clone the ios-projects repository
