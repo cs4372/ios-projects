@@ -11,17 +11,17 @@ class ExpenseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var expenseLabel: UILabel! {
         didSet {
-            expenseLabel.numberOfLines = 0
+            expenseLabel?.numberOfLines = 0
         }
     }
     @IBOutlet weak var amountLabel: UILabel! {
         didSet {
-            expenseLabel.numberOfLines = 0
+            expenseLabel?.numberOfLines = 0
         }
     }
     @IBOutlet weak var timestampLabel: UILabel! {
         didSet {
-            timestampLabel.numberOfLines = 0
+            timestampLabel?.numberOfLines = 0
         }
     }
 }

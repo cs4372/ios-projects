@@ -39,11 +39,13 @@ class AddExpenseViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func saveExpense(_ sender: UIBarButtonItem) {
-        guard let expenseText = expenseTitleTextField.text, !expenseText.isEmpty else {
+        guard let expenseText = expenseTitleTextField.text,
+              !expenseText.isEmpty else {
             AlertHelper.showAlert(title: "Invalid expense", message: "Please try again", over: self)
             return
         }
-        guard let amountText = amountTextField.text, !amountText.isEmpty else {
+        guard let amountText = amountTextField.text, !amountText.isEmpty,
+              amountText.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil else {
             AlertHelper.showAlert(title: "Invalid amount", message: "Please try again", over: self)
             return
         }

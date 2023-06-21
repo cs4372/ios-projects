@@ -28,14 +28,12 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
                 AlertHelper.showAlert(title: "Invalid title", message: "Please try again", over: self)
                 return
         }
-        
-        if let budgetAmountText = budgetAmountTextField.text, !budgetAmountText.isEmpty,
-            let budgetAmount = Decimal(string: budgetAmountText) {
+            
+            if let budgetAmountText = budgetAmountTextField.text,
+                !budgetAmountText.isEmpty,
+                let budgetAmount = Decimal(string: budgetAmountText),
+                budgetAmountText.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil {
             let budgetNum = NSDecimalNumber(decimal: budgetAmount)
-            
-            budgetTitleTextField.text = ""
-            budgetAmountTextField.text = ""
-            
             let budget = DataManager.shared.setBudget(title: budgetTitleText, amount: budgetNum)
             budgets.append(budget)
             DataManager.shared.saveContext()
@@ -43,6 +41,8 @@ class BudgetViewController: UIViewController, UITableViewDelegate {
         } else {
             AlertHelper.showAlert(title: "Invalid amount", message: "Please try again", over: self)
         }
+            budgetTitleTextField.text = ""
+            budgetAmountTextField.text = ""
     }
     
     @IBSegueAction func openExpenses(_ coder: NSCoder) -> ExpenseViewController? {

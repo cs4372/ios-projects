@@ -52,8 +52,9 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
         }
         let dataSet = PieChartDataSet(entries: dataEntries, label: "")
         dataSet.colors = expenses.enumerated().map { (idx, _) in
-            return UIColor(hue: CGFloat(idx) / CGFloat(expenses.count), saturation: 1, brightness: 1, alpha: 1)
+            return UIColor(hue: CGFloat(idx) / CGFloat(expenses.count), saturation: 0.8, brightness: 0.8, alpha: 1)
         }
+        dataSet.valueFont = UIFont.boldSystemFont(ofSize: 15)
         let data = PieChartData(dataSet: dataSet)
         self.pieChartView.data = data
         self.pieChartView.centerText = expenses.isEmpty ? "No expenses." : ""
@@ -61,6 +62,7 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
         self.pieChartView.legend.direction = .leftToRight
         self.pieChartView.legend.horizontalAlignment = .left
         self.pieChartView.legend.verticalAlignment = .bottom
+        self.pieChartView.legend.font = UIFont.systemFont(ofSize: 14)
         self.pieChartView.animate(xAxisDuration: 1.5, yAxisDuration: 1.5)
         self.pieChartView.notifyDataSetChanged()
     }
@@ -93,7 +95,8 @@ class ExpenseViewController: UIViewController, UITableViewDelegate, AddExpenseDe
             AlertHelper.showAlert(title: "You've gone over budget!", message: "Watch your spending", over: self)
             spentLabel.textColor = UIColor.red
         } else {
-            spentLabel.textColor = UIColor.green
+            spentLabel.textColor = UIColor.systemGreen
+            spentLabel.font = UIFont.boldSystemFont(ofSize: 17)
         }
     }
 }
