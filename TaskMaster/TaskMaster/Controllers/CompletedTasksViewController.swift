@@ -16,8 +16,13 @@ class CompletedTasksViewController: TaskViewController {
     
     var completedTasks: [Task]? {
         didSet {
-            let greeting = "You completed \(completedTasks!.count) tasks!"
-            tasksLabel?.text = greeting
+            if let count = completedTasks?.count {
+                let taskText = (count == 1) ? "task" : "tasks"
+                let greeting = "You completed \(count) \(taskText)!"
+                tasksLabel?.text = greeting
+            } else {
+                tasksLabel?.text = "You completed 0 tasks!"
+            }
             tasksLabel?.textColor = FlatWatermelon()
         }
     }

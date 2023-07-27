@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -22,14 +24,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TaskTableViewCell" id="V02-54-ESP" customClass="TaskTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="373" height="43.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="50" width="373" height="42.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V02-54-ESP" id="xxc-s2-LJM">
-                                            <rect key="frame" x="0.0" y="0.0" width="373" height="43.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="42.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56Z-vf-J4j">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="323" height="21.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11.000000000000002" width="323" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -77,10 +79,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WXN-aZ-zWu">
-                                                    <rect key="frame" x="164" y="10" width="49" height="34.333333333333336"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WXN-aZ-zWu">
+                                                    <rect key="frame" x="179.33333333333334" y="10.000000000000002" width="25.666666666666657" height="25.666666666666671"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="circle" catalog="system">
+                                                        <attributedString key="attributedTitle"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="toggleCheckbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1hw-5H-DUj"/>
                                                     </connections>
@@ -96,7 +100,7 @@
                                                 <constraint firstItem="WXN-aZ-zWu" firstAttribute="top" secondItem="hmt-tC-XTp" secondAttribute="topMargin" constant="2" id="geE-xL-Ior"/>
                                                 <constraint firstItem="4P3-xM-uv7" firstAttribute="centerX" secondItem="hmt-tC-XTp" secondAttribute="centerX" id="hwD-ts-ibB"/>
                                                 <constraint firstItem="4P3-xM-uv7" firstAttribute="leading" secondItem="hmt-tC-XTp" secondAttribute="leadingMargin" id="mTP-rU-56L"/>
-                                                <constraint firstAttribute="trailing" secondItem="WXN-aZ-zWu" secondAttribute="trailing" constant="2" id="x57-fs-R0a"/>
+                                                <constraint firstAttribute="trailing" secondItem="WXN-aZ-zWu" secondAttribute="trailing" constant="10" id="x57-fs-R0a"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.48627450979999998" green="0.64313725489999995" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -138,15 +142,17 @@
                                     <action selector="viewTypeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jay-kW-YXo"/>
                                 </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXu-TF-VKH">
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXu-TF-VKH">
                                 <rect key="frame" x="307" y="640" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.99991959330000002" green="0.71596952390000002" blue="0.48343690020000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Imp-HA-scd"/>
                                     <constraint firstAttribute="width" constant="50" id="jj1-11-Tqv"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="">
+                                    <imageReference key="image" image="plus" catalog="system" symbolScale="large"/>
+                                </state>
                                 <connections>
                                     <action selector="addTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LRf-ip-CVe"/>
                                 </connections>
@@ -199,7 +205,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yh-lG-vMc">
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter task..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9yh-lG-vMc">
                                 <rect key="frame" x="40" y="89" width="313" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -263,13 +269,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Welcome to Task Master!&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGX-q8-zsK" customClass="CLTypingLabel" customModule="CLTypingLabel">
-                                <rect key="frame" x="30" y="159" width="333" height="73"/>
+                                <rect key="frame" x="30" y="159" width="333" height="0.0"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your name..." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lrW-fb-RoS" customClass="YoshikoTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="30" y="252" width="272" height="50"/>
+                                <rect key="frame" x="30" y="179" width="272" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="wFY-Aw-i10"/>
                                 </constraints>
@@ -277,7 +283,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w7d-oK-QWF">
-                                <rect key="frame" x="322" y="260" width="51" height="35"/>
+                                <rect key="frame" x="322" y="187" width="51" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrowshape.right" catalog="system"/>
                                 <connections>
@@ -329,14 +335,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CalendarTableViewCell" id="6j7-iz-jXP" customClass="CalendarTableViewCell" customModule="TaskMaster" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="353" height="42.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="50" width="353" height="43"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6j7-iz-jXP" id="oIa-P5-Hjs">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="42.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="353" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="in8-en-4Es">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="293" height="20.666666666666671"/>
+                                                    <rect key="frame" x="20" y="11" width="293" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -423,10 +429,12 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dAo-gj-w68">
-                                                    <rect key="frame" x="164" y="10" width="49" height="34.333333333333336"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="circle" catalog="system"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAo-gj-w68">
+                                                    <rect key="frame" x="179.33333333333334" y="10.000000000000002" width="25.666666666666657" height="25.666666666666671"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" image="circle" catalog="system">
+                                                        <attributedString key="attributedTitle"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="toggleCheckbox:" destination="w9G-QZ-Hb4" eventType="touchUpInside" id="Fch-es-XAv"/>
                                                         <action selector="toggleCheckbox:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cSh-wf-qKz"/>
@@ -435,7 +443,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="k7i-U1-vR4" secondAttribute="trailing" id="10F-Ye-HyK"/>
-                                                <constraint firstAttribute="trailing" secondItem="dAo-gj-w68" secondAttribute="trailing" constant="2" id="2xO-9C-oqz"/>
+                                                <constraint firstAttribute="trailing" secondItem="dAo-gj-w68" secondAttribute="trailing" constant="10" id="2xO-9C-oqz"/>
                                                 <constraint firstItem="k7i-U1-vR4" firstAttribute="top" secondItem="pTH-ZD-Afe" secondAttribute="top" constant="70" id="Bz6-i0-wRm"/>
                                                 <constraint firstItem="gvA-9E-r0I" firstAttribute="centerX" secondItem="pTH-ZD-Afe" secondAttribute="centerX" id="E5F-NO-XJr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gvA-9E-r0I" secondAttribute="trailing" id="POu-Lt-NNx"/>
@@ -514,14 +522,6 @@
             <point key="canvasLocation" x="45" y="204"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="lGX-q8-zsK">
-            <size key="intrinsicContentSize" width="344.66666666666669" height="36.666666666666664"/>
-        </designable>
-        <designable name="lrW-fb-RoS">
-            <size key="intrinsicContentSize" width="196.33333333333334" height="36"/>
-        </designable>
-    </designables>
     <resources>
         <image name="arrowshape.right" catalog="system" width="128" height="104"/>
         <image name="calendar" catalog="system" width="128" height="107"/>

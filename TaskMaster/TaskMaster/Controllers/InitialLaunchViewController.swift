@@ -18,7 +18,6 @@ class InitialLaunchViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-                print("hi")     
     }
 
     private func setupUI() {
