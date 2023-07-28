@@ -22,7 +22,9 @@ class TaskCollectionViewCell: UICollectionViewCell {
     
     func setup(with task: Task) {
         taskLabel?.text = task.title ?? "No Tasks Added Yet"
-        dateLabel?.text = DateHelper.formattedDate(from: task.dueDate!)
+        if let dueDate = task.dueDate {
+            dateLabel?.text = DateHelper.formattedDate(from: dueDate)
+        }
         
         guard let color = UIColor(hexString: task.taskColor) else {
             return

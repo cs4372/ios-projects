@@ -43,6 +43,7 @@ class AddTaskViewController: UIViewController {
     }
     
     private func setupUI() {
+        searchTextField.clearButtonMode = .always
         saveButton.layer.cornerRadius = 5
         saveButton.backgroundColor = FlatSkyBlue()
         saveButton.tintColor = FlatWhite()

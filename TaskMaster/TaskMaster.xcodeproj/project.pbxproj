@@ -16,6 +16,7 @@
 		4758391B2A3F7D3A009031EE /* CompletedTasksViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758391A2A3F7D3A009031EE /* CompletedTasksViewController+Extensions.swift */; };
 		4758391D2A3F8E71009031EE /* CalendarViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4758391C2A3F8E71009031EE /* CalendarViewController+Extensions.swift */; };
 		4764C4A52A3FC7C70079E9CA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4764C4A42A3FC7C70079E9CA /* .swiftlint.yml */; };
+		476A12032A73650F0021AA5F /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476A12022A73650F0021AA5F /* AlertHelper.swift */; };
 		47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805302A3020C900641772 /* Task+CoreDataClass.swift */; };
 		47A805332A3020C900641772 /* Task+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805312A3020C900641772 /* Task+CoreDataProperties.swift */; };
 		47A805352A31319800641772 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47A805342A31319800641772 /* AddTaskViewController.swift */; };
@@ -46,6 +47,7 @@
 		4758391A2A3F7D3A009031EE /* CompletedTasksViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompletedTasksViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4758391C2A3F8E71009031EE /* CalendarViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CalendarViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4764C4A42A3FC7C70079E9CA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		476A12022A73650F0021AA5F /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		47A805302A3020C900641772 /* Task+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataClass.swift"; sourceTree = "<group>"; };
 		47A805312A3020C900641772 /* Task+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		47A805342A31319800641772 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				47A805372A3148E100641772 /* DateHelper.swift */,
 				474110FA2A381461000F41C3 /* EmptyViewHelper.swift */,
 				474111082A3BE81E000F41C3 /* DataManager.swift */,
+				476A12022A73650F0021AA5F /* AlertHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				4758391D2A3F8E71009031EE /* CalendarViewController+Extensions.swift in Sources */,
 				47C0AA482A2EEF14003BC512 /* AppDelegate.swift in Sources */,
 				47A805352A31319800641772 /* AddTaskViewController.swift in Sources */,
+				476A12032A73650F0021AA5F /* AlertHelper.swift in Sources */,
 				47A805322A3020C900641772 /* Task+CoreDataClass.swift in Sources */,
 				474111072A3AA323000F41C3 /* CalendarTableViewCell.swift in Sources */,
 				47C0AA522A2EEF15003BC512 /* TaskMaster.xcdatamodeld in Sources */,

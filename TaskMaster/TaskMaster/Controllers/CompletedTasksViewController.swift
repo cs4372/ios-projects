@@ -13,6 +13,7 @@ class CompletedTasksViewController: TaskViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tasksLabel: UILabel!
+    @IBOutlet weak var deleteTasksButton: UIButton!
     
     var completedTasks: [Task]? {
         didSet {
@@ -29,6 +30,18 @@ class CompletedTasksViewController: TaskViewController {
     
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {
         searchBar.resignFirstResponder()
+    }
+    
+    private func setupDeleteTasksButton() {
+        deleteTasksButton?.backgroundColor = FlatWhite()
+        deleteTasksButton?.layer.cornerRadius = deleteTasksButton.bounds.width / 2
+        deleteTasksButton?.clipsToBounds = true
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupDeleteTasksButton()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -59,6 +72,22 @@ class CompletedTasksViewController: TaskViewController {
         self.collectionView.reloadData()
     }
     
+    func deleteCompletedTasks() {
+        guard let completedTasks = completedTasks else { return }
+        
+        for task in completedTasks {
+            context.delete(task)
+        }
+        
+        do {
+            try context.save()
+            loadTasks()
+            self.collectionView.reloadData()
+        } catch {
+            print("Error saving context \(error)")
+        }
+    }
+
     @IBAction override func toggleCheckbox(_ sender: UIButton) {
         if let cell = sender.superview?.superview as? TaskCollectionViewCell,
             let collectionView = self.collectionView,
@@ -75,5 +104,13 @@ class CompletedTasksViewController: TaskViewController {
                 }
             }
         }
+    }
+    
+    @IBAction func deleteButtonTap(_ sender: UIButton) {
+        AlertHelper.showAlertWithYesNoOptions(title: "Clear completed tasks", message: "Are you sure you want to clear all completed tasks?", over: self, yesHandler: {
+            self.deleteCompletedTasks()
+        }, noHandler: {
+            print("No")
+        })
     }
 }

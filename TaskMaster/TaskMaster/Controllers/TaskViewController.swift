@@ -19,31 +19,20 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var tasksByDate: [String: [Task]] = [:]
+    var displayMode: DisplayMode = .collection
     
     enum DisplayMode {
         case collection
         case list
     }
     
-    var displayMode: DisplayMode = .collection
-    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     var tasks: [Task]?
-    
-    lazy var dateFormatter: DateFormatter = {
-         let formatter = DateFormatter()
-         formatter.dateFormat = "yyyy-MM-dd"
-         return formatter
-     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView?.delegate = self
-        tableView?.dataSource = self
-                
-        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+        setupUI()
         setupCollectionView()
         setupAddTaskButton()
         setupUserNameLabel()
@@ -53,13 +42,19 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
 
-        loadTasks()
-        groupTasksByDate()
-        self.tableView?.reloadData()
-        self.collectionView?.reloadData()
-        if let tasks = tasks {
-            DataManager.shared.groupTasksByDate(tasks: tasks)
-        }
+        refreshData()
+    }
+    
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter
+    }()
+    
+    func setupUI() {
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func setupCollectionView() {
@@ -83,6 +78,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
     }
     
     private func setupAddTaskButton() {
+        addTaskButton?.backgroundColor = .systemBlue
         addTaskButton?.layer.cornerRadius = addTaskButton.bounds.width / 2
         addTaskButton?.clipsToBounds = true
     }
@@ -107,19 +103,11 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
         presentPanModal(addTaskViewController)
     }
     
-    @IBAction func toggleCheckbox(_ sender: UIButton) {
-        if let cell = sender.superview?.superview as? TaskCollectionViewCell, let collectionView = self.collectionView, let indexPath = collectionView.indexPath(for: cell) {
-            let task = tasks?[indexPath.row]
-            task!.isCompleted.toggle()
-            collectionView.reloadData()
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                if let index = self.tasks?.firstIndex(where: { $0 == task }) {
-                    self.tasks?.remove(at: index)
-                    self.saveTasks()
-                    collectionView.reloadData()
-                }
-            }
+    func saveTasks() {
+        do {
+            try self.context.save()
+        } catch {
+            print("Error saving context \(error)")
         }
     }
     
@@ -134,12 +122,22 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
             print("Error fetching data from context \(error)")
         }
     }
-    
-    func saveTasks() {
-        do {
-            try self.context.save()
-        } catch {
-            print("Error saving context \(error)")
+
+    @IBAction func toggleCheckbox(_ sender: UIButton) {
+        if let cell = sender.superview?.superview as? TaskCollectionViewCell, let collectionView = self.collectionView, let indexPath = collectionView.indexPath(for: cell) {
+            let task = tasks?[indexPath.row]
+            task?.isCompleted.toggle()
+            self.tableView.reloadData()
+            self.collectionView.reloadData()
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                if let index = self.tasks?.firstIndex(where: { $0 == task }) {
+                    self.tasks?.remove(at: index)
+                    self.saveTasks()
+                    self.tableView.reloadData()
+                    self.collectionView.reloadData()
+                }
+            }
         }
     }
     
@@ -153,10 +151,21 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
             break
         }
         updateViews()
+        refreshData()
     }
     
+    func refreshData() {
+         loadTasks()
+         groupTasksByDate()
+         if let tasks = tasks {
+             DataManager.shared.groupTasksByDate(tasks: tasks)
+         }
+         tableView?.reloadData()
+         collectionView?.reloadData()
+     }
+    
     func updateViews() {
-         collectionView.isHidden = displayMode == .list
-         tableView.isHidden = displayMode == .collection
+         collectionView?.isHidden = displayMode == .list
+         tableView?.isHidden = displayMode == .collection
      }
 }

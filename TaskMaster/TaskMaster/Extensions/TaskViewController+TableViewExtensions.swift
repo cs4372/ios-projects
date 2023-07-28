@@ -17,7 +17,7 @@ extension TaskViewController: UITableViewDataSource {
                 guard let dueDate = task.dueDate else { continue }
                 
                 let dateString = dateFormatter.string(from: dueDate)
-                
+
                 if tasksByDate[dateString] == nil {
                     tasksByDate[dateString] = [task]
                 } else {
