@@ -34,8 +34,8 @@ cd TaskMaster
   <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/TasksVC-list.png" height="400px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/TasksVC-list-swipe.png" height="400px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CalendarView.png" height="400px"/>
-  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasksVC.png" height="400px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasksWithDeleteIcon.png" height="400px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasksVC-context-menu.png" height="400px"/>
-  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasks-searchbar.png" height="400px"/>
+  <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/CompletedTasksVC-Alert.png" height="400px"/>
   <img src="https://github.com/cs4372/ios-projects/blob/master/TaskMaster/Screenshots/empty-tasks.png" height="400px"/>
 </div>
