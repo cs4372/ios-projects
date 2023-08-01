@@ -130,7 +130,7 @@ class TaskViewController: UIViewController, TaskViewVCDelegate {
             self.tableView.reloadData()
             self.collectionView.reloadData()
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 if let index = self.tasks?.firstIndex(where: { $0 == task }) {
                     self.tasks?.remove(at: index)
                     self.saveTasks()

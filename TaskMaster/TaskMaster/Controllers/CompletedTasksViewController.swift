@@ -96,7 +96,7 @@ class CompletedTasksViewController: TaskViewController {
                 task!.isCompleted.toggle()
                 collectionView.reloadData()
             
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 if let index = self.completedTasks?.firstIndex(where: { $0 == task }) {
                     self.completedTasks?.remove(at: index)
                     self.saveTasks()
